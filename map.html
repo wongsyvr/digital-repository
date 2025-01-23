@@ -3,20 +3,38 @@ layout: default
 title: Map View
 ---
 
-<div id="map" class="map-container"></div>
+<style>
+.map-container {
+    width: 100%;
+    height: 600px;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+</style>
+
+<div class="container">
+    <h1>Map View</h1>
+    <p>Explore the geographical distribution of items in the collection.</p>
+    <div id="map" class="map-container"></div>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize the map
-    var map = L.map('map').setView([{{ site.map-default.latitude }}, {{ site.map-default.longitude }}], {{ site.map-default.zoom }});
+    // Initialize the map centered on Vancouver
+    var map = L.map('map').setView([49.2827, -123.1207], 4);
     
     // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
+        attribution: ' OpenStreetMap contributors'
     }).addTo(map);
     
+    // Create a marker cluster group
+    var markers = L.markerClusterGroup();
+    
     // Load and process the metadata
-    fetch('{{ site.baseurl }}/data/metadata.csv')
+    fetch('{{ site.baseurl }}/_data/metadata.csv')
         .then(response => response.text())
         .then(csv => {
             // Parse CSV
@@ -29,11 +47,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 const desc = cols[8];
                 
                 if (!isNaN(lat) && !isNaN(lng)) {
-                    L.marker([lat, lng])
-                        .bindPopup(`<strong>${title}</strong><br>${desc}`)
-                        .addTo(map);
+                    const marker = L.marker([lat, lng])
+                        .bindPopup(`<strong>${title}</strong><br>${desc}`);
+                    markers.addLayer(marker);
                 }
             });
-        });
+            
+            // Add markers to map
+            map.addLayer(markers);
+            
+            // Fit bounds if there are markers
+            if (markers.getLayers().length > 0) {
+                map.fitBounds(markers.getBounds());
+            }
+        })
+        .catch(error => console.error('Error loading metadata:', error));
 });
 </script>

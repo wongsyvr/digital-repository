@@ -3,23 +3,40 @@ layout: default
 title: Timeline View
 ---
 
-<div id="timeline" class="timeline-container"></div>
+<style>
+.timeline-container {
+    width: 100%;
+    height: 600px;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+</style>
+
+<div class="container">
+    <h1>Timeline View</h1>
+    <p>Explore the chronological development of the collection.</p>
+    <div id="timeline" class="timeline-container"></div>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Load and process the metadata
-    fetch('{{ site.baseurl }}/data/metadata.csv')
+    fetch('{{ site.baseurl }}/_data/metadata.csv')
         .then(response => response.text())
         .then(csv => {
             // Parse CSV and create timeline data
             const rows = csv.split('\n').slice(1); // Skip header
             const events = rows.map(row => {
                 const cols = row.split(',');
+                const date = cols[5].split('-');
                 return {
                     start_date: {
-                        year: cols[5].split('-')[0],
-                        month: cols[5].split('-')[1],
-                        day: cols[5].split('-')[2]
+                        year: parseInt(date[0]) || new Date().getFullYear(),
+                        month: parseInt(date[1]) || 1,
+                        day: parseInt(date[2]) || 1
                     },
                     text: {
                         headline: cols[1],
@@ -30,17 +47,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         caption: cols[1]
                     }
                 };
-            });
-            
-            // Create the timeline
-            var timelineData = {
+            }).filter(event => !isNaN(event.start_date.year));
+
+            // Configure the timeline
+            const timelineConfig = {
+                scale_factor: 1,
+                height: 600,
+                timenav_height: 150,
+                initial_zoom: 2,
                 events: events
             };
-            
-            window.timeline = new TL.Timeline('timeline', timelineData, {
-                start_at_end: false,
-                default_bg_color: { r:0, g:0, b:0 }
-            });
-        });
+
+            // Initialize the timeline
+            window.timeline = new TL.Timeline('timeline', { events: events }, timelineConfig);
+        })
+        .catch(error => console.error('Error loading metadata:', error));
 });
 </script>
