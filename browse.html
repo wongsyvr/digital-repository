@@ -17,23 +17,23 @@ title: Browse Collection
         <div class="file-section" id="academic-elementary">
             <h3>Elementary School</h3>
             <div class="items-grid">
-                {% assign items = site.data.items.academic_elementary %}
+                {% assign items = site.data.metadata | where: "series", "Academic" | where: "file", "Elementary School" %}
                 {% for item in items %}
                 <div class="item-card">
                     <div class="item-preview">
                         {% case item.format %}
-                            {% when 'PDF' %}
-                                <i class="fas fa-file-pdf"></i>
-                            {% when 'JPEG' %}
-                                <i class="fas fa-image"></i>
-                            {% when 'STL' %}
-                                <i class="fas fa-cube"></i>
-                            {% when 'SVG' %}
-                                <i class="fas fa-bezier-curve"></i>
+                            {% when 'text/plain' %}
+                                <i class="fas fa-file-alt fa-4x text-primary"></i>
+                            {% when 'application/pdf' %}
+                                <i class="fas fa-file-pdf fa-4x text-primary"></i>
+                            {% when 'image/jpeg' %}
+                                <i class="fas fa-image fa-4x text-primary"></i>
+                            {% else %}
+                                <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
                     </div>
                     <div class="item-info">
-                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.objectid }}.html">{{ item.title }}</a></h4>
                         <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
                     </div>
                 </div>
@@ -45,23 +45,23 @@ title: Browse Collection
         <div class="file-section" id="academic-highschool">
             <h3>High School</h3>
             <div class="items-grid">
-                {% assign items = site.data.items.academic_highschool %}
+                {% assign items = site.data.metadata | where: "series", "Academic" | where: "file", "High School" %}
                 {% for item in items %}
                 <div class="item-card">
                     <div class="item-preview">
                         {% case item.format %}
-                            {% when 'PDF' %}
-                                <i class="fas fa-file-pdf"></i>
-                            {% when 'JPEG' %}
-                                <i class="fas fa-image"></i>
-                            {% when 'STL' %}
-                                <i class="fas fa-cube"></i>
-                            {% when 'SVG' %}
-                                <i class="fas fa-bezier-curve"></i>
+                            {% when 'text/plain' %}
+                                <i class="fas fa-file-alt fa-4x text-primary"></i>
+                            {% when 'application/pdf' %}
+                                <i class="fas fa-file-pdf fa-4x text-primary"></i>
+                            {% when 'image/jpeg' %}
+                                <i class="fas fa-image fa-4x text-primary"></i>
+                            {% else %}
+                                <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
                     </div>
                     <div class="item-info">
-                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.objectid }}.html">{{ item.title }}</a></h4>
                         <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
                     </div>
                 </div>
@@ -73,23 +73,23 @@ title: Browse Collection
         <div class="file-section" id="academic-undergraduate">
             <h3>Undergraduate</h3>
             <div class="items-grid">
-                {% assign items = site.data.items.academic_undergraduate %}
+                {% assign items = site.data.metadata | where: "series", "Academic" | where: "file", "Undergraduate" %}
                 {% for item in items %}
                 <div class="item-card">
                     <div class="item-preview">
                         {% case item.format %}
-                            {% when 'PDF' %}
-                                <i class="fas fa-file-pdf"></i>
-                            {% when 'JPEG' %}
-                                <i class="fas fa-image"></i>
-                            {% when 'STL' %}
-                                <i class="fas fa-cube"></i>
-                            {% when 'SVG' %}
-                                <i class="fas fa-bezier-curve"></i>
+                            {% when 'text/plain' %}
+                                <i class="fas fa-file-alt fa-4x text-primary"></i>
+                            {% when 'application/pdf' %}
+                                <i class="fas fa-file-pdf fa-4x text-primary"></i>
+                            {% when 'image/jpeg' %}
+                                <i class="fas fa-image fa-4x text-primary"></i>
+                            {% else %}
+                                <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
                     </div>
                     <div class="item-info">
-                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.objectid }}.html">{{ item.title }}</a></h4>
                         <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
                     </div>
                 </div>
@@ -101,23 +101,23 @@ title: Browse Collection
         <div class="file-section" id="academic-postgraduate">
             <h3>Postgraduate</h3>
             <div class="items-grid">
-                {% assign items = site.data.items.academic_postgraduate %}
+                {% assign items = site.data.metadata | where: "series", "Academic" | where: "file", "Postgraduate" %}
                 {% for item in items %}
                 <div class="item-card">
                     <div class="item-preview">
                         {% case item.format %}
-                            {% when 'PDF' %}
-                                <i class="fas fa-file-pdf"></i>
-                            {% when 'JPEG' %}
-                                <i class="fas fa-image"></i>
-                            {% when 'STL' %}
-                                <i class="fas fa-cube"></i>
-                            {% when 'SVG' %}
-                                <i class="fas fa-bezier-curve"></i>
+                            {% when 'text/plain' %}
+                                <i class="fas fa-file-alt fa-4x text-primary"></i>
+                            {% when 'application/pdf' %}
+                                <i class="fas fa-file-pdf fa-4x text-primary"></i>
+                            {% when 'image/jpeg' %}
+                                <i class="fas fa-image fa-4x text-primary"></i>
+                            {% else %}
+                                <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
                     </div>
                     <div class="item-info">
-                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.objectid }}.html">{{ item.title }}</a></h4>
                         <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
                     </div>
                 </div>
@@ -134,23 +134,23 @@ title: Browse Collection
         <div class="file-section" id="art-papercut">
             <h3>Papercut Works</h3>
             <div class="items-grid">
-                {% assign items = site.data.items.art_papercut %}
+                {% assign items = site.data.metadata | where: "series", "Art & Design" | where: "file", "Papercut Works" %}
                 {% for item in items %}
                 <div class="item-card">
                     <div class="item-preview">
                         {% case item.format %}
-                            {% when 'PDF' %}
-                                <i class="fas fa-file-pdf"></i>
-                            {% when 'JPEG' %}
-                                <i class="fas fa-image"></i>
-                            {% when 'STL' %}
-                                <i class="fas fa-cube"></i>
-                            {% when 'SVG' %}
-                                <i class="fas fa-bezier-curve"></i>
+                            {% when 'text/plain' %}
+                                <i class="fas fa-file-alt fa-4x text-primary"></i>
+                            {% when 'application/pdf' %}
+                                <i class="fas fa-file-pdf fa-4x text-primary"></i>
+                            {% when 'image/jpeg' %}
+                                <i class="fas fa-image fa-4x text-primary"></i>
+                            {% else %}
+                                <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
                     </div>
                     <div class="item-info">
-                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.objectid }}.html">{{ item.title }}</a></h4>
                         <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
                     </div>
                 </div>
@@ -162,23 +162,23 @@ title: Browse Collection
         <div class="file-section" id="art-3dprints">
             <h3>3D Prints</h3>
             <div class="items-grid">
-                {% assign items = site.data.items.art_3dprints %}
+                {% assign items = site.data.metadata | where: "series", "Art & Design" | where: "file", "3D Prints" %}
                 {% for item in items %}
                 <div class="item-card">
                     <div class="item-preview">
                         {% case item.format %}
-                            {% when 'PDF' %}
-                                <i class="fas fa-file-pdf"></i>
-                            {% when 'JPEG' %}
-                                <i class="fas fa-image"></i>
-                            {% when 'STL' %}
-                                <i class="fas fa-cube"></i>
-                            {% when 'SVG' %}
-                                <i class="fas fa-bezier-curve"></i>
+                            {% when 'text/plain' %}
+                                <i class="fas fa-file-alt fa-4x text-primary"></i>
+                            {% when 'application/pdf' %}
+                                <i class="fas fa-file-pdf fa-4x text-primary"></i>
+                            {% when 'image/jpeg' %}
+                                <i class="fas fa-image fa-4x text-primary"></i>
+                            {% else %}
+                                <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
                     </div>
                     <div class="item-info">
-                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.objectid }}.html">{{ item.title }}</a></h4>
                         <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
                     </div>
                 </div>
@@ -190,23 +190,23 @@ title: Browse Collection
         <div class="file-section" id="art-laser">
             <h3>Laser Cutting</h3>
             <div class="items-grid">
-                {% assign items = site.data.items.art_laser %}
+                {% assign items = site.data.metadata | where: "series", "Art & Design" | where: "file", "Laser Cutting" %}
                 {% for item in items %}
                 <div class="item-card">
                     <div class="item-preview">
                         {% case item.format %}
-                            {% when 'PDF' %}
-                                <i class="fas fa-file-pdf"></i>
-                            {% when 'JPEG' %}
-                                <i class="fas fa-image"></i>
-                            {% when 'STL' %}
-                                <i class="fas fa-cube"></i>
-                            {% when 'SVG' %}
-                                <i class="fas fa-bezier-curve"></i>
+                            {% when 'text/plain' %}
+                                <i class="fas fa-file-alt fa-4x text-primary"></i>
+                            {% when 'application/pdf' %}
+                                <i class="fas fa-file-pdf fa-4x text-primary"></i>
+                            {% when 'image/jpeg' %}
+                                <i class="fas fa-image fa-4x text-primary"></i>
+                            {% else %}
+                                <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
                     </div>
                     <div class="item-info">
-                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.objectid }}.html">{{ item.title }}</a></h4>
                         <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
                     </div>
                 </div>
