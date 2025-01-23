@@ -6,6 +6,10 @@ email: ookkchung8@gmail.com
 baseurl: "/digital-repository"
 url: "https://wongsyvr.github.io"
 
+# GitHub Pages settings
+repository: wongsyvr/digital-repository
+remote_theme: pages-themes/minimal@v0.2.0
+
 # Collection Settings
 collections:
   items:
@@ -24,7 +28,7 @@ colors:
 
 # Map defaults
 map-default:
-  latitude: "49.2827"  # Vancouver coordinates as default
+  latitude: "49.2827"
   longitude: "-123.1207"
   zoom: 4
 
@@ -49,8 +53,10 @@ search:
 # Build settings
 markdown: kramdown
 plugins:
+  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-remote-theme
 
 # Exclude from processing
 exclude:
@@ -59,3 +65,6 @@ exclude:
   - node_modules
   - vendor
   - README.md
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
