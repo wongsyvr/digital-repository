@@ -12,11 +12,34 @@ title: Map View
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+.map-info {
+    margin-bottom: 20px;
+}
+
+.map-marker-popup img {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.map-marker-popup h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+}
+
+.map-marker-popup p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
 </style>
 
 <div class="container">
     <h1>Map View</h1>
-    <p>Explore the geographical distribution of items in the collection.</p>
+    <div class="map-info">
+        <p>Explore the geographical distribution of items in the collection. Click on markers to view item details.</p>
+    </div>
     <div id="map" class="map-container"></div>
 </div>
 
@@ -35,20 +58,67 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load and process the metadata
     fetch('{{ site.baseurl }}/_data/metadata.csv')
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
         .then(csv => {
+            console.log('CSV loaded successfully');
             // Parse CSV
-            const rows = csv.split('\n').slice(1); // Skip header
-            rows.forEach(row => {
-                const cols = row.split(',');
-                const lat = parseFloat(cols[3]);
-                const lng = parseFloat(cols[4]);
-                const title = cols[1];
-                const desc = cols[8];
+            const rows = csv.split('\n');
+            const headers = rows[0].split(',');
+            
+            // Find column indices
+            const latIndex = headers.indexOf('latitude');
+            const lonIndex = headers.indexOf('longitude');
+            const titleIndex = headers.indexOf('title');
+            const descIndex = headers.indexOf('description');
+            const idIndex = headers.indexOf('objectid');
+            const dateIndex = headers.indexOf('date');
+            const locationIndex = headers.indexOf('location');
+            
+            console.log('Column indices:', {
+                lat: latIndex,
+                lon: lonIndex,
+                title: titleIndex,
+                desc: descIndex,
+                id: idIndex
+            });
+            
+            // Process each row (skip header)
+            rows.slice(1).forEach(row => {
+                if (!row.trim()) return; // Skip empty rows
                 
-                if (!isNaN(lat) && !isNaN(lng)) {
-                    const marker = L.marker([lat, lng])
-                        .bindPopup(`<strong>${title}</strong><br>${desc}`);
+                const cols = row.split(',');
+                const lat = parseFloat(cols[latIndex]);
+                const lon = parseFloat(cols[lonIndex]);
+                const title = cols[titleIndex];
+                const desc = cols[descIndex];
+                const id = cols[idIndex];
+                const date = cols[dateIndex];
+                const location = cols[locationIndex];
+                
+                if (!isNaN(lat) && !isNaN(lon)) {
+                    console.log('Adding marker:', { lat, lon, title });
+                    const marker = L.marker([lat, lon]);
+                    
+                    // Create popup content with thumbnail and metadata
+                    const popupContent = `
+                        <div class="map-marker-popup">
+                            <img src="{{ site.baseurl }}/objects/${id}/thumb.jpg" 
+                                 alt="${title}"
+                                 onerror="this.style.display='none'">
+                            <h3>${title}</h3>
+                            <p><strong>Location:</strong> ${location}</p>
+                            <p><strong>Date:</strong> ${date}</p>
+                            <p>${desc}</p>
+                            <a href="{{ site.baseurl }}/items/${id}" class="button button-primary">View Details</a>
+                        </div>
+                    `;
+                    
+                    marker.bindPopup(popupContent);
                     markers.addLayer(marker);
                 }
             });
@@ -59,8 +129,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Fit bounds if there are markers
             if (markers.getLayers().length > 0) {
                 map.fitBounds(markers.getBounds());
+                console.log('Markers added:', markers.getLayers().length);
+            } else {
+                console.log('No markers were added to the map');
             }
         })
-        .catch(error => console.error('Error loading metadata:', error));
+        .catch(error => {
+            console.error('Error loading or processing metadata:', error);
+            document.getElementById('map').innerHTML = `
+                <div class="alert alert-danger">
+                    Error loading map data. Please try again later.
+                </div>
+            `;
+        });
 });
 </script>
