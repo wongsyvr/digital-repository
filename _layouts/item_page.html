@@ -48,7 +48,7 @@ layout: default
                                     </a>
                                 </div>
                             </div>
-                        {% when 'image/jpeg' %}
+                        {% when 'image/jpeg' or 'Image/jpeg' %}
                             <div class="image-preview">
                                 <img src="{{ site.baseurl }}/objects/{{ page.objectid }}.jpg" 
                                      alt="{{ page.title }}"
