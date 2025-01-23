@@ -1,0 +1,332 @@
+---
+layout: default
+---
+
+{% for item in site.data.metadata %}
+<div class="item-page" id="{{ item.objectid }}">
+    <div class="item-container">
+        <!-- Hierarchical Navigation -->
+        <nav class="hierarchy-nav" aria-label="breadcrumb">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ site.baseurl }}/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html">Browse</a></li>
+                    <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html#{{ item.series | slugify }}">{{ item.series }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ item.title }}</li>
+                </ol>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="item-layout">
+                <!-- Left Column: Item Preview -->
+                <div class="item-preview">
+                    <div class="preview-container">
+                        {% case item.format %}
+                            {% when 'text/plain' %}
+                                <div class="text-preview card">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-file-alt fa-4x text-primary mb-3"></i>
+                                        <h3 class="h5">Text Document</h3>
+                                        <p class="text-muted">Click below to view or download</p>
+                                        <a href="{{ site.baseurl }}/objects/{{ item.objectid }}.txt" 
+                                           class="button button-primary" 
+                                           target="_blank">
+                                            <i class="fas fa-download"></i> View Document
+                                        </a>
+                                    </div>
+                                </div>
+                            {% when 'application/pdf' %}
+                                <div class="pdf-preview card">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-file-pdf fa-4x text-primary mb-3"></i>
+                                        <h3 class="h5">PDF Document</h3>
+                                        <p class="text-muted">Click below to view or download</p>
+                                        <a href="{{ site.baseurl }}/objects/{{ item.objectid }}.pdf" 
+                                           class="button button-primary" 
+                                           target="_blank">
+                                            <i class="fas fa-download"></i> View PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            {% when 'image/jpeg' %}
+                                <div class="image-preview">
+                                    <img src="{{ site.baseurl }}/objects/{{ item.objectid }}.jpg" 
+                                         alt="{{ item.title }}"
+                                         class="preview-image"
+                                         id="previewImage-{{ item.objectid }}"
+                                         onclick="zoomImage(this)">
+                                    <div class="image-controls">
+                                        <button onclick="zoomIn('{{ item.objectid }}')" class="button button-icon">
+                                            <i class="fas fa-search-plus"></i>
+                                        </button>
+                                        <button onclick="zoomOut('{{ item.objectid }}')" class="button button-icon">
+                                            <i class="fas fa-search-minus"></i>
+                                        </button>
+                                        <button onclick="resetZoom('{{ item.objectid }}')" class="button button-icon">
+                                            <i class="fas fa-compress-arrows-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="generic-preview card">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-file fa-4x text-primary mb-3"></i>
+                                        <h3 class="h5">File</h3>
+                                        <p class="text-muted">Click below to view or download</p>
+                                        <a href="{{ site.baseurl }}/objects/{{ item.objectid }}" 
+                                           class="button button-primary" 
+                                           target="_blank">
+                                            <i class="fas fa-download"></i> View File
+                                        </a>
+                                    </div>
+                                </div>
+                        {% endcase %}
+                    </div>
+                </div>
+
+                <!-- Right Column: Metadata -->
+                <div class="item-metadata">
+                    <div class="metadata-header">
+                        <h1>{{ item.title }}</h1>
+                        <div class="metadata-tools">
+                            <button class="button button-secondary" onclick="window.print()">
+                                <i class="fas fa-print"></i> Print
+                            </button>
+                            <button class="button button-secondary" onclick="sharePage()">
+                                <i class="fas fa-share-alt"></i> Share
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="metadata-content">
+                        <dl class="metadata-list">
+                            {% if item.date %}
+                            <div class="metadata-item">
+                                <dt>Date</dt>
+                                <dd>{{ item.date | date: "%B %d, %Y" }}</dd>
+                            </div>
+                            {% endif %}
+
+                            {% if item.subject %}
+                            <div class="metadata-item">
+                                <dt>Subject</dt>
+                                <dd>{{ item.subject }}</dd>
+                            </div>
+                            {% endif %}
+
+                            {% if item.description %}
+                            <div class="metadata-item">
+                                <dt>Description</dt>
+                                <dd>{{ item.description | newline_to_br }}</dd>
+                            </div>
+                            {% endif %}
+
+                            {% if item.identifier %}
+                            <div class="metadata-item">
+                                <dt>Identifier</dt>
+                                <dd>{{ item.identifier }}</dd>
+                            </div>
+                            {% endif %}
+
+                            {% if item.type %}
+                            <div class="metadata-item">
+                                <dt>Type</dt>
+                                <dd>{{ item.type }}</dd>
+                            </div>
+                            {% endif %}
+
+                            {% if item.language %}
+                            <div class="metadata-item">
+                                <dt>Language</dt>
+                                <dd>{{ item.language }}</dd>
+                            </div>
+                            {% endif %}
+
+                            {% if item.rights %}
+                            <div class="metadata-item">
+                                <dt>Rights</dt>
+                                <dd>{{ item.rights }}</dd>
+                            </div>
+                            {% endif %}
+
+                            {% if item.level %}
+                            <div class="metadata-item">
+                                <dt>Level</dt>
+                                <dd>{{ item.level }}</dd>
+                            </div>
+                            {% endif %}
+
+                            {% if item.series %}
+                            <div class="metadata-item">
+                                <dt>Series</dt>
+                                <dd>{{ item.series }}</dd>
+                            </div>
+                            {% endif %}
+
+                            {% if item.file %}
+                            <div class="metadata-item">
+                                <dt>File</dt>
+                                <dd>{{ item.file }}</dd>
+                            </div>
+                            {% endif %}
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if item.latitude and item.longitude %}
+        <!-- Map Container -->
+        <div id="map-{{ item.objectid }}" class="item-map"></div>
+
+        <script>
+            // Initialize map
+            var map = L.map('map-{{ item.objectid }}').setView([{{ item.latitude }}, {{ item.longitude }}], 13);
+            
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Add marker
+            L.marker([{{ item.latitude }}, {{ item.longitude }}]).addTo(map)
+                .bindPopup('{{ item.location }}')
+                .openPopup();
+        </script>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+
+<style>
+.item-page {
+    margin-bottom: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid #eee;
+}
+
+.item-page:last-child {
+    border-bottom: none;
+}
+
+.image-preview {
+    position: relative;
+    width: 100%;
+    max-height: 600px;
+    overflow: hidden;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.preview-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.image-controls {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.button-icon {
+    padding: 0.5rem;
+    border: none;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.button-icon:hover {
+    color: var(--secondary-color);
+}
+
+.item-map {
+    height: 300px;
+    margin-top: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+</style>
+
+<script>
+const zoomSettings = {};
+
+function initZoomSettings(objectId) {
+    if (!zoomSettings[objectId]) {
+        zoomSettings[objectId] = {
+            currentZoom: 1,
+            zoomStep: 0.2,
+            maxZoom: 3,
+            minZoom: 0.5
+        };
+    }
+}
+
+function zoomImage(img) {
+    const objectId = img.id.split('-')[1];
+    initZoomSettings(objectId);
+    img.style.transform = `scale(${zoomSettings[objectId].currentZoom})`;
+}
+
+function zoomIn(objectId) {
+    initZoomSettings(objectId);
+    const settings = zoomSettings[objectId];
+    if (settings.currentZoom < settings.maxZoom) {
+        settings.currentZoom += settings.zoomStep;
+        document.getElementById(`previewImage-${objectId}`).style.transform = `scale(${settings.currentZoom})`;
+    }
+}
+
+function zoomOut(objectId) {
+    initZoomSettings(objectId);
+    const settings = zoomSettings[objectId];
+    if (settings.currentZoom > settings.minZoom) {
+        settings.currentZoom -= settings.zoomStep;
+        document.getElementById(`previewImage-${objectId}`).style.transform = `scale(${settings.currentZoom})`;
+    }
+}
+
+function resetZoom(objectId) {
+    initZoomSettings(objectId);
+    zoomSettings[objectId].currentZoom = 1;
+    document.getElementById(`previewImage-${objectId}`).style.transform = `scale(1)`;
+}
+
+function sharePage() {
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            url: window.location.href
+        })
+        .catch(console.error);
+    } else {
+        // Fallback for browsers that don't support Web Share API
+        const dummy = document.createElement('input');
+        document.body.appendChild(dummy);
+        dummy.value = window.location.href;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        alert('URL copied to clipboard!');
+    }
+}
+</script>
+
+<!-- Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
