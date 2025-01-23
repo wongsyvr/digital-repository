@@ -3,7 +3,8 @@ title: "Digital Repository of Cheuk Kit (Philip) Chung"
 description: "A digital repository exhibiting the archival materials of Cheuk Kit (Philip) Chung"
 author: "Cheuk Kit (Philip) Chung"
 email: ookkchung8@gmail.com
-baseurl: ""
+baseurl: "/digital-repository"
+url: "https://ookkchung8.github.io"
 
 # Collection Settings
 collections:
