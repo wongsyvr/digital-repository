@@ -1,0 +1,56 @@
+<nav class="main-nav">
+    <div class="container">
+        <ul>
+            <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+            <li><a href="{{ '/browse.html' | relative_url }}" {% if page.url == '/browse.html' %}class="active"{% endif %}>Browse</a></li>
+            <li><a href="{{ '/map.html' | relative_url }}" {% if page.url == '/map.html' %}class="active"{% endif %}>Map</a></li>
+            <li><a href="{{ '/timeline.html' | relative_url }}" {% if page.url == '/timeline.html' %}class="active"{% endif %}>Timeline</a></li>
+            <li><a href="{{ '/search.html' | relative_url }}" {% if page.url == '/search.html' %}class="active"{% endif %}>Search</a></li>
+            <li><a href="{{ '/privacy.html' | relative_url }}" {% if page.url == '/privacy.html' %}class="active"{% endif %}>Privacy & Copyright</a></li>
+        </ul>
+    </div>
+</nav>
+
+<style>
+.main-nav {
+    background-color: var(--secondary-color);
+    padding: 0.5rem 0;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-nav ul li {
+    margin: 0 1rem;
+}
+
+.main-nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .main-nav ul li {
+        margin: 0.5rem 0;
+    }
+}
+</style>
