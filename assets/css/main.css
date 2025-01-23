@@ -1,23 +1,24 @@
 /* Main styles for the digital repository */
 
 :root {
-    --primary-color: #2563eb;      /* Modern blue for primary elements */
-    --secondary-color: #1d4ed8;    /* Darker blue for hover states */
-    --accent-color: #f59e0b;       /* Warm orange for accents */
-    --text-color: #1e293b;         /* Slate for main text */
-    --text-light: #64748b;         /* Light slate for secondary text */
-    --background-color: #ffffff;    /* White background */
-    --background-alt: #f8fafc;     /* Light blue-gray for alternate backgrounds */
-    --border-color: #e2e8f0;       /* Light gray for borders */
-    --success-color: #10b981;      /* Green for success messages */
-    --error-color: #ef4444;        /* Red for error messages */
+    /* CONTENTdm-inspired color palette */
+    --primary-color: #1B3D6D;      /* Deep blue for headers and primary elements */
+    --secondary-color: #4A90E2;    /* Lighter blue for interactive elements */
+    --accent-color: #F5A623;       /* Orange for highlights and calls to action */
+    --text-color: #333333;         /* Dark gray for main text */
+    --text-light: #666666;         /* Lighter gray for secondary text */
+    --background-color: #FFFFFF;    /* White background */
+    --background-alt: #F8F9FA;     /* Light gray for alternate backgrounds */
+    --border-color: #E1E4E8;       /* Light gray for borders */
+    --success-color: #28A745;      /* Green for success messages */
+    --error-color: #DC3545;        /* Red for error messages */
 }
 
 /* Typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Merriweather:wght@400;700&display=swap');
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -27,19 +28,19 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--text-color);
+    font-family: 'Merriweather', Georgia, serif;
+    color: var(--primary-color);
     line-height: 1.3;
     margin-top: 1.5em;
     margin-bottom: 0.5em;
-    font-weight: 600;
 }
 
-h1 { font-size: 3rem; }
-h2 { font-size: 2.25rem; }
-h3 { font-size: 1.875rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1 { font-size: 2.5rem; font-weight: 700; }
+h2 { font-size: 2rem; font-weight: 700; }
+h3 { font-size: 1.75rem; font-weight: 700; }
+h4 { font-size: 1.5rem; font-weight: 600; }
+h5 { font-size: 1.25rem; font-weight: 600; }
+h6 { font-size: 1rem; font-weight: 600; }
 
 p {
     margin-bottom: 1.5em;
@@ -47,13 +48,14 @@ p {
 }
 
 a {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease-in-out;
 }
 
 a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
 /* Layout */
@@ -63,111 +65,108 @@ a:hover {
     padding: 0 20px;
 }
 
-/* Header */
-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 2rem 0;
+/* Cards */
+.card {
+    background: white;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    overflow: hidden;
 }
 
-header h1 {
-    color: white;
-    margin: 0;
-    font-size: 2.5rem;
-    text-align: center;
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Main Content */
-main {
-    padding: 2rem 0;
-    min-height: calc(100vh - 300px); /* Ensures footer stays at bottom */
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* Footer */
-footer {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 2rem 0;
-    margin-top: 4rem;
+.card-body {
+    padding: 1.5rem;
 }
 
-footer p {
-    margin: 0;
-    text-align: center;
-    font-size: 0.9rem;
+.card-footer {
+    padding: 1rem 1.5rem;
+    background-color: var(--background-alt);
+    border-top: 1px solid var(--border-color);
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: border-color 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
 }
 
 /* Buttons */
 .button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 500;
+    border-radius: 4px;
+    font-weight: 600;
     text-align: center;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 
 .button-primary {
-    background: var(--primary-color);
+    background-color: var(--secondary-color);
     color: white;
     border: none;
 }
 
 .button-primary:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
 }
 
 .button-secondary {
-    background: transparent;
-    color: var(--text-color);
-    border: 2px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
 }
 
 .button-secondary:hover {
-    background: var(--primary-color);
+    background-color: var(--secondary-color);
     color: white;
-    transform: translateY(-2px);
+    text-decoration: none;
 }
-
-/* Cards */
-.card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* Utilities */
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-.text-left { text-align: left; }
-
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 1.5rem; }
-.mt-4 { margin-top: 2rem; }
-
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 1.5rem; }
-.mb-4 { margin-bottom: 2rem; }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-    h3 { font-size: 1.75rem; }
-}
-
 @media (max-width: 768px) {
     .container {
         padding: 0 15px;
@@ -176,9 +175,16 @@ footer p {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
     h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+    h5 { font-size: 1.1rem; }
+    h6 { font-size: 1rem; }
+    
+    header {
+        padding: 1.5rem 0;
+    }
     
     .button {
-        display: block;
         width: 100%;
+        margin-bottom: 0.5rem;
     }
 }

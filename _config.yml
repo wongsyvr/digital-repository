@@ -8,7 +8,9 @@ url: "https://wongsyvr.github.io"
 
 # GitHub Pages settings
 repository: wongsyvr/digital-repository
+remote_theme: pages-themes/minimal@v0.2.0
 plugins:
+  - jekyll-remote-theme
   - jekyll-seo-tag
 
 # Collection Settings
@@ -27,37 +29,6 @@ defaults:
 
 # Metadata file paths
 metadata-csv: "_data/metadata.csv"
-
-# Theme Colors
-colors:
-  primary: "#2973B2"
-  secondary: "#48A6A7"
-  accent: "#9ACBD0"
-  background: "#F2EFE7"
-
-# Map defaults
-map-default:
-  latitude: "49.2827"
-  longitude: "-123.1207"
-  zoom: 4
-
-# Timeline settings
-timeline:
-  year_start: "2000"
-  year_end: "2025"
-
-# Browse page settings
-browse:
-  items_per_page: 20
-
-# Search settings
-search:
-  index:
-    - title
-    - creator
-    - description
-    - subject
-    - location
 
 # Build settings
 markdown: kramdown
