@@ -11,12 +11,21 @@ repository: wongsyvr/digital-repository
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
   - jekyll-remote-theme
+  - jekyll-seo-tag
 
 # Collection Settings
 collections:
   items:
     output: true
-    permalink: /items/:name
+    permalink: /:collection/:name
+    source: _items
+
+defaults:
+  - scope:
+      path: ""
+      type: items
+    values:
+      layout: item_page
 
 # Metadata file paths
 metadata-csv: "_data/metadata.csv"
@@ -56,7 +65,6 @@ search:
 markdown: kramdown
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
   - jekyll-sitemap
 
 # Exclude from processing
