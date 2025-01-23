@@ -1,0 +1,247 @@
+/* Item Layout */
+.item-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Breadcrumb Navigation */
+.hierarchy-nav {
+    background-color: var(--background-alt);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.breadcrumb {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+}
+
+.breadcrumb-item:not(:last-child)::after {
+    content: "›";
+    margin: 0 0.5rem;
+    color: var(--text-light);
+}
+
+.breadcrumb-item a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Item Preview */
+.item-preview {
+    position: sticky;
+    top: 2rem;
+}
+
+.preview-container {
+    background-color: var(--background-alt);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.preview-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.image-tools {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Metadata */
+.metadata-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.metadata-tools {
+    display: flex;
+    gap: 1rem;
+}
+
+.metadata-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.metadata-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.metadata-section h2 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.metadata-list {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+}
+
+.metadata-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    align-items: baseline;
+}
+
+.metadata-item dt {
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.metadata-item dd {
+    margin: 0;
+    color: var(--text-color);
+}
+
+/* Subject Tags */
+.subject-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--background-alt);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.tag:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+}
+
+/* Rights Statement */
+.rights-statement {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Item Navigation */
+.item-navigation {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.nav-previous,
+.nav-next {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    max-width: 45%;
+}
+
+.nav-previous:hover,
+.nav-next:hover {
+    color: var(--secondary-color);
+}
+
+.nav-previous span,
+.nav-next span {
+    font-size: 0.9rem;
+}
+
+/* Location Preview */
+.location-preview {
+    margin-top: 1rem;
+}
+
+#map {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .item-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .item-preview {
+        position: static;
+    }
+
+    .metadata-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .metadata-tools {
+        width: 100%;
+    }
+
+    .metadata-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .breadcrumb {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .breadcrumb-item:not(:last-child)::after {
+        display: none;
+    }
+
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-previous,
+    .nav-next {
+        max-width: 100%;
+    }
+}

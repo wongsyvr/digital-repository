@@ -13,6 +13,12 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/item_page.css' | relative_url }}">
+    {% if page.custom_css %}
+        {% for stylesheet in page.custom_css %}
+            <link rel="stylesheet" href="{{ '/assets/css/' | relative_url }}{{ stylesheet }}.css">
+        {% endfor %}
+    {% endif %}
     
     {% seo %}
 </head>

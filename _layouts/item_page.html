@@ -6,13 +6,11 @@ layout: default
     <!-- Hierarchical Navigation -->
     <nav class="hierarchy-nav" aria-label="breadcrumb">
         <div class="container">
-            {% assign series = site.data.series | where: "id", page.series_id | first %}
-            {% assign file = series.files | where: "id", page.file_id | first %}
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ site.baseurl }}/">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html">{{ site.data.fonds.title }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html#{{ series.id }}">{{ series.title }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html#{{ series.id }}-{{ file.id }}">{{ file.title }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/hierarchy.html">{{ site.data.fonds.title }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/hierarchy.html#{{ page.series_id }}">{{ page.series }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/hierarchy.html#{{ page.series_id }}-{{ page.file_id }}">{{ page.file }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
             </ol>
         </div>
@@ -24,22 +22,35 @@ layout: default
             <div class="item-preview">
                 <div class="preview-container">
                     {% case page.format %}
-                        {% when 'PDF' %}
+                        {% when 'text/plain' %}
+                            <div class="text-preview card">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-file-alt fa-4x text-primary mb-3"></i>
+                                    <h3 class="h5">Text Document</h3>
+                                    <p class="text-muted">Click below to view or download</p>
+                                    <a href="{{ site.baseurl }}/objects/{{ page.objectid }}.txt" 
+                                       class="button button-primary" 
+                                       target="_blank">
+                                        <i class="fas fa-download"></i> View Document
+                                    </a>
+                                </div>
+                            </div>
+                        {% when 'application/pdf' %}
                             <div class="pdf-preview card">
                                 <div class="card-body text-center">
                                     <i class="fas fa-file-pdf fa-4x text-primary mb-3"></i>
                                     <h3 class="h5">PDF Document</h3>
                                     <p class="text-muted">Click below to view or download</p>
-                                    <a href="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.pdf" 
+                                    <a href="{{ site.baseurl }}/objects/{{ page.objectid }}.pdf" 
                                        class="button button-primary" 
                                        target="_blank">
                                         <i class="fas fa-download"></i> View PDF
                                     </a>
                                 </div>
                             </div>
-                        {% when 'JPEG' %}
+                        {% when 'image/jpeg' %}
                             <div class="image-preview">
-                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.jpg" 
+                                <img src="{{ site.baseurl }}/objects/{{ page.objectid }}.jpg" 
                                      alt="{{ page.title }}"
                                      class="img-fluid">
                                 <div class="image-tools">
@@ -51,27 +62,27 @@ layout: default
                                     </button>
                                 </div>
                             </div>
-                        {% when 'STL' %}
-                            <div class="model-preview card">
+                        {% else %}
+                            <div class="generic-preview card">
                                 <div class="card-body text-center">
-                                    <i class="fas fa-cube fa-4x text-primary mb-3"></i>
-                                    <h3 class="h5">3D Model</h3>
-                                    <p class="text-muted">Download the STL file to view in a 3D viewer</p>
-                                    <a href="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.stl" 
+                                    <i class="fas fa-file fa-4x text-primary mb-3"></i>
+                                    <h3 class="h5">{{ page.format }}</h3>
+                                    <p class="text-muted">Click below to download</p>
+                                    <a href="{{ site.baseurl }}/objects/{{ page.objectid }}" 
                                        class="button button-primary" 
                                        download>
-                                        <i class="fas fa-download"></i> Download STL
+                                        <i class="fas fa-download"></i> Download File
                                     </a>
                                 </div>
                             </div>
-                        {% when 'SVG' %}
-                            <div class="vector-preview">
-                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.svg" 
-                                     alt="{{ page.title }}"
-                                     class="img-fluid">
-                            </div>
                     {% endcase %}
                 </div>
+
+                {% if page.location %}
+                <div class="location-preview">
+                    <div id="map" style="height: 300px; margin-top: 1rem;"></div>
+                </div>
+                {% endif %}
             </div>
 
             <!-- Right Column: Metadata -->
@@ -94,8 +105,8 @@ layout: default
                         <h2>About This Item</h2>
                         <dl class="metadata-list">
                             <div class="metadata-item">
-                                <dt>Creator</dt>
-                                <dd>{{ page.creator }}</dd>
+                                <dt>Identifier</dt>
+                                <dd>{{ page.identifier }}</dd>
                             </div>
                             <div class="metadata-item">
                                 <dt>Date</dt>
@@ -105,6 +116,18 @@ layout: default
                                 <dt>Description</dt>
                                 <dd>{{ page.description }}</dd>
                             </div>
+                            {% if page.source %}
+                            <div class="metadata-item">
+                                <dt>Source</dt>
+                                <dd>{{ page.source }}</dd>
+                            </div>
+                            {% endif %}
+                            {% if page.location.name %}
+                            <div class="metadata-item">
+                                <dt>Location</dt>
+                                <dd>{{ page.location.name }}</dd>
+                            </div>
+                            {% endif %}
                         </dl>
                     </section>
 
@@ -150,25 +173,26 @@ layout: default
 
                 <!-- Item Navigation -->
                 <nav class="item-navigation" aria-label="Item navigation">
-                    {% assign items = site.data.items[page.series_id | append: '_' | append: page.file_id] %}
+                    {% assign items = site.pages | where: "layout", "item_page" | sort: "date" %}
                     {% for item in items %}
-                        {% if item.identifier == page.identifier %}
+                        {% if item.url == page.url %}
                             <div class="nav-links">
                                 {% unless forloop.first %}
                                     {% assign prev = items[forloop.index0 | minus: 1] %}
-                                    <a href="{{ site.baseurl }}/items/{{ prev.identifier }}.html" class="nav-previous">
+                                    <a href="{{ prev.url | relative_url }}" class="nav-previous">
                                         <i class="fas fa-chevron-left"></i>
                                         <span>Previous<br>{{ prev.title | truncate: 30 }}</span>
                                     </a>
                                 {% endunless %}
                                 {% unless forloop.last %}
                                     {% assign next = items[forloop.index0 | plus: 1] %}
-                                    <a href="{{ site.baseurl }}/items/{{ next.identifier }}.html" class="nav-next">
+                                    <a href="{{ next.url | relative_url }}" class="nav-next">
                                         <span>Next<br>{{ next.title | truncate: 30 }}</span>
                                         <i class="fas fa-chevron-right"></i>
                                     </a>
                                 {% endunless %}
                             </div>
+                            {% break %}
                         {% endif %}
                     {% endfor %}
                 </nav>
@@ -177,245 +201,24 @@ layout: default
     </div>
 </div>
 
-<style>
-/* Item Layout */
-.item-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
-}
+{% if page.location %}
+<!-- Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-/* Breadcrumb Navigation */
-.hierarchy-nav {
-    background-color: var(--background-alt);
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.breadcrumb {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.breadcrumb-item {
-    display: flex;
-    align-items: center;
-    color: var(--text-light);
-}
-
-.breadcrumb-item:not(:last-child)::after {
-    content: "›";
-    margin: 0 0.5rem;
-    color: var(--text-light);
-}
-
-.breadcrumb-item a {
-    color: var(--secondary-color);
-    text-decoration: none;
-}
-
-.breadcrumb-item.active {
-    color: var(--text-color);
-    font-weight: 600;
-}
-
-/* Item Preview */
-.item-preview {
-    position: sticky;
-    top: 2rem;
-}
-
-.preview-container {
-    background-color: var(--background-alt);
-    border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
-}
-
-.preview-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
-
-.image-tools {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-/* Metadata */
-.metadata-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-}
-
-.metadata-tools {
-    display: flex;
-    gap: 1rem;
-}
-
-.metadata-sections {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.metadata-section {
-    background-color: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.metadata-section h2 {
-    font-size: 1.25rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.metadata-list {
-    display: grid;
-    gap: 1rem;
-    margin: 0;
-}
-
-.metadata-item {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 1rem;
-    align-items: baseline;
-}
-
-.metadata-item dt {
-    font-weight: 600;
-    color: var(--text-light);
-}
-
-.metadata-item dd {
-    margin: 0;
-    color: var(--text-color);
-}
-
-/* Subject Tags */
-.subject-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.tag {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background-color: var(--background-alt);
-    border: 1px solid var(--border-color);
-    border-radius: 15px;
-    color: var(--text-color);
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-}
-
-.tag:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: white;
-    text-decoration: none;
-}
-
-/* Rights Statement */
-.rights-statement {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin: 0;
-}
-
-/* Item Navigation */
-.item-navigation {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
-}
-
-.nav-links {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.nav-previous,
-.nav-next {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    color: var(--text-color);
-    max-width: 45%;
-}
-
-.nav-previous:hover,
-.nav-next:hover {
-    color: var(--secondary-color);
-}
-
-.nav-previous span,
-.nav-next span {
-    font-size: 0.9rem;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .item-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .item-preview {
-        position: static;
-    }
-
-    .metadata-header {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .metadata-tools {
-        width: 100%;
-    }
-
-    .metadata-item {
-        grid-template-columns: 1fr;
-        gap: 0.25rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .breadcrumb {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .breadcrumb-item:not(:last-child)::after {
-        display: none;
-    }
-
-    .nav-links {
-        flex-direction: column;
-    }
-
-    .nav-previous,
-    .nav-next {
-        max-width: 100%;
-    }
-}
-</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var map = L.map('map').setView([{{ page.location.latitude }}, {{ page.location.longitude }}], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: ' OpenStreetMap contributors'
+    }).addTo(map);
+    L.marker([{{ page.location.latitude }}, {{ page.location.longitude }}])
+        .addTo(map)
+        .bindPopup('{{ page.location.name }}')
+        .openPopup();
+});
+</script>
+{% endif %}
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -440,7 +243,6 @@ function sharePage() {
             url: window.location.href
         });
     } else {
-        // Fallback for browsers that don't support Web Share API
         const dummy = document.createElement('input');
         document.body.appendChild(dummy);
         dummy.value = window.location.href;
