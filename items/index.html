@@ -67,6 +67,18 @@ layout: default
                                             <i class="fas fa-compress-arrows-alt"></i>
                                         </button>
                                     </div>
+                                    <div class="download-options">
+                                        <a href="{{ site.baseurl }}/objects/{{ item.objectid }}.jpg" 
+                                           class="button button-primary"
+                                           download>
+                                            <i class="fas fa-download"></i> Download JPEG
+                                        </a>
+                                        <a href="{{ site.baseurl }}/objects/master/{{ item.objectid }}_master.tiff" 
+                                           class="button button-secondary"
+                                           download>
+                                            <i class="fas fa-download"></i> Download TIFF
+                                        </a>
+                                    </div>
                                 </div>
                             {% else %}
                                 <div class="generic-preview card">
@@ -258,6 +270,52 @@ layout: default
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.download-options {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.button-primary {
+    background: var(--primary-color);
+    color: white !important;
+    border: none;
+}
+
+.button-primary:hover {
+    background: var(--secondary-color);
+    color: white !important;
+    text-decoration: none;
+}
+
+.button-secondary {
+    background: #f8f9fa;
+    color: var(--text-color) !important;
+    border: 1px solid #dee2e6;
+}
+
+.button-secondary:hover {
+    background: #e9ecef;
+    color: var(--text-color) !important;
+    text-decoration: none;
 }
 </style>
 

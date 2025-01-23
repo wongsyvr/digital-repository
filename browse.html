@@ -27,7 +27,9 @@ title: Browse Collection
                             {% when 'application/pdf' %}
                                 <i class="fas fa-file-pdf fa-4x text-primary"></i>
                             {% when 'image/jpeg' %}
-                                <i class="fas fa-image fa-4x text-primary"></i>
+                                <img src="{{ site.baseurl }}/objects/{{ item.objectid }}.jpg" 
+                                     alt="{{ item.title }}"
+                                     class="thumbnail-image">
                             {% else %}
                                 <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
@@ -55,7 +57,9 @@ title: Browse Collection
                             {% when 'application/pdf' %}
                                 <i class="fas fa-file-pdf fa-4x text-primary"></i>
                             {% when 'image/jpeg' %}
-                                <i class="fas fa-image fa-4x text-primary"></i>
+                                <img src="{{ site.baseurl }}/objects/{{ item.objectid }}.jpg" 
+                                     alt="{{ item.title }}"
+                                     class="thumbnail-image">
                             {% else %}
                                 <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
@@ -83,7 +87,9 @@ title: Browse Collection
                             {% when 'application/pdf' %}
                                 <i class="fas fa-file-pdf fa-4x text-primary"></i>
                             {% when 'image/jpeg' %}
-                                <i class="fas fa-image fa-4x text-primary"></i>
+                                <img src="{{ site.baseurl }}/objects/{{ item.objectid }}.jpg" 
+                                     alt="{{ item.title }}"
+                                     class="thumbnail-image">
                             {% else %}
                                 <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
@@ -111,7 +117,9 @@ title: Browse Collection
                             {% when 'application/pdf' %}
                                 <i class="fas fa-file-pdf fa-4x text-primary"></i>
                             {% when 'image/jpeg' %}
-                                <i class="fas fa-image fa-4x text-primary"></i>
+                                <img src="{{ site.baseurl }}/objects/{{ item.objectid }}.jpg" 
+                                     alt="{{ item.title }}"
+                                     class="thumbnail-image">
                             {% else %}
                                 <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
@@ -144,7 +152,9 @@ title: Browse Collection
                             {% when 'application/pdf' %}
                                 <i class="fas fa-file-pdf fa-4x text-primary"></i>
                             {% when 'image/jpeg' %}
-                                <i class="fas fa-image fa-4x text-primary"></i>
+                                <img src="{{ site.baseurl }}/objects/{{ item.objectid }}.jpg" 
+                                     alt="{{ item.title }}"
+                                     class="thumbnail-image">
                             {% else %}
                                 <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
@@ -172,7 +182,9 @@ title: Browse Collection
                             {% when 'application/pdf' %}
                                 <i class="fas fa-file-pdf fa-4x text-primary"></i>
                             {% when 'image/jpeg' %}
-                                <i class="fas fa-image fa-4x text-primary"></i>
+                                <img src="{{ site.baseurl }}/objects/{{ item.objectid }}.jpg" 
+                                     alt="{{ item.title }}"
+                                     class="thumbnail-image">
                             {% else %}
                                 <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
@@ -200,7 +212,9 @@ title: Browse Collection
                             {% when 'application/pdf' %}
                                 <i class="fas fa-file-pdf fa-4x text-primary"></i>
                             {% when 'image/jpeg' %}
-                                <i class="fas fa-image fa-4x text-primary"></i>
+                                <img src="{{ site.baseurl }}/objects/{{ item.objectid }}.jpg" 
+                                     alt="{{ item.title }}"
+                                     class="thumbnail-image">
                             {% else %}
                                 <i class="fas fa-file fa-4x text-primary"></i>
                         {% endcase %}
@@ -290,14 +304,20 @@ title: Browse Collection
 }
 
 .item-preview {
-    background: var(--primary-color);
-    color: white;
-    padding: 2rem;
+    background: var(--background-alt);
+    padding: 1rem;
     text-align: center;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.item-preview i {
-    font-size: 2rem;
+.thumbnail-image {
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: contain;
 }
 
 .item-info {
