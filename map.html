@@ -1,0 +1,39 @@
+---
+layout: default
+title: Map View
+---
+
+<div id="map" class="map-container"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the map
+    var map = L.map('map').setView([{{ site.map-default.latitude }}, {{ site.map-default.longitude }}], {{ site.map-default.zoom }});
+    
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    
+    // Load and process the metadata
+    fetch('{{ site.baseurl }}/data/metadata.csv')
+        .then(response => response.text())
+        .then(csv => {
+            // Parse CSV
+            const rows = csv.split('\n').slice(1); // Skip header
+            rows.forEach(row => {
+                const cols = row.split(',');
+                const lat = parseFloat(cols[3]);
+                const lng = parseFloat(cols[4]);
+                const title = cols[1];
+                const desc = cols[8];
+                
+                if (!isNaN(lat) && !isNaN(lng)) {
+                    L.marker([lat, lng])
+                        .bindPopup(`<strong>${title}</strong><br>${desc}`)
+                        .addTo(map);
+                }
+            });
+        });
+});
+</script>

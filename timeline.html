@@ -1,0 +1,46 @@
+---
+layout: default
+title: Timeline View
+---
+
+<div id="timeline" class="timeline-container"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Load and process the metadata
+    fetch('{{ site.baseurl }}/data/metadata.csv')
+        .then(response => response.text())
+        .then(csv => {
+            // Parse CSV and create timeline data
+            const rows = csv.split('\n').slice(1); // Skip header
+            const events = rows.map(row => {
+                const cols = row.split(',');
+                return {
+                    start_date: {
+                        year: cols[5].split('-')[0],
+                        month: cols[5].split('-')[1],
+                        day: cols[5].split('-')[2]
+                    },
+                    text: {
+                        headline: cols[1],
+                        text: cols[8]
+                    },
+                    media: {
+                        url: `{{ site.baseurl }}/objects/${cols[0]}/thumb.jpg`,
+                        caption: cols[1]
+                    }
+                };
+            });
+            
+            // Create the timeline
+            var timelineData = {
+                events: events
+            };
+            
+            window.timeline = new TL.Timeline('timeline', timelineData, {
+                start_at_end: false,
+                default_bg_color: { r:0, g:0, b:0 }
+            });
+        });
+});
+</script>

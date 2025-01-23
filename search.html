@@ -1,0 +1,160 @@
+---
+layout: default
+title: Search Collection
+---
+
+<div class="search-container">
+    <h1>Search Collection</h1>
+    
+    <div class="search-filters">
+        <div class="filter-group">
+            <label for="levelFilter">Hierarchy Level:</label>
+            <select id="levelFilter">
+                <option value="">All</option>
+                <option value="fonds">Fonds</option>
+                <option value="series">Series</option>
+                <option value="file">File</option>
+                <option value="item">Item</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="typeFilter">Media Type:</label>
+            <select id="typeFilter">
+                <option value="">All</option>
+                <option value="Text">Text</option>
+                <option value="Image">Image</option>
+                <option value="Audio">Audio</option>
+                <option value="Video">Video</option>
+                <option value="3D">3D Model</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="yearStart">Year Range:</label>
+            <input type="number" id="yearStart" min="1900" max="2025" placeholder="Start Year">
+            <input type="number" id="yearEnd" min="1900" max="2025" placeholder="End Year">
+        </div>
+        
+        <div class="filter-group">
+            <label for="languageFilter">Language:</label>
+            <select id="languageFilter">
+                <option value="">All</option>
+                <option value="eng">English</option>
+                <option value="fra">French</option>
+                <option value="deu">German</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Enter search terms...">
+        <button onclick="performSearch()">Search</button>
+    </div>
+    
+    <div id="searchResults"></div>
+</div>
+
+<style>
+.search-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    margin-bottom: 5px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#searchResults {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.result-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+</style>
+
+<script>
+function performSearch() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const levelFilter = document.getElementById('levelFilter').value;
+    const typeFilter = document.getElementById('typeFilter').value;
+    const yearStart = document.getElementById('yearStart').value;
+    const yearEnd = document.getElementById('yearEnd').value;
+    const languageFilter = document.getElementById('languageFilter').value;
+    
+    fetch('{{ site.baseurl }}/data/metadata.csv')
+        .then(response => response.text())
+        .then(csv => {
+            const rows = csv.split('\n').slice(1); // Skip header
+            const results = rows.filter(row => {
+                const cols = row.split(',');
+                const year = parseInt(cols[5].split('-')[0]);
+                
+                return (!searchInput || cols.some(col => col.toLowerCase().includes(searchInput))) &&
+                       (!levelFilter || cols[14] === levelFilter) &&
+                       (!typeFilter || cols[11].includes(typeFilter)) &&
+                       (!yearStart || year >= parseInt(yearStart)) &&
+                       (!yearEnd || year <= parseInt(yearEnd)) &&
+                       (!languageFilter || cols[12] === languageFilter);
+            });
+            
+            displayResults(results);
+        });
+}
+
+function displayResults(results) {
+    const container = document.getElementById('searchResults');
+    container.innerHTML = '';
+    
+    results.forEach(row => {
+        const cols = row.split(',');
+        const card = document.createElement('div');
+        card.className = 'result-card';
+        card.innerHTML = `
+            <h3>${cols[1]}</h3>
+            <p>${cols[8]}</p>
+            <p><strong>Type:</strong> ${cols[11]}</p>
+            <p><strong>Date:</strong> ${cols[5]}</p>
+            <a href="{{ site.baseurl }}/items/${cols[0]}">View Item</a>
+        `;
+        container.appendChild(card);
+    });
+}
+</script>

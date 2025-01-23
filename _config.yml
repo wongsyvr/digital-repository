@@ -1,0 +1,60 @@
+# Site settings
+title: "Digital Repository of Cheuk Kit (Philip) Chung"
+description: "A digital repository exhibiting the archival materials of Cheuk Kit (Philip) Chung"
+author: "Cheuk Kit (Philip) Chung"
+email: ookkchung8@gmail.com
+baseurl: ""
+
+# Collection Settings
+collections:
+  items:
+    output: true
+    permalink: /items/:identifier/
+
+# Metadata file paths
+metadata-csv: "_data/metadata.csv"
+
+# Theme Colors
+colors:
+  primary: "#2973B2"
+  secondary: "#48A6A7"
+  accent: "#9ACBD0"
+  background: "#F2EFE7"
+
+# Map defaults
+map-default:
+  latitude: "49.2827"  # Vancouver coordinates as default
+  longitude: "-123.1207"
+  zoom: 4
+
+# Timeline settings
+timeline:
+  year_start: "2000"
+  year_end: "2025"
+
+# Browse page settings
+browse:
+  items_per_page: 20
+
+# Search settings
+search:
+  index:
+    - title
+    - creator
+    - description
+    - subject
+    - location
+    
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
