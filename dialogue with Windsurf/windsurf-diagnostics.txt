@@ -1,0 +1,536 @@
+{
+  "systemInfo": {
+    "operatingSystem": "darwin",
+    "windsurfVersion": "11.0.0",
+    "userEmail": "wongsbenevolentassociation@gmail.com",
+    "timestamp": "2025-01-23T07:17:07.227Z",
+    "installationId": "a6ac7196-c884-410c-b190-c292e3e51dba"
+  },
+  "userSettings": {
+    "openMostRecentChatConversation": true,
+    "lastSelectedModel": "MODEL_UNSPECIFIED",
+    "themePreference": "THEME_PREFERENCE_UNSPECIFIED",
+    "extensionPanelTab": "EXTENSION_PANEL_TAB_UNSPECIFIED",
+    "fontSize": "FONT_SIZE_DEFAULT",
+    "autocompleteSpeed": "AUTOCOMPLETE_SPEED_FAST",
+    "rememberLastModelSelection": "REMEMBER_LAST_MODEL_SELECTION_ENABLED",
+    "lastSelectedModelName": "",
+    "lastSelectedCascadeModel": "MODEL_CLAUDE_3_5_SONNET_20241022",
+    "cascadeNuxStates": [
+      {
+        "event": "CASCADE_NUX_EVENT_DIFF_OVERVIEW"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      },
+      {
+        "event": "CASCADE_NUX_EVENT_UNSPECIFIED"
+      }
+    ],
+    "cascadePlannerMode": "CONVERSATIONAL_PLANNER_MODE_NO_TOOL",
+    "cascadeAllowedCommands": [],
+    "cascadeDeniedCommands": [],
+    "enableModelBasedAutoExecution": false,
+    "userNuxStates": [],
+    "cascadeWebSearchDisabled": false
+  },
+  "extensionLogs": [
+    "2025-01-23 10:51:38.669 [info] 2025/01/23 10:51:38 maxprocs: Leaving GOMAXPROCS=8: CPU quota undefined",
+    "2025-01-23 10:51:38.899 [info] I0123 10:51:38.898225 40703 main.go:572] Setting GOMAXPROCS to 8",
+    "2025-01-23 10:51:38.900 [info] I0123 10:51:38.900060 40703 main.go:785] Starting language server process with pid 40703",
+    "2025-01-23 10:51:38.900 [info] I0123 10:51:38.900566 40703 server.go:220] Language server will attempt to listen on host 127.0.0.1",
+    "2025-01-23 10:51:38.900 [info] I0123 10:51:38.900715 40703 server.go:227] Language server listening on random port at 57565",
+    "2025-01-23 10:51:38.913 [info] 2025/01/23 10:51:38 [proxy.Provider.readDarwinNetworkSettingProxy]: Automatic proxy is not enabled.",
+    "2025-01-23 10:51:38.919 [info] 2025/01/23 10:51:38 [proxy.Provider.readDarwinNetworkSettingProxy]: https proxy is not enabled.",
+    "2025-01-23 10:51:39.521 [info] I0123 10:51:39.519756 40703 unleash.go:92] Initializing Unleash",
+    "2025-01-23 10:51:40.128 [info] I0123 10:51:40.128156 40703 unleash.go:112] Successfully initialized Unleash",
+    "2025-01-23 10:51:40.147 [info] I0123 10:51:40.147717 40703 server.go:303] Created extension server client at port 57563",
+    "2025-01-23 10:51:40.197 [info] I0123 10:51:40.196932 40703 server.go:558] Successfully created API server client",
+    "2025-01-23 10:51:40.242 [info] I0123 10:51:40.241986 40703 server.go:576] Successfully initialized tokenizer",
+    "2025-01-23 10:51:40.912 [info] I0123 10:51:40.912215 40703 server.go:753] Local search is enabled, will index local files.",
+    "I0123 10:51:40.912242 40703 server.go:757] Using 2 indexer workers",
+    "2025-01-23 10:51:40.975 [info] I0123 10:51:40.975230 40703 server.go:845] Successfully created completion provider",
+    "2025-01-23 10:51:40.982 [info] I0123 10:51:40.982873 40703 server.go:364] LSP listening on random port at 57582",
+    "2025-01-23 10:51:40.991 [info] (Windsurf) 2025-01-23 10:51:40.986 [INFO]: Language server started",
+    "2025-01-23 10:51:41.095 [info] (Windsurf) 2025-01-23 10:51:41.095 [INFO]: LS lspClient started successfully",
+    "2025-01-23 10:55:22.978 [info] 2025/01/23 10:55:22 maxprocs: Leaving GOMAXPROCS=8: CPU quota undefined",
+    "2025-01-23 10:55:23.151 [info] I0123 10:55:23.150828 40926 main.go:572] Setting GOMAXPROCS to 8",
+    "2025-01-23 10:55:23.151 [info] I0123 10:55:23.151662 40926 main.go:785] Starting language server process with pid 40926",
+    "2025-01-23 10:55:23.152 [info] I0123 10:55:23.152059 40926 server.go:220] Language server will attempt to listen on host 127.0.0.1",
+    "2025-01-23 10:55:23.152 [info] I0123 10:55:23.152359 40926 server.go:227] Language server listening on random port at 58225",
+    "2025-01-23 10:55:23.165 [info] 2025/01/23 10:55:23 [proxy.Provider.readDarwinNetworkSettingProxy]: Automatic proxy is not enabled.",
+    "2025-01-23 10:55:23.171 [info] 2025/01/23 10:55:23 [proxy.Provider.readDarwinNetworkSettingProxy]: https proxy is not enabled.",
+    "2025-01-23 10:55:23.778 [info] I0123 10:55:23.777476 40926 unleash.go:92] Initializing Unleash",
+    "2025-01-23 10:55:24.390 [info] I0123 10:55:24.390055 40926 unleash.go:112] Successfully initialized Unleash",
+    "2025-01-23 10:55:24.415 [info] I0123 10:55:24.414934 40926 server.go:303] Created extension server client at port 58224",
+    "2025-01-23 10:55:24.458 [info] I0123 10:55:24.458679 40926 server.go:558] Successfully created API server client",
+    "2025-01-23 10:55:24.493 [info] I0123 10:55:24.493841 40926 server.go:576] Successfully initialized tokenizer",
+    "2025-01-23 10:55:25.150 [info] I0123 10:55:25.150798 40926 server.go:753] Local search is enabled, will index local files.",
+    "I0123 10:55:25.150827 40926 server.go:757] Using 2 indexer workers",
+    "2025-01-23 10:55:25.219 [info] I0123 10:55:25.219480 40926 server.go:845] Successfully created completion provider",
+    "2025-01-23 10:55:25.229 [info] I0123 10:55:25.229508 40926 server.go:364] LSP listening on random port at 58234",
+    "2025-01-23 10:55:25.237 [info] (Windsurf) 2025-01-23 10:55:25.232 [INFO]: Language server started",
+    "2025-01-23 10:55:25.284 [info] I0123 10:55:25.266507 40926 utils.go:323] Analyzing workspace files for /Users/chungcheukkit/Documents/My Personal Repository",
+    "I0123 10:55:25.266887 40926 utils.go:382] Done analyzing workspace files for /Users/chungcheukkit/Documents/My Personal Repository",
+    "2025-01-23 10:55:25.317 [info] (Windsurf) 2025-01-23 10:55:25.317 [INFO]: LS lspClient started successfully",
+    "2025-01-23 10:55:49.094 [info] E0123 10:55:49.093817 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty",
+    "2025-01-23 10:55:49.355 [info] (Windsurf) 2025-01-23 10:55:49.355 [INFO]: Completion request succeeded (811.64ms)",
+    "2025-01-23 10:56:19.217 [info] E0123 10:56:19.217513 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty",
+    "2025-01-23 10:56:19.571 [info] (Windsurf) 2025-01-23 10:56:19.571 [INFO]: Completion request succeeded (595.16ms)",
+    "2025-01-23 10:56:26.175 [info] E0123 10:56:26.175340 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty",
+    "2025-01-23 10:56:26.486 [info] (Windsurf) 2025-01-23 10:56:26.485 [INFO]: Completion request succeeded (465.05ms)",
+    "2025-01-23 10:56:38.503 [info] E0123 10:56:38.503503 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty",
+    "2025-01-23 10:56:38.842 [info] (Windsurf) 2025-01-23 10:56:38.841 [INFO]: Completion request succeeded (714.77ms)",
+    "2025-01-23 10:58:08.595 [info] I0123 10:58:08.594238 40926 utils.go:323] Analyzing workspace files for /Users/chungcheukkit/Documents/My Personal Repository",
+    "2025-01-23 10:58:08.597 [info] I0123 10:58:08.597322 40926 utils.go:382] Done analyzing workspace files for /Users/chungcheukkit/Documents/My Personal Repository",
+    "2025-01-23 13:27:33.452 [info] (Windsurf) 2025-01-23 13:27:33.451 [INFO]: Completion request succeeded (730.88ms)",
+    "2025-01-23 13:27:34.630 [info] (Windsurf) 2025-01-23 13:27:34.630 [INFO]: Completion request succeeded (880.88ms)",
+    "2025-01-23 13:27:37.835 [info] (Windsurf) 2025-01-23 13:27:37.835 [INFO]: Completion request succeeded (846.56ms)",
+    "2025-01-23 13:27:38.891 [info] (Windsurf) 2025-01-23 13:27:38.891 [INFO]: Completion request succeeded (559.77ms)",
+    "2025-01-23 13:27:40.407 [info] (Windsurf) 2025-01-23 13:27:40.407 [INFO]: Completion request succeeded (943.5ms)",
+    "2025-01-23 13:27:41.329 [info] (Windsurf) 2025-01-23 13:27:41.329 [INFO]: Completion request succeeded (691.87ms)",
+    "2025-01-23 13:27:42.594 [info] (Windsurf) 2025-01-23 13:27:42.594 [INFO]: Completion request succeeded (832.65ms)",
+    "2025-01-23 13:27:48.132 [info] (Windsurf) 2025-01-23 13:27:48.132 [INFO]: Completion request succeeded (620.48ms)",
+    "2025-01-23 13:27:49.134 [info] (Windsurf) 2025-01-23 13:27:49.133 [INFO]: Completion request succeeded (938.27ms)",
+    "2025-01-23 13:27:50.314 [info] (Windsurf) 2025-01-23 13:27:50.314 [INFO]: Completion request succeeded (903.83ms)",
+    "2025-01-23 13:27:51.480 [info] (Windsurf) 2025-01-23 13:27:51.480 [INFO]: Completion request succeeded (791.46ms)",
+    "2025-01-23 13:27:55.469 [info] (Windsurf) 2025-01-23 13:27:55.469 [INFO]: Completion request succeeded (802.91ms)",
+    "2025-01-23 13:27:56.558 [info] (Windsurf) 2025-01-23 13:27:56.558 [INFO]: Completion request succeeded (652.62ms)",
+    "2025-01-23 13:28:10.282 [info] (Windsurf) 2025-01-23 13:28:10.282 [INFO]: Completion request succeeded (711.04ms)",
+    "2025-01-23 13:28:11.505 [info] (Windsurf) 2025-01-23 13:28:11.504 [INFO]: Completion request succeeded (648.99ms)",
+    "2025-01-23 13:28:24.761 [info] (Windsurf) 2025-01-23 13:28:24.761 [INFO]: Completion request was cancelled by token (107.53ms)",
+    "2025-01-23 13:28:26.537 [info] (Windsurf) 2025-01-23 13:28:26.537 [INFO]: Completion request was cancelled by token (433.2ms)",
+    "2025-01-23 13:28:27.344 [info] (Windsurf) 2025-01-23 13:28:27.344 [INFO]: Completion request succeeded (685.59ms)",
+    "2025-01-23 13:28:28.956 [info] (Windsurf) 2025-01-23 13:28:28.956 [INFO]: Completion request succeeded (831.77ms)",
+    "2025-01-23 13:28:29.795 [info] (Windsurf) 2025-01-23 13:28:29.795 [INFO]: Completion request succeeded (688.56ms)",
+    "2025-01-23 13:29:52.474 [info] E0123 13:29:52.474200 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty",
+    "2025-01-23 13:29:53.407 [info] (Windsurf) 2025-01-23 13:29:53.407 [INFO]: Completion request succeeded (1082.57ms)",
+    "2025-01-23 13:32:11.620 [info] E0123 13:32:11.620605 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty",
+    "2025-01-23 13:32:12.275 [info] (Windsurf) 2025-01-23 13:32:12.274 [INFO]: Completion request succeeded (907.11ms)",
+    "2025-01-23 13:32:40.191 [info] E0123 13:32:40.191439 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty",
+    "2025-01-23 13:32:40.802 [info] (Windsurf) 2025-01-23 13:32:40.802 [INFO]: Completion request succeeded (774.15ms)",
+    "2025-01-23 14:01:54.018 [info] (Windsurf) 2025-01-23 14:01:54.017 [INFO]: Completion request succeeded (1040.05ms)",
+    "2025-01-23 14:05:15.693 [info] (Windsurf) 2025-01-23 14:05:15.693 [INFO]: Completion request succeeded (1027.09ms)",
+    "2025-01-23 14:05:20.075 [info] E0123 14:05:20.075219 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty",
+    "2025-01-23 14:05:20.660 [info] (Windsurf) 2025-01-23 14:05:20.660 [INFO]: Completion request succeeded (751.45ms)",
+    "2025-01-23 14:31:08.834 [info] E0123 14:31:08.832980 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty",
+    "2025-01-23 14:31:09.646 [info] (Windsurf) 2025-01-23 14:31:09.646 [INFO]: Completion request succeeded (1135.31ms)",
+    "2025-01-23 14:35:28.559 [info] (Windsurf) 2025-01-23 14:35:28.554 [INFO]: Completion request succeeded (1393.45ms)",
+    "2025-01-23 15:14:01.852 [info] E0123 15:14:01.850607 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/SendUserCascadeMessage: insufficient input credits for this request",
+    "2025-01-23 15:15:06.766 [info] E0123 15:15:06.765773 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/SendUserCascadeMessage: insufficient input credits for this request",
+    "2025-01-23 15:15:48.110 [info] (Windsurf) 2025-01-23 15:15:48.110 [INFO]: Completion request was cancelled by token (1039.57ms)",
+    "2025-01-23 15:15:50.409 [info] (Windsurf) 2025-01-23 15:15:50.409 [INFO]: Completion request succeeded (808.26ms)",
+    "2025-01-23 15:15:51.758 [info] (Windsurf) 2025-01-23 15:15:51.757 [INFO]: Completion request succeeded (712.66ms)",
+    "2025-01-23 15:15:52.502 [info] (Windsurf) 2025-01-23 15:15:52.502 [INFO]: Completion request was cancelled by token (440.53ms)",
+    "2025-01-23 15:15:53.550 [info] (Windsurf) 2025-01-23 15:15:53.550 [INFO]: Completion request succeeded (961.35ms)",
+    "2025-01-23 15:16:53.166 [info] E0123 15:16:53.166051 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/SendUserCascadeMessage: insufficient input credits for this request"
+  ],
+  "languageServerDiagnostics": {
+    "logs": [
+      "I0123 10:55:23.150828 40926 main.go:572] Setting GOMAXPROCS to 8\n",
+      "I0123 10:55:23.151662 40926 main.go:785] Starting language server process with pid 40926\n",
+      "I0123 10:55:23.152059 40926 server.go:220] Language server will attempt to listen on host 127.0.0.1\n",
+      "I0123 10:55:23.152359 40926 server.go:227] Language server listening on random port at 58225\n",
+      "I0123 10:55:23.777476 40926 unleash.go:92] Initializing Unleash\n",
+      "I0123 10:55:24.390055 40926 unleash.go:112] Successfully initialized Unleash\n",
+      "I0123 10:55:24.414934 40926 server.go:303] Created extension server client at port 58224\n",
+      "I0123 10:55:24.458679 40926 server.go:558] Successfully created API server client\n",
+      "I0123 10:55:24.493841 40926 server.go:576] Successfully initialized tokenizer\n",
+      "I0123 10:55:25.150798 40926 server.go:753] Local search is enabled, will index local files.\n",
+      "I0123 10:55:25.150827 40926 server.go:757] Using 2 indexer workers\n",
+      "I0123 10:55:25.219480 40926 server.go:845] Successfully created completion provider\n",
+      "I0123 10:55:25.229508 40926 server.go:364] LSP listening on random port at 58234\n",
+      "I0123 10:55:25.266507 40926 utils.go:323] Analyzing workspace files for /Users/chungcheukkit/Documents/My Personal Repository\n",
+      "I0123 10:55:25.266887 40926 utils.go:382] Done analyzing workspace files for /Users/chungcheukkit/Documents/My Personal Repository\n",
+      "E0123 10:55:49.093817 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty\n",
+      "E0123 10:56:19.217513 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty\n",
+      "E0123 10:56:26.175340 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty\n",
+      "E0123 10:56:38.503503 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty\n",
+      "I0123 10:58:08.594238 40926 utils.go:323] Analyzing workspace files for /Users/chungcheukkit/Documents/My Personal Repository\n",
+      "I0123 10:58:08.597322 40926 utils.go:382] Done analyzing workspace files for /Users/chungcheukkit/Documents/My Personal Repository\n",
+      "E0123 13:29:52.474200 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty\n",
+      "E0123 13:32:11.620605 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty\n",
+      "E0123 13:32:40.191439 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty\n",
+      "E0123 14:05:20.075219 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty\n",
+      "E0123 14:31:08.832980 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/HandleStreamingCommand: edit summary is empty\n",
+      "E0123 15:14:01.850607 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/SendUserCascadeMessage: insufficient input credits for this request\n",
+      "E0123 15:15:06.765773 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/SendUserCascadeMessage: insufficient input credits for this request\n",
+      "E0123 15:16:53.166051 40926 interceptor.go:55] /exa.language_server_pb.LanguageServerService/SendUserCascadeMessage: insufficient input credits for this request\n"
+    ]
+  },
+  "recentTrajectories": [
+    {
+      "cascadeId": "ce5b3b2e-bce5-41c6-9451-399c94501a43",
+      "trajectoryId": "73ecb685-6f3f-4783-8442-41765022456b",
+      "summary": "Fixing Image Display Issues  ",
+      "lastStepIndex": 362,
+      "lastModifiedTime": "2025-01-23T07:06:42.851Z"
+    },
+    {
+      "cascadeId": "ad846962-34a7-48d7-87fc-14bb819c790c",
+      "trajectoryId": "5ca3ae25-69f9-4a71-9a15-5e777aea2a50",
+      "summary": "# \n\nI am an archivist. I want to build a digital repository to exhibit the digital objects the creator of \"Cheuk Kit (Philip) Chung\" in Github Repository. In this repository, it contains following specifications and elements:\n\n## Technical Specifications\n\n1. The digital repository consists of static HTML pages organized by fonds, series, files, and item levels. It creates index pages and visualization features. All generated content is purely static, which makes it perfect for GitHub Pages hosting with Jekyll processing these files during build time. \n2. The metadata structure uses a standardized CSV format with predefined columns following the Rules for Archival Description (RAD). It follows a hierarchical structure where items belong to files, files belong to series, and all series fall under the Fonds of Cheuk Kit (Philip) Chung. The collection has two main series: Academic and Art & Design. The Academic series contains files from elementary school, high school, undergraduate, and postgraduate levels. The Art & Design series includes three file categories: papercut works, 3D prints, and laser cutting and engraving projects—each with five items. While the fonds, series, and files levels use RAD for description, the item levels use Dublin Core metadata standards.\n3. For the item level Dublin Core metadata, it consists the following elements:\n    1. **format:**\n        - This field indicates the object’s media type.\n        - Format is used as a fallback to determine representations if an item does not have a `display_template` or `image_thumb`.\n        - The input for this field should be structured according to [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml) standards, consisting of a type and a subtype concatenated with a slash (`/`) between them.\n        - Common values:\n            - Image: `image/jpeg`\n            - Document: `application/pdf`\n            - Audio: `audio/mp3`\n            - Video: `video/mp4`\n    2. **latitude:**\n        - A geographic coordinate specifying the north-south position of an item.\n        - Example value: `46.731643`\n    3. **longitude:**\n        - A geographic coordinate specifying the east-west position of an item.\n        - Example value: `117.165625`\n    4. **date:**\n        - This field indicates a point in time associated with the item. This `date` field will be used for sorting and displaying on a timeline, so may often be an estimated / approximate date, rather than one more precisely formatted to archival description standards. We suggest adding more complex descriptions of date (date ranges, uncertainties, etc) in a separate field such as “date_created”.\n        - Dates should be represented in the format `yyyy-mm-dd`, which will enable our various timeline visualizations.\n        - For less exact dates, `yyyy-mm` or `yyyy` may be used.\n        - Example value: `1997-07-16`, `1997-07`, `1997`\n        - (Dates in a `mm/dd/yyyy` format will also work)\n    5. **subject:**\n        - The subject field contains topic(s) related to the item.\n        - This field allows for multiple subjects to be input for a single record. Each value should be separated with a semicolon (`;`).\n        - Example value: `Dogs; Cats; Zebras`\n    6. **location:**\n        - This field designates a geographic location(s) to which the item is tied. Much like the subject field, this field will build a tag cloud of the most used locations in your collection. Be sure to separate multiple location entries for a single record with a semicolon (`;`).\n        - Example value: `Pullman, Washington; Moscow, Idaho`\n    7. **description:**\n        - The description should be a brief account of the object. Each object should only have one description.\n        - Example value: `Postcard of the Memorial Gymnasium on the University of Idaho campus in Moscow, Idaho.`\n    8. **source:**\n        - The source field designates a related source collection or resource from which the object is derived. This field is especially relevant for digitized archival collections. In such a situation, the name of the physical archival collection would be the input for this field. The input should be expressed as the collection name followed by a comma, then followed by the holding library.\n        - Example value: `PG 5, University of Idaho Library Special Collections and Archives`\n    9. **identifier:**\n        - The identifier field is used to preserve the unique identifier assigned to the object by the object’s (usually physical) source collection.\n        - Example value: `ARG-02-16-1993`\n    10. **type:**\n        - An object’s type distinguishes between types of image, sound, text, etc. using a one- or two-value input. At minimum, the input should contain a value chosen from the [DCMI Type Vocabulary](https://www.dublincore.org/specifications/dublin-core/dcmi-type-vocabulary/2003-02-12/). If using a second value, the second value does not need to relate to a controlled vocabulary, but should give further specification of the object type. The two values in a pair should be separated by a semicolon (`;`). See examples below.\n        - Example value: `Image;StillImage`, `Image;MovingImage`, `Text`, `Sound`\n    11. **language:**\n        - This field indicates the language associated with the object. Recommended best practice is to use a controlled vocabulary such as the [ISO 639-2 Codes for the Representation of Names and Languages](http://www.loc.gov/standards/iso639-2/php/code_list.php) to designate language tags.\n        - Example value: `eng`, `fra`, `deu`\n    12. **rights:**\n        - The rights field should include a free-text rights statement describing information about rights held in and over the object.\n        - Example value: `Educational use includes non-commercial use of text and images in materials for teaching and research purposes. Digital reproduction rights granted by Cheuk Kit (Philip) Chung. For other uses beyond free use, please contact Cheuk Kit (Philip) Chung via ookkchung8@gmail.com.`\n4. The digital repository simplifies collection creation by handling technical complexities through a streamlined workflow—users only need to focus on their CSV metadata file. The Configuration System, built around **`_config.yml`**, manages site-wide settings and connects to the metadata file. Jekyll then automatically converts this data into a full-featured website, generating item pages, browse interfaces, and visualizations based on the standardized metadata structure in the CSV file. This structure organizes digital objects hierarchically from fonds to series to files to items. Configuration files manage how the collection appears and functions without requiring technical expertise from users. Users simply complete their metadata spreadsheet, and the repository automatically handles everything else through GitHub Pages deployment. When administrators upload digital objects to the GitHub repository, these objects are automatically displayed once their corresponding metadata is added to the CSV file.\n5. It handles various digital objects in standard file formats: PDFs for text documents, JPEGs for photographs, MP4s for videos, and STL for 3D files.\n6. Users can access archival descriptions and download both access and master files of digital objects. \n7. It displays thumbnails for all corresponding objects.\n8. It features a search engine with filtering capabilities to refine search results by hierarchy level, media type, year range, language, and access rights.\n9. It uses Leaflet to display a map showing all objects’ locations simultaneously using latitude and longitude metadata. The map is the entire screen size of the website.\n10. It features a chronological timeline view using TimelineJS, displaying all items by year with thumbnail images.\n\n## Content and Design\n\n1. The home page displays the Mission, Vision, and Values, along with the Story of Cheuk Kit (Philip) Chung. The mission, vision, and values focus on creating a template RAD-adaptable digital repository for users without computational skills. This repository helps people create, manage, and preserve historical objects easily—without relying on third-party services or incurring high costs. It specifically serves community and personal archives facing resource constraints. Cheuk Kit (Philip) Chung is \"a final year Master of Archival Studies student at the University of British Columbia. Dedicated archival professional with a proven track record in digitization, archival description, and project management. Interested in personal and community archives.\"\n2. It includes a dedicated page explaining the repository's privacy policy and copyright information.\n3. It makes use of typography, and a cohesive color palette of blue (#2973B2), teal (#48A6A7), light blue (#9ACBD0), and off-white (#F2EFE7) to create an attractive and user-friendly interface.\n\nPlease proceed and create the digital repository with your coding into GitHub.",
+      "lastStepIndex": 3,
+      "lastModifiedTime": "2025-01-23T02:54:43.235Z"
+    },
+    {
+      "cascadeId": "b9633653-b781-44ab-88f3-077951f666f1",
+      "trajectoryId": "58ca2003-bccc-4e06-a161-3e064f312f87",
+      "summary": "Building a Digital Repository  ",
+      "lastStepIndex": 14,
+      "lastModifiedTime": "2025-01-23T02:46:00.990Z"
+    },
+    {
+      "cascadeId": "ff6cd2f4-c440-4d60-84b8-98059ac7a9a2",
+      "trajectoryId": "79a8e682-43c1-4bf5-8703-8a94a88ad846",
+      "summary": "Building a Digital Repository  ",
+      "lastStepIndex": 10,
+      "lastModifiedTime": "2025-01-23T02:36:01.955Z"
+    },
+    {
+      "cascadeId": "f2c7a8e0-d2b0-421e-b567-2a206ba74223",
+      "trajectoryId": "9d95df9c-59c1-411a-87d4-c7338b7c6a3f",
+      "summary": "I am an archivist. I want to build a digital repository to exhibit the digital objects the creator of \"Cheuk Kit (Philip) Chung\" in Github Repository by using the Jekyll. In this repository, it contains following specifications and elements:\n\n## Technical Specifications\n\n1. The digital repository consists of static HTML pages organized by fonds, series, files, and item levels. It creates index pages and visualization features. All generated content is purely static, which makes it perfect for GitHub Pages hosting with Jekyll processing these files during build time. \n2. The metadata structure uses a standardized CSV format with predefined columns following the Rules for Archival Description (RAD). It follows a hierarchical structure where items belong to files, files belong to series, and all series fall under the Fonds of Cheuk Kit (Philip) Chung. The collection has two main series: Academic and Art & Design. The Academic series contains files from elementary school, high school, undergraduate, and postgraduate levels. The Art & Design series includes three file categories: papercut works, 3D prints, and laser cutting and engraving projects—each with five items. While the fonds, series, and files levels use RAD for description, the item levels use Dublin Core metadata standards.\n3. For the item level Dublin Core metadata, it consists the following elements:\n    1. **format:**\n        - This field indicates the object’s media type.\n        - Format is used as a fallback to determine representations if an item does not have a `display_template` or `image_thumb`.\n        - The input for this field should be structured according to [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml) standards, consisting of a type and a subtype concatenated with a slash (`/`) between them.\n        - Common values:\n            - Image: `image/jpeg`\n            - Document: `application/pdf`\n            - Audio: `audio/mp3`\n            - Video: `video/mp4`\n    2. **latitude:**\n        - A geographic coordinate specifying the north-south position of an item. See the [Map](https://collectionbuilder.github.io/cb-docs/docs/theme/map/) section for more information.\n        - Example value: `46.731643`\n    3. **longitude:**\n        - A geographic coordinate specifying the east-west position of an item. See the [Map](https://collectionbuilder.github.io/cb-docs/docs/theme/map/) section for more information.\n        - Example value: `117.165625`\n    4. **date:**\n        - This field indicates a point in time associated with the item. This `date` field will be used for sorting and displaying on a timeline, so may often be an estimated / approximate date, rather than one more precisely formatted to archival description standards. We suggest adding more complex descriptions of date (date ranges, uncertainties, etc) in a separate field such as “date_created”.\n        - Dates should be represented in the format `yyyy-mm-dd`, which will enable our various timeline visualizations. See the [Timeline](https://collectionbuilder.github.io/cb-docs/docs/theme/timeline/) section for more details.\n        - For less exact dates, `yyyy-mm` or `yyyy` may be used.\n        - Example value: `1997-07-16`, `1997-07`, `1997`\n        - (Dates in a `mm/dd/yyyy` format will also work)\n    5. **subject:**\n        - The subject field contains topic(s) related to the item.\n        - This field allows for multiple subjects to be input for a single record. Each value should be separated with a semicolon (`;`).\n        - See the [Subjects](https://collectionbuilder.github.io/cb-docs/docs/theme/subjects/) section for more information.\n        - Example value: `Dogs; Cats; Zebras`\n    6. **location:**\n        - This field designates a geographic location(s) to which the item is tied. Much like the subject field, this field will build a tag cloud of the most used locations in your collection. See the [Locations](https://collectionbuilder.github.io/cb-docs/docs/theme/locations/) section for more information. Be sure to separate multiple location entries for a single record with a semicolon (`;`).\n        - Example value: `Pullman, Washington; Moscow, Idaho`\n    7. **description:**\n        - The description should be a brief account of the object. Each object should only have one description.\n        - Example value: `Postcard of the Memorial Gymnasium on the University of Idaho campus in Moscow, Idaho.`\n    8. **source:**\n        - The source field designates a related source collection or resource from which the object is derived. This field is especially relevant for digitized archival collections. In such a situation, the name of the physical archival collection would be the input for this field. The input should be expressed as the collection name followed by a comma, then followed by the holding library.\n        - Example value: `PG 5, University of Idaho Library Special Collections and Archives`\n    9. **identifier:**\n        - The identifier field is used to preserve the unique identifier assigned to the object by the object’s (usually physical) source collection.\n        - Example value: `ARG-02-16-1993`\n    10. **type:**\n        - An object’s type distinguishes between types of image, sound, text, etc. using a one- or two-value input. At minimum, the input should contain a value chosen from the [DCMI Type Vocabulary](https://www.dublincore.org/specifications/dublin-core/dcmi-type-vocabulary/2003-02-12/). If using a second value, the second value does not need to relate to a controlled vocabulary, but should give further specification of the object type. The two values in a pair should be separated by a semicolon (`;`). See examples below.\n        - Example value: `Image;StillImage`, `Image;MovingImage`, `Text`, `Sound`\n    11. **language:**\n        - This field indicates the language associated with the object. Recommended best practice is to use a controlled vocabulary such as the [ISO 639-2 Codes for the Representation of Names and Languages](http://www.loc.gov/standards/iso639-2/php/code_list.php) to designate language tags.\n        - Example value: `eng`, `fra`, `deu`\n    12. **rights:**\n        - The rights field should include a free-text rights statement describing information about rights held in and over the object.\n        - Example value: `Educational use includes non-commercial use of text and images in materials for teaching and research purposes. Digital reproduction rights granted by Cheuk Kit (Philip) Chung. For other uses beyond free use, please contact Cheuk Kit (Philip) Chung via ookkchung8@gmail.com.`\n4. The digital repository simplifies collection creation by handling technical complexities through a streamlined workflow—users only need to focus on their CSV metadata file. The Configuration System, built around **`_config.yml`**, manages site-wide settings and connects to the metadata file. Jekyll then automatically converts this data into a full-featured website, generating item pages, browse interfaces, and visualizations based on the standardized metadata structure in the CSV file. This structure organizes digital objects hierarchically from fonds to series to files to items. Configuration files manage how the collection appears and functions without requiring technical expertise from users. Users simply complete their metadata spreadsheet, and the repository automatically handles everything else through GitHub Pages deployment. When administrators upload digital objects to the GitHub repository, these objects are automatically displayed once their corresponding metadata is added to the CSV file.\n5. It handles various digital objects in standard file formats: PDFs for text documents, JPEGs for photographs, MP4s for videos, and STL for 3D files.\n6. Users can access archival descriptions and download both access and master files of digital objects. \n7. It displays thumbnails for all corresponding objects.\n8. It features a search engine with filtering capabilities to refine search results by hierarchy level, media type, year range, language, and access rights.\n9. It uses Leaflet to display a map showing all objects’ locations simultaneously using latitude and longitude metadata. The map is the entire screen size of the website.\n10. It features a chronological timeline view using TimelineJS, displaying all items by year with thumbnail images.\n\n## Content and Design\n\n1. The home page displays the Mission, Vision, and Values, along with the Story of Cheuk Kit (Philip) Chung. The mission, vision, and values focus on creating a template RAD-adaptable digital repository for users without computational skills. This repository helps people create, manage, and preserve historical objects easily—without relying on third-party services or incurring high costs. It specifically serves community and personal archives facing resource constraints. Cheuk Kit (Philip) Chung is \"a final year Master of Archival Studies student at the University of British Columbia. Dedicated archival professional with a proven track record in digitization, archival description, and project management. Interested in personal and community archives.\"\n2. It includes a dedicated page explaining the repository's privacy policy and copyright information.\n3. It makes use of typography, and a cohesive color palette of blue (#2973B2), teal (#48A6A7), light blue (#9ACBD0), and off-white (#F2EFE7) to create an attractive and user-friendly interface.\n\nPlease proceed and create the digital repository with your coding into GitHub.",
+      "lastStepIndex": 3,
+      "lastModifiedTime": "2025-01-23T02:34:31.858Z"
+    },
+    {
+      "cascadeId": "71607ba5-94e0-4bc2-b390-b089e2a9e124",
+      "trajectoryId": "f7298980-4ffe-4e90-9a71-5b4e98f4a13e",
+      "summary": "Analyzing CollectionBuilder Metadata Automation",
+      "lastStepIndex": 29,
+      "lastModifiedTime": "2025-01-23T02:24:03.247Z"
+    },
+    {
+      "cascadeId": "bc88dfac-33d4-4185-8133-8bbff9416e50",
+      "trajectoryId": "1ff3bce9-55b8-4047-8919-69a411c70faa",
+      "summary": "Building a Digital Repository  ",
+      "lastStepIndex": 102,
+      "lastModifiedTime": "2025-01-21T15:11:56.624Z"
+    },
+    {
+      "cascadeId": "786005bf-630f-421f-b397-25bf2ed0b15d",
+      "trajectoryId": "128a9f7c-7261-4666-b2ea-2c345ab079bd",
+      "summary": "I am an archivist. I want to build a digital repository to exhibit the digital objects the creator of \"Cheuk Kit (Philip) Chung\" in Github Repository by using the Jekyll. In this repository, it contains following specifications and elements:\n\n1. It follows the Rules for Archival Description (RAD), using a hierarchical structure of fonds, series, files, and items. Each item belongs to a file, each file belongs to a series, and all series fall under the Fonds of Cheuk Kit (Philip) Chung.\n2. It handles various digital objects in standard file formats: PDFs for text documents, JPEGs for photographs, and MP4s for videos.\n3. All metadata (including RAD) is managed in a single CSV file, where all changes—additions, edits, and deletions—must be made.\n4. It displays thumbnails for all corresponding objects.\n5. It features a search engine with filtering capabilities to refine search results by hierarchy level, media type, year range, language, and access rights.\n6. It uses Leaflet to display a map showing all objects’ locations simultaneously using latitude and longitude coordinates.\n7. It presents a timeline view of all items, organizing them by year with thumbnail representations.\n8. The home page displays the Mission, Vision, and Values, along with the Story of Cheuk Kit (Philip) Chung. The mission, vision, and values focus on creating a template RAD-adaptable digital repository for users without computational skills. This repository helps people create, manage, and preserve historical objects easily—without relying on third-party services or incurring high costs. It specifically serves community and personal archives facing resource constraints. Cheuk Kit (Philip) Chung is \"a final year Master of Archival Studies student at the University of British Columbia. Dedicated archival professional with a proven track record in digitization, archival description, and project management. Interested in personal and community archives.\"\n9. It includes a dedicated page explaining the repository's privacy policy and copyright information.\n10. It enables administrators to upload digital objects directly to the backend GitHub repository, which are then automatically displayed when their corresponding metadata is added to the CSV file.\n11. Users can access archival descriptions and download both access and master files of digital objects.",
+      "lastStepIndex": 5,
+      "lastModifiedTime": "2025-01-21T14:27:52.922Z"
+    },
+    {
+      "cascadeId": "5f637386-68e7-4d58-99b4-1f6fce8be8db",
+      "trajectoryId": "8d7e7ce6-20b0-4df4-89af-5d61a14e59ca",
+      "summary": "I am an archivist. I want to build a digital repository to exhibit the digital objects the creator of \"Cheuk Kit (Philip) Chung\" in Github Repository by using the Jekyll. In this repository, it contains following specifications and elements:\n\n1. It follows the Rules for Archival Description (RAD), using a hierarchical structure of fonds, series, files, and items. Each item belongs to a file, each file belongs to a series, and all series fall under the Fonds of Cheuk Kit (Philip) Chung.\n2. It handles various digital objects in standard file formats: PDFs for text documents, JPEGs for photographs, and MP4s for videos.\n3. All metadata (including RAD) is managed in a single CSV file, where all changes—additions, edits, and deletions—must be made.\n4. It displays thumbnails for all corresponding objects.\n5. It features a search engine with filtering capabilities to refine search results by hierarchy level, media type, year range, language, and access rights.\n6. It uses Leaflet to display a map showing all objects’ locations simultaneously using latitude and longitude coordinates.\n7. It presents a timeline view of all items, organizing them by year with thumbnail representations.\n8. The home page displays the Mission, Vision, and Values, along with the Story of Cheuk Kit (Philip) Chung. The mission, vision, and values focus on creating a template RAD-adaptable digital repository for users without computational skills. This repository helps people create, manage, and preserve historical objects easily—without relying on third-party services or incurring high costs. It specifically serves community and personal archives facing resource constraints. Cheuk Kit (Philip) Chung is \"a final year Master of Archival Studies student at the University of British Columbia. Dedicated archival professional with a proven track record in digitization, archival description, and project management. Interested in personal and community archives.\"\n9. It includes a dedicated page explaining the repository's privacy policy and copyright information.\n10. It enables administrators to upload digital objects directly to the backend GitHub repository, which are then automatically displayed when their corresponding metadata is added to the CSV file.\n11. Users can access archival descriptions and download both access and master files of digital objects.",
+      "lastStepIndex": 5,
+      "lastModifiedTime": "2025-01-21T14:22:20.427Z"
+    },
+    {
+      "cascadeId": "8af02d38-62e2-443c-9c74-83bd5fa69040",
+      "trajectoryId": "85c57458-f644-4e65-bd55-914463eb1cb5",
+      "summary": "I am an archivist. I want to build a digital repository to exhibit the digital objects the creator of \"Cheuk Kit (Philip) Chung\" in Github Repository by using the Jekyll. In this repository, it contains following specifications and elements:\n\n1. It follows the Rules for Archival Description (RAD), using a hierarchical structure of fonds, series, files, and items. Each item belongs to a file, each file belongs to a series, and all series fall under the Fonds of Cheuk Kit (Philip) Chung.\n2. It handles various digital objects in standard file formats: PDFs for text documents, JPEGs for photographs, and MP4s for videos.\n3. All metadata (including RAD) is managed in a single CSV file, where all changes—additions, edits, and deletions—must be made.\n4. It displays thumbnails for all corresponding objects.\n5. It features a search engine with filtering capabilities to refine search results by hierarchy level, media type, year range, language, and access rights.\n6. It uses Leaflet to display a map showing all objects’ locations simultaneously using latitude and longitude coordinates.\n7. It presents a timeline view of all items, organizing them by year with thumbnail representations.\n8. The home page displays the Mission, Vision, and Values, along with the Story of Cheuk Kit (Philip) Chung. The mission, vision, and values focus on creating a template RAD-adaptable digital repository for users without computational skills. This repository helps people create, manage, and preserve historical objects easily—without relying on third-party services or incurring high costs. It specifically serves community and personal archives facing resource constraints. Cheuk Kit (Philip) Chung is \"a final year Master of Archival Studies student at the University of British Columbia. Dedicated archival professional with a proven track record in digitization, archival description, and project management. Interested in personal and community archives.\"\n9. It includes a dedicated page explaining the repository's privacy policy and copyright information.\n10. It enables administrators to upload digital objects directly to the backend GitHub repository, which are then automatically displayed when their corresponding metadata is added to the CSV file.\n11. Users can access archival descriptions and download both access and master files of digital objects.",
+      "lastStepIndex": 7,
+      "lastModifiedTime": "2025-01-21T14:19:56.928Z"
+    }
+  ],
+  "cascadeId": "ce5b3b2e-bce5-41c6-9451-399c94501a43",
+  "currentLatestStepIndex": 362,
+  "trajectoryId": "73ecb685-6f3f-4783-8442-41765022456b",
+  "consoleLogs": [
+    "[ERROR] 2025-1-23 10:56:8.269 [AsyncPostMessage] handleOpenDiffZones timed out (id: xG7MvmeHmWvuYQZrNf7vgK6zTm0lzqAb)",
+    "[ERROR] 2025-1-23 10:56:14.522 [AsyncPostMessage] handleOpenDiffZones timed out (id: LvmWmaGk6Kw2yv992JvSrNhzbDc4RpsW)",
+    "[ERROR] 2025-1-23 10:56:30.769 [AsyncPostMessage] handleOpenDiffZones timed out (id: 92fMadBGat1U5MSkopFzUC0d8tVPwYxs)",
+    "[ERROR] 2025-1-23 10:56:49.29 [AsyncPostMessage] handleOpenDiffZones timed out (id: ZLIzmY9ISgJfmuzA6L8n1s4LBabvzXI2)",
+    "[ERROR] 2025-1-23 10:56:59.422 [AsyncPostMessage] handleOpenDiffZones timed out (id: MZiyUrmDd2chATcJgzG0BVAiIaH3Ri2q)",
+    "[ERROR] 2025-1-23 10:57:19.19 [AsyncPostMessage] handleOpenDiffZones timed out (id: sbR4gYmT6OuLrqzI67KVWmWkQxYJSjcQ)",
+    "[ERROR] 2025-1-23 10:57:32.326 [AsyncPostMessage] handleOpenDiffZones timed out (id: j120A6YYuj2CAYI4oDYlBH656O7BYb8p)",
+    "[ERROR] 2025-1-23 10:57:52.417 [AsyncPostMessage] handleOpenDiffZones timed out (id: S53Ktz97fDMRrxIKmiv2yIA7UrRzyLyF)",
+    "[ERROR] 2025-1-23 10:58:0.376 [AsyncPostMessage] handleOpenDiffZones timed out (id: AgWGEV3kxr5SX32NZsARZRM9n6VzdNgs)",
+    "[ERROR] 2025-1-23 10:58:22.680 [AsyncPostMessage] handleOpenDiffZones timed out (id: mgHl5U9wVJ6aOqJRdeZXomBUDFjr1L2E)",
+    "[ERROR] 2025-1-23 10:58:29.681 [AsyncPostMessage] handleOpenDiffZones timed out (id: KmOZZW9vMPZJgjzhTFSURmwJXjAXRrfE)",
+    "[ERROR] 2025-1-23 10:59:56.718 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: sCEx94nxdDv80KpghwjUXbW9sDV9bGZk)",
+    "[ERROR] 2025-1-23 11:0:21.678 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: Btlp2Xh30IhijjYVHpL8dmcklqDTqjsG)",
+    "[ERROR] 2025-1-23 11:1:43.534 [AsyncPostMessage] handleOpenDiffZones timed out (id: 2q0SPSKDVxjjMUTPRwbgsOqPFVfCosOd)",
+    "[ERROR] 2025-1-23 11:1:51.667 [AsyncPostMessage] handleOpenDiffZones timed out (id: QpScJmPnMYmExlknlGK2WzCA0CEven80)",
+    "[ERROR] 2025-1-23 11:2:0.180 [AsyncPostMessage] handleOpenDiffZones timed out (id: iLnH5ZXcGJFkYoo4BFXqMoLtM0BCErOH)",
+    "[ERROR] 2025-1-23 11:2:5.220 [AsyncPostMessage] handleOpenDiffZones timed out (id: KqJsDlTb10GfEBSXqJlickkEQMBRp6yY)",
+    "[ERROR] 2025-1-23 11:2:12.334 [AsyncPostMessage] handleOpenDiffZones timed out (id: cA5L7RRZzkFUsQyd12MmnsZSt4YPwwPI)",
+    "[ERROR] 2025-1-23 11:2:24.121 [AsyncPostMessage] handleOpenDiffZones timed out (id: EgliVjeDohtQzKrjyO361bVHNAz6ijqn)",
+    "[ERROR] 2025-1-23 11:2:50.510 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: nnRFFanGwO00QsWbexJe0mUczG3ONQHv)",
+    "[ERROR] 2025-1-23 11:2:53.27 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: tr6LRUhFAyIcBTfTK3K6PRyKRwvzyP78)",
+    "[ERROR] 2025-1-23 11:42:34.604 [AsyncPostMessage] handleOpenDiffZones timed out (id: AUG40x4OTpZIFLOJ3IMG9VCHZRswIJd0)",
+    "[ERROR] 2025-1-23 11:42:44.2 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: 3FBxKDdOehfnvU7xkQi8Ilvw8H4hTTcy)",
+    "[ERROR] 2025-1-23 11:50:43.757 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: 5E2gJhh71LSaegaa2dqauq84ynmtJ9XH)",
+    "[ERROR] 2025-1-23 11:52:1.815 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: 7IXaCoUCAWWY6MP1o3XeXiBkgm3KfRPB)",
+    "[ERROR] 2025-1-23 11:53:44.260 [AsyncPostMessage] handleOpenDiffZones timed out (id: S9RIddqQKQ9OC1iawDIDru3xqNGBdpfy)",
+    "[ERROR] 2025-1-23 11:53:59.324 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: VZaJImmXExrPBVZW5S5jj9eJ78auj0kY)",
+    "[ERROR] 2025-1-23 11:54:55.822 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: RbQiLuuV7GNZPJu3yPwdW2NOQ1iTo0Bq)",
+    "[ERROR] 2025-1-23 11:56:22.667 [AsyncPostMessage] handleOpenDiffZones timed out (id: PQLR42txADOlGcxnbiRa7GLb9im5tS0g)",
+    "[ERROR] 2025-1-23 11:56:38.821 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: 1NpuQwbF3fuTChQrWsCvEyS6yKjOomPp)",
+    "[ERROR] 2025-1-23 11:56:47.820 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: 7Qvd424mzJjguFwak1lodAPsXE9dptmH)",
+    "[ERROR] 2025-1-23 11:58:30.525 [AsyncPostMessage] handleOpenDiffZones timed out (id: a45C8AnDlfdXjKzpwLwQocxDpEZUySWC)",
+    "[ERROR] 2025-1-23 11:58:45.972 [AsyncPostMessage] handleOpenDiffZones timed out (id: ZUzvqPRePhH08nQjGFhWXLjvCxj0KwHd)",
+    "[ERROR] 2025-1-23 11:59:51.58 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: Wa5i14KdYSgPKD5RMkFZw2uJMX7jKhSQ)",
+    "[ERROR] 2025-1-23 12:0:56.572 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: 8Um1vkCtAvjLKFvf0HmEmr4xdztZX439)",
+    "[ERROR] 2025-1-23 12:1:26.666 [AsyncPostMessage] handleOpenDiffZones timed out (id: tMeSlCKIm8RbmOEYkbmupA7Vlo2fUDZI)",
+    "[ERROR] 2025-1-23 12:1:32.504 [AsyncPostMessage] handleOpenDiffZones timed out (id: Gp9yULpmW45NGPc4dqJbRldaxC1lAVY2)",
+    "[ERROR] 2025-1-23 12:1:43.825 [AsyncPostMessage] handleOpenDiffZones timed out (id: BIzL6IxPUiGsLveflJUypLAOlOeDUZvd)",
+    "[ERROR] 2025-1-23 12:1:53.688 [AsyncPostMessage] handleOpenDiffZones timed out (id: LfHsHmy9aXapIoU22rQhWOrEw4VbCS2H)",
+    "[ERROR] 2025-1-23 12:1:59.728 [AsyncPostMessage] handleOpenDiffZones timed out (id: uGQhAAKjPmyOwPi7oGfXvzSc8FgNXeHa)",
+    "[ERROR] 2025-1-23 12:2:17.676 [AsyncPostMessage] handleOpenDiffZones timed out (id: Lcvqw0hxGxP4VO2orAeRztE0Kdy6ccPR)",
+    "[ERROR] 2025-1-23 12:2:47.827 [AsyncPostMessage] handleOpenDiffZones timed out (id: sX3QOXpDzVrvYcUJUvqkpmZgzR2JTS1Z)",
+    "[ERROR] 2025-1-23 12:3:12.839 [AsyncPostMessage] handleOpenDiffZones timed out (id: pHN3AxQ6OiIRmNWhzl8uugicam9QwzB5)",
+    "[ERROR] 2025-1-23 12:3:30.828 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: tQ7XCtU95ylQSiry5mg2hOGwYqVsy1Lv)",
+    "[ERROR] 2025-1-23 12:3:33.828 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: a242zhYP1EL9LWI5Qq0RbFzrHOxWZJIf)",
+    "[ERROR] 2025-1-23 12:7:22.234 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: DD26TyfSEYPMd9ZcpkNQVTALAIqJ66aM)",
+    "[ERROR] 2025-1-23 12:9:30.797 [AsyncPostMessage] handleOpenDiffZones timed out (id: XyAwJW9lm2R9xxp9R8kWThiDeMumACpo)",
+    "[ERROR] 2025-1-23 12:9:40.804 [AsyncPostMessage] handleOpenDiffZones timed out (id: 4cbCXvnnujbBeKl0j1fWn7sxx6wyIfHw)",
+    "[ERROR] 2025-1-23 12:9:56.889 [AsyncPostMessage] handleOpenDiffZones timed out (id: x8OkmiGXAYOs5F3hzkTFnh1509Y456Ry)",
+    "[ERROR] 2025-1-23 12:10:10.853 [AsyncPostMessage] handleOpenDiffZones timed out (id: VgqXRkS9CYUViJrdSvRXZE3YunRrgapS)",
+    "[ERROR] 2025-1-23 12:10:28.797 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: UvoUwK1Ay29EsU5OonotKXdjBGD3QxTF)",
+    "[ERROR] 2025-1-23 12:10:33.798 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: Wul32OkTRCcmde99CcZdxmGGZQLhRbGC)",
+    "[ERROR] 2025-1-23 12:16:59.49 [AsyncPostMessage] handleOpenDiffZones timed out (id: CCqTSmghFI9aeBYRltSD0SCgZbn1XRTe)",
+    "[ERROR] 2025-1-23 12:17:13.801 [AsyncPostMessage] handleOpenDiffZones timed out (id: TUNK6XJsKzqLooLnvlK5p8N5pfieK0fr)",
+    "[ERROR] 2025-1-23 12:17:31.818 [AsyncPostMessage] handleOpenDiffZones timed out (id: Ke00UW5kctixFQ6GNGpYGZ8Df6GappyK)",
+    "[ERROR] 2025-1-23 12:18:20.130 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: GgbNz5COLMHrvdrVM3iJqacsWt8ZJhvi)",
+    "[ERROR] 2025-1-23 12:18:24.309 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: CiGAIxLFg2RRKcqjxqCQiiX2Gm4JRM2f)",
+    "[ERROR] 2025-1-23 12:19:54.365 [AsyncPostMessage] handleOpenDiffZones timed out (id: yXzCUZO9N6nkQeA6HDWpkOTt19NiyYQI)",
+    "[ERROR] 2025-1-23 12:21:0.248 [AsyncPostMessage] handleOpenDiffZones timed out (id: 9d3Mf3PgDx4SmMHnKXb065QCeHyeD70u)",
+    "[ERROR] 2025-1-23 12:21:9.400 [AsyncPostMessage] handleOpenDiffZones timed out (id: k93SNY7L80LtqqWilbl0lRU5jWkOzCGG)",
+    "[ERROR] 2025-1-23 12:21:47.804 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: oTMyBNWN1STuba9RGCdeRopGYCmKsSVl)",
+    "[ERROR] 2025-1-23 12:21:51.802 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: 5AXEv1pBO1RTNGCXnuBVzqe81v5idNIm)",
+    "[ERROR] 2025-1-23 12:26:43.806 [AsyncPostMessage] handleOpenDiffZones timed out (id: DULMR6XkUcj9F4LHkNnYV2hmfRU9EJZG)",
+    "[ERROR] 2025-1-23 12:26:51.830 [AsyncPostMessage] handleOpenDiffZones timed out (id: TGXAGfiEnBWkuzS5ojBdMH8PUwEs1xqb)",
+    "[ERROR] 2025-1-23 12:29:21.806 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: GB73yZIJrV4oYn7FETJPOmyJOWUGYJNT)",
+    "[ERROR] 2025-1-23 12:29:25.807 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: mMJp1fDLgwAzs6Ca9kt6wUSnCGc3FVXR)",
+    "[ERROR] 2025-1-23 12:35:23.184 [AsyncPostMessage] handleOpenDiffZones timed out (id: 6SEweu7PGXK2H2PQnHQ4KMu7njcCptIY)",
+    "[ERROR] 2025-1-23 12:36:19.365 [AsyncPostMessage] handleOpenDiffZones timed out (id: IgXrwrAE305mZErVX2MEmo6Fq1scRRq6)",
+    "[ERROR] 2025-1-23 12:37:23.139 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: Gbvr8KHxzq2yrB1fnQFX3CeFA5i4ZLLk)",
+    "[ERROR] 2025-1-23 12:37:58.810 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: 6qWfKtNoXbaDD4dxkgB8I6h2WyIbpbDq)",
+    "[ERROR] 2025-1-23 12:46:0.445 [AsyncPostMessage] handleOpenDiffZones timed out (id: Z3STz7EqN0m4v3bid05hPmon0xMqY90S)",
+    "[ERROR] 2025-1-23 12:46:11.706 [AsyncPostMessage] handleOpenDiffZones timed out (id: ST9edS4h0fqD3O6fY5QiMHA08cUeEyKR)",
+    "[ERROR] 2025-1-23 12:47:8.778 [AsyncPostMessage] handleOpenDiffZones timed out (id: VkrUNgIuTYOPuKb3ZT0EwlqJYHWCYfrk)",
+    "[ERROR] 2025-1-23 12:48:45.779 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: 0TL1Pw4c4EJ4RVy47G3p4ZvP5lBhDYf0)",
+    "[ERROR] 2025-1-23 12:51:10.776 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: 4dFMzmra8L8w7SjLMuYPzkvRAAhea44v)",
+    "[ERROR] 2025-1-23 12:51:12.775 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: 25g03MeUmOw60syQcoezCGsflmHjUjW8)",
+    "[ERROR] 2025-1-23 13:3:44.232 [AsyncPostMessage] handleOpenDiffZones timed out (id: BFHT2njBs4zb4SiLj9od1jCpXrAZmc8Z)",
+    "[ERROR] 2025-1-23 13:4:34.907 [AsyncPostMessage] handleOpenDiffZones timed out (id: xSL5b8QUMKCIB0PpW8En1YyrglDCdgxB)",
+    "[ERROR] 2025-1-23 13:5:0.468 [AsyncPostMessage] handleOpenDiffZones timed out (id: TQ58G7G5Gb6lsywflCtjOiX60TzwTXrB)",
+    "[ERROR] 2025-1-23 13:5:11.34 [AsyncPostMessage] handleOpenDiffZones timed out (id: Ikm4e8wfa7i7AzZ8c1InyFaGJwKvLflZ)",
+    "[ERROR] 2025-1-23 13:6:9.769 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: Ub703JSG8XkNkgW9DtoqJoihz6WflfER)",
+    "[ERROR] 2025-1-23 13:6:11.769 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: Kjl5uvLqEhiU7IbRlG4wsevZ5cnIyteH)",
+    "[ERROR] 2025-1-23 13:28:19.63 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: jsVtUerwRJ12FtS6ZdhKsY1crF4rcrPg)",
+    "[ERROR] 2025-1-23 13:30:12.352 [AsyncPostMessage] handleOpenDiffZones timed out (id: 9zTdanoCT1dBcCnhmBdVBIqHS0BFaQGT)",
+    "[ERROR] 2025-1-23 13:30:30.228 [AsyncPostMessage] handleOpenDiffZones timed out (id: Ji8F3zyUiLXmSblZEN5AhKEEygmrxLvh)",
+    "[ERROR] 2025-1-23 13:33:1.177 [AsyncPostMessage] handleOpenDiffZones timed out (id: CgJiPjESuqM8OwniXibDKf1noY8mt3Bp)",
+    "[ERROR] 2025-1-23 13:34:33.497 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: 5zetJi4yFVW7nnzs7WqEJwkcob87IaE4)",
+    "[ERROR] 2025-1-23 13:34:39.818 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: s1Q2YmjRfHEcIH2PwEMLUN0whLWae0OL)",
+    "[ERROR] 2025-1-23 13:38:47.427 [AsyncPostMessage] handleOpenDiffZones timed out (id: KjwgnquJ0Mrwa2pU2IIFdmEj0ewM4su3)",
+    "[ERROR] 2025-1-23 13:39:36.822 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: kR9JjRYQsx8V7RYDMXNeWnPlYcLqVo60)",
+    "[ERROR] 2025-1-23 13:39:44.822 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: O9APWo08zRzykYDAZcWMjcII1lBXY9n2)",
+    "[ERROR] 2025-1-23 13:43:52.824 [AsyncPostMessage] handleOpenDiffZones timed out (id: YRULvFh45A3690LSq3PAAVPP5VEfctO4)",
+    "[ERROR] 2025-1-23 13:44:2.825 [AsyncPostMessage] handleOpenDiffZones timed out (id: MzzRSq2l7MEOs9vD0CkqmFULneCgs5Ij)",
+    "[ERROR] 2025-1-23 13:45:29.827 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: LnScc6gLkOJmdDOhfMtrLra5Y9PgUA9x)",
+    "[ERROR] 2025-1-23 13:45:37.827 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: lB8E8rOxPUpnaUWQiuzxP3iEjGQAvogY)",
+    "[ERROR] 2025-1-23 13:48:46.658 [AsyncPostMessage] handleOpenDiffZones timed out (id: e4r6K9tczmL9hRLZ1SbSqXAhigjBCpdW)",
+    "[ERROR] 2025-1-23 13:49:5.65 [AsyncPostMessage] handleOpenDiffZones timed out (id: CWbDqoanJyolXIF5xV2y63I6CbRHoreX)",
+    "[ERROR] 2025-1-23 13:49:25.829 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: foR95lKhQsE52J8fQvW3IPZQkeq4DRSl)",
+    "[ERROR] 2025-1-23 13:50:4.829 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: IuQbkqTXb7QRRqhbRLGCTMYbND41GZcu)",
+    "[ERROR] 2025-1-23 14:0:8.823 [AsyncPostMessage] handleOpenDiffZones timed out (id: GCIOIZ3NSZglGs8yaJ7WIcmVrr09Ais6)",
+    "[ERROR] 2025-1-23 14:2:57.824 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: TxxE2AkJzMa0C8n10CWH1DRVVOAGccMj)",
+    "[ERROR] 2025-1-23 14:3:51.713 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: 3ZSD95gVVjglTYHVW3pFhfkIqN62rEZZ)",
+    "[ERROR] 2025-1-23 14:9:28.620 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: tsrXcrc5fSyxnJFf4f4uxGhWFlWkiknl)",
+    "[ERROR] 2025-1-23 14:10:36.938 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: MQ0JcBgYZsdxB1V6LJq8fPTVzlaDS6po)",
+    "[ERROR] 2025-1-23 14:11:44.108 [AsyncPostMessage] handleOpenDiffZones timed out (id: gP69GdNrcfCrNo3jOTbKCbhGWv3HLOnn)",
+    "[ERROR] 2025-1-23 14:12:38.297 [AsyncPostMessage] handleOpenDiffZones timed out (id: ZTPhM7mqZvURmxKgSreYuehzSuhbo1Sg)",
+    "[ERROR] 2025-1-23 14:13:20.612 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: klufBO6UudeNoc2I5VLBlochtCeYrJTc)",
+    "[ERROR] 2025-1-23 14:13:26.511 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: NyKZJOt6oXV5d7jf6AP7WQByzFvGrnp2)",
+    "[ERROR] 2025-1-23 14:44:3.821 [AsyncPostMessage] handleOpenDiffZones timed out (id: xgtwHAJl6OEu0tmqy8YRSVH6D6y6N8OD)",
+    "[ERROR] 2025-1-23 14:45:37.464 [AsyncPostMessage] handleOpenDiffZones timed out (id: osuSgTpZQwUadOKq5cO2A0y3HHCDtmJl)",
+    "[ERROR] 2025-1-23 14:45:59.661 [AsyncPostMessage] handleOpenDiffZones timed out (id: bIJsLjp83GGIPccNa06rNeQzLDJBPTUc)",
+    "[ERROR] 2025-1-23 14:47:17.784 [AsyncPostMessage] handleOpenDiffZones timed out (id: PbkZUg0c82Ewi3leO7YMFRbII2ylyvKR)",
+    "[ERROR] 2025-1-23 14:47:37.207 [AsyncPostMessage] handleOpenDiffZones timed out (id: vtDuXpQLsEeuhqiue4tekOLLKjOP20dB)",
+    "[ERROR] 2025-1-23 14:48:1.147 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: RW3GtVfxDLaFCKjWeLJXv0ZhDp9TLhhE)",
+    "[ERROR] 2025-1-23 14:48:9.106 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: XqzGnZ0Nlnuel9GjhhOkvi2a76NfJ9Bo)",
+    "[ERROR] 2025-1-23 14:48:10.988 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: 1TCOppbGDf72AkHkKGC5rc9MTyTdofmR)",
+    "[ERROR] 2025-1-23 14:54:26.821 [AsyncPostMessage] handleOpenDiffZones timed out (id: RRuZAgLRObiAzuSbhnwfLEMYBoCpxkTF)",
+    "[ERROR] 2025-1-23 14:54:39.821 [AsyncPostMessage] handleOpenDiffZones timed out (id: t6CBoSOUD9wqrWvRRr9tOaV24s1gJOvc)",
+    "[ERROR] 2025-1-23 14:56:9.821 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: bhcSmjhE8PWMwpkJGRMmkUdsfB8mnXpr)",
+    "[ERROR] 2025-1-23 14:56:20.821 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: gwXUZMkQqgxIb6idSHA0KhhYWnN39kUP)",
+    "[ERROR] 2025-1-23 15:6:0.715 [AsyncPostMessage] handleOpenDiffZones timed out (id: nAMckXZ4qdklXtfZ5SzFXJm9ZRVPwwH4)",
+    "[ERROR] 2025-1-23 15:6:21.91 [AsyncPostMessage] handleOpenDiffZones timed out (id: scuYL58ZcB6gPvT5nsXOdckdRnnYmScv)",
+    "[ERROR] 2025-1-23 15:7:14.821 [AsyncPostMessage] handleUpdateIdePlanInfo timed out (id: 81JGf6p99IcMmEhJzVUAO0iqVeGplrso)",
+    "[ERROR] 2025-1-23 15:7:21.820 [AsyncPostMessage] handleCloseAllDiffZones timed out (id: xmUAqVFcFzLNzTZMIxiTIDfeLIcCR5m1)",
+    "[ERROR] 2025-1-23 15:14:1.862 ConnectError: [unknown] insufficient input credits for this request",
+    "[ERROR] 2025-1-23 15:15:6.768 ConnectError: [unknown] insufficient input credits for this request",
+    "[ERROR] 2025-1-23 15:16:53.172 ConnectError: [unknown] insufficient input credits for this request"
+  ]
+}

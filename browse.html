@@ -286,9 +286,9 @@ title: Browse Collection
 /* Items Grid */
 .items-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 1rem 0;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
 }
 
 /* Item Cards */
@@ -300,6 +300,8 @@ title: Browse Collection
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
+    height: 100%;
+    min-height: 360px;
 }
 
 .item-card:hover {
@@ -310,7 +312,7 @@ title: Browse Collection
 .item-preview {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 220px;
     background: var(--background-alt);
     display: flex;
     align-items: center;
@@ -334,17 +336,18 @@ title: Browse Collection
 }
 
 .item-info {
-    padding: 1rem;
+    padding: 1.5rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .item-info h4 {
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     font-size: 1.1rem;
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
 .item-info a {
@@ -365,15 +368,17 @@ title: Browse Collection
 /* Responsive Design */
 @media (min-width: 768px) {
     .items-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .item-preview {
-        height: 220px;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 1024px) {
+    .items-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
     .items-grid {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -385,12 +390,16 @@ title: Browse Collection
     }
 
     .items-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .item-preview {
-        height: 180px;
+        height: 200px;
+    }
+
+    .item-info {
+        padding: 1rem;
     }
 }
 </style>
