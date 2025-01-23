@@ -1,0 +1,207 @@
+---
+layout: default
+---
+
+<div class="item-container">
+    <!-- Hierarchical Navigation -->
+    <nav class="hierarchy-nav">
+        <div class="container">
+            {% assign series = site.data.series | where: "id", page.series_id | first %}
+            {% assign file = series.files | where: "id", page.file_id | first %}
+            <ul>
+                <li><a href="{{ site.baseurl }}/browse.html">{{ site.data.fonds.title }}</a></li>
+                <li>›</li>
+                <li><a href="{{ site.baseurl }}/browse.html#{{ series.id }}">{{ series.title }}</a></li>
+                <li>›</li>
+                <li><a href="{{ site.baseurl }}/browse.html#{{ series.id }}-{{ file.id }}">{{ file.title }}</a></li>
+                <li>›</li>
+                <li class="current">{{ page.title }}</li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <article class="item-details">
+            <header>
+                <h1>{{ page.title }}</h1>
+                <div class="item-metadata">
+                    <dl>
+                        <dt>Creator</dt>
+                        <dd>{{ page.creator }}</dd>
+
+                        <dt>Date</dt>
+                        <dd>{{ page.date | date: "%B %d, %Y" }}</dd>
+
+                        <dt>Type</dt>
+                        <dd>{{ page.type }}</dd>
+
+                        <dt>Format</dt>
+                        <dd>{{ page.format }}</dd>
+
+                        <dt>Language</dt>
+                        <dd>{{ page.language }}</dd>
+
+                        <dt>Rights</dt>
+                        <dd>{{ page.rights }}</dd>
+                    </dl>
+                </div>
+            </header>
+
+            <section class="item-content">
+                <h2>Description</h2>
+                <p>{{ page.description }}</p>
+
+                <h2>Subjects</h2>
+                <div class="subject-tags">
+                    {% assign subjects = page.subject | split: ';' %}
+                    {% for subject in subjects %}
+                        <span class="tag">{{ subject | strip }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="item-preview">
+                    {% case page.format %}
+                        {% when 'PDF' %}
+                            <div class="pdf-preview">
+                                <p>This is a PDF document. You can <a href="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.pdf" target="_blank">view or download the PDF here</a>.</p>
+                            </div>
+                        {% when 'JPEG' %}
+                            <div class="image-preview">
+                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.jpg" alt="{{ page.title }}">
+                            </div>
+                        {% when 'STL' %}
+                            <div class="model-preview">
+                                <p>This is a 3D model file. You can <a href="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.stl" target="_blank">download the STL file here</a>.</p>
+                                <!-- Add a placeholder image or thumbnail -->
+                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}_thumb.jpg" alt="Preview of {{ page.title }}">
+                            </div>
+                        {% when 'SVG' %}
+                            <div class="vector-preview">
+                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.svg" alt="{{ page.title }}">
+                            </div>
+                    {% endcase %}
+                </div>
+            </section>
+        </article>
+    </div>
+</div>
+
+<style>
+.item-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hierarchy-nav {
+    background-color: var(--background-color);
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.hierarchy-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.hierarchy-nav ul li {
+    margin: 0 0.5rem;
+}
+
+.hierarchy-nav ul li.current {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.item-details {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.item-metadata {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin: 1rem 0 2rem;
+}
+
+.item-metadata dl {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0.5rem 1rem;
+    margin: 0;
+}
+
+.item-metadata dt {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.item-metadata dd {
+    margin: 0;
+}
+
+.subject-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.tag {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.item-preview {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.item-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pdf-preview, .model-preview {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.pdf-preview a, .model-preview a {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .hierarchy-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .hierarchy-nav ul li {
+        margin: 0.25rem 0;
+    }
+    
+    .item-metadata dl {
+        grid-template-columns: 1fr;
+    }
+}</style>
