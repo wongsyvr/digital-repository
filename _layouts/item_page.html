@@ -8,9 +8,8 @@ layout: default
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ site.baseurl }}/">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/hierarchy.html">{{ site.data.fonds.title }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/hierarchy.html#{{ page.series_id }}">{{ page.series }}</a></li>
-                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/hierarchy.html#{{ page.series_id }}-{{ page.file_id }}">{{ page.file }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html">Browse</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html#{{ page.series | slugify }}">{{ page.series }}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
             </ol>
         </div>
@@ -48,17 +47,22 @@ layout: default
                                     </a>
                                 </div>
                             </div>
-                        {% when 'image/jpeg' or 'Image/jpeg' %}
+                        {% when 'image/jpeg' %}
                             <div class="image-preview">
                                 <img src="{{ site.baseurl }}/objects/{{ page.objectid }}.jpg" 
                                      alt="{{ page.title }}"
-                                     class="img-fluid">
-                                <div class="image-tools">
-                                    <button class="button button-secondary" onclick="zoomIn()">
-                                        <i class="fas fa-search-plus"></i> Zoom In
+                                     class="preview-image"
+                                     id="previewImage"
+                                     onclick="zoomImage(this)">
+                                <div class="image-controls">
+                                    <button onclick="zoomIn()" class="button button-icon">
+                                        <i class="fas fa-search-plus"></i>
                                     </button>
-                                    <button class="button button-secondary" onclick="zoomOut()">
-                                        <i class="fas fa-search-minus"></i> Zoom Out
+                                    <button onclick="zoomOut()" class="button button-icon">
+                                        <i class="fas fa-search-minus"></i>
+                                    </button>
+                                    <button onclick="resetZoom()" class="button button-icon">
+                                        <i class="fas fa-compress-arrows-alt"></i>
                                     </button>
                                 </div>
                             </div>
@@ -66,23 +70,17 @@ layout: default
                             <div class="generic-preview card">
                                 <div class="card-body text-center">
                                     <i class="fas fa-file fa-4x text-primary mb-3"></i>
-                                    <h3 class="h5">{{ page.format }}</h3>
-                                    <p class="text-muted">Click below to download</p>
+                                    <h3 class="h5">File</h3>
+                                    <p class="text-muted">Click below to view or download</p>
                                     <a href="{{ site.baseurl }}/objects/{{ page.objectid }}" 
                                        class="button button-primary" 
-                                       download>
-                                        <i class="fas fa-download"></i> Download File
+                                       target="_blank">
+                                        <i class="fas fa-download"></i> View File
                                     </a>
                                 </div>
                             </div>
                     {% endcase %}
                 </div>
-
-                {% if page.location %}
-                <div class="location-preview">
-                    <div id="map" style="height: 300px; margin-top: 1rem;"></div>
-                </div>
-                {% endif %}
             </div>
 
             <!-- Right Column: Metadata -->
@@ -99,98 +97,101 @@ layout: default
                     </div>
                 </div>
 
-                <div class="metadata-sections">
-                    <!-- Core Metadata -->
-                    <section class="metadata-section">
-                        <h2>About This Item</h2>
-                        <dl class="metadata-list">
-                            <div class="metadata-item">
-                                <dt>Identifier</dt>
-                                <dd>{{ page.identifier }}</dd>
-                            </div>
-                            <div class="metadata-item">
-                                <dt>Date</dt>
-                                <dd>{{ page.date | date: "%B %d, %Y" }}</dd>
-                            </div>
-                            <div class="metadata-item">
-                                <dt>Description</dt>
-                                <dd>{{ page.description }}</dd>
-                            </div>
-                            {% if page.source %}
-                            <div class="metadata-item">
-                                <dt>Source</dt>
-                                <dd>{{ page.source }}</dd>
-                            </div>
-                            {% endif %}
-                            {% if page.location.name %}
-                            <div class="metadata-item">
-                                <dt>Location</dt>
-                                <dd>{{ page.location.name }}</dd>
-                            </div>
-                            {% endif %}
-                        </dl>
-                    </section>
-
-                    <!-- Technical Metadata -->
-                    <section class="metadata-section">
-                        <h2>Technical Details</h2>
-                        <dl class="metadata-list">
-                            <div class="metadata-item">
-                                <dt>Type</dt>
-                                <dd>{{ page.type }}</dd>
-                            </div>
-                            <div class="metadata-item">
-                                <dt>Format</dt>
-                                <dd>{{ page.format }}</dd>
-                            </div>
-                            <div class="metadata-item">
-                                <dt>Language</dt>
-                                <dd>{{ page.language }}</dd>
-                            </div>
-                        </dl>
-                    </section>
-
-                    <!-- Subject Tags -->
-                    <section class="metadata-section">
-                        <h2>Subjects</h2>
-                        <div class="subject-tags">
-                            {% assign subjects = page.subject | split: ';' %}
-                            {% for subject in subjects %}
-                                <a href="{{ site.baseurl }}/browse.html?subject={{ subject | strip | url_encode }}" 
-                                   class="tag">
-                                    {{ subject | strip }}
-                                </a>
-                            {% endfor %}
+                <div class="metadata-content">
+                    <dl class="metadata-list">
+                        {% if page.date %}
+                        <div class="metadata-item">
+                            <dt>Date</dt>
+                            <dd>{{ page.date | date: "%B %d, %Y" }}</dd>
                         </div>
-                    </section>
+                        {% endif %}
 
-                    <!-- Rights -->
-                    <section class="metadata-section">
-                        <h2>Rights</h2>
-                        <p class="rights-statement">{{ page.rights }}</p>
-                    </section>
+                        {% if page.subject %}
+                        <div class="metadata-item">
+                            <dt>Subject</dt>
+                            <dd>{{ page.subject }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if page.description %}
+                        <div class="metadata-item">
+                            <dt>Description</dt>
+                            <dd>{{ page.description | newline_to_br }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if page.identifier %}
+                        <div class="metadata-item">
+                            <dt>Identifier</dt>
+                            <dd>{{ page.identifier }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if page.type %}
+                        <div class="metadata-item">
+                            <dt>Type</dt>
+                            <dd>{{ page.type }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if page.language %}
+                        <div class="metadata-item">
+                            <dt>Language</dt>
+                            <dd>{{ page.language }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if page.rights %}
+                        <div class="metadata-item">
+                            <dt>Rights</dt>
+                            <dd>{{ page.rights }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if page.level %}
+                        <div class="metadata-item">
+                            <dt>Level</dt>
+                            <dd>{{ page.level }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if page.series %}
+                        <div class="metadata-item">
+                            <dt>Series</dt>
+                            <dd>{{ page.series }}</dd>
+                        </div>
+                        {% endif %}
+
+                        {% if page.file %}
+                        <div class="metadata-item">
+                            <dt>File</dt>
+                            <dd>{{ page.file }}</dd>
+                        </div>
+                        {% endif %}
+                    </dl>
                 </div>
 
                 <!-- Item Navigation -->
                 <nav class="item-navigation" aria-label="Item navigation">
-                    {% assign items = site.pages | where: "layout", "item_page" | sort: "date" %}
+                    {% assign items = site.items | sort: "date" %}
                     {% for item in items %}
                         {% if item.url == page.url %}
                             <div class="nav-links">
-                                {% unless forloop.first %}
-                                    {% assign prev = items[forloop.index0 | minus: 1] %}
-                                    <a href="{{ prev.url | relative_url }}" class="nav-previous">
+                                {% if forloop.first != true %}
+                                    {% assign prev = forloop.index0 | minus: 1 %}
+                                    <a href="{{ site.baseurl }}{{ items[prev].url }}" class="nav-previous">
                                         <i class="fas fa-chevron-left"></i>
-                                        <span>Previous<br>{{ prev.title | truncate: 30 }}</span>
+                                        Previous Item
                                     </a>
-                                {% endunless %}
-                                {% unless forloop.last %}
-                                    {% assign next = items[forloop.index0 | plus: 1] %}
-                                    <a href="{{ next.url | relative_url }}" class="nav-next">
-                                        <span>Next<br>{{ next.title | truncate: 30 }}</span>
+                                {% endif %}
+
+                                {% if forloop.last != true %}
+                                    {% assign next = forloop.index0 | plus: 1 %}
+                                    <a href="{{ site.baseurl }}{{ items[next].url }}" class="nav-next">
+                                        Next Item
                                         <i class="fas fa-chevron-right"></i>
                                     </a>
-                                {% endunless %}
+                                {% endif %}
                             </div>
                             {% break %}
                         {% endif %}
@@ -206,34 +207,96 @@ layout: default
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
+<!-- Map Container -->
+<div id="item-map"></div>
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var map = L.map('map').setView([{{ page.location.latitude }}, {{ page.location.longitude }}], 13);
+    // Initialize map
+    var map = L.map('item-map').setView([{{ page.latitude }}, {{ page.longitude }}], 13);
+    
+    // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: ' OpenStreetMap contributors'
     }).addTo(map);
-    L.marker([{{ page.location.latitude }}, {{ page.location.longitude }}])
-        .addTo(map)
-        .bindPopup('{{ page.location.name }}')
+    
+    // Add marker
+    L.marker([{{ page.latitude }}, {{ page.longitude }}]).addTo(map)
+        .bindPopup('{{ page.location }}')
         .openPopup();
-});
 </script>
 {% endif %}
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+.image-preview {
+    position: relative;
+    width: 100%;
+    max-height: 600px;
+    overflow: hidden;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.preview-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.image-controls {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.button-icon {
+    padding: 0.5rem;
+    border: none;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.button-icon:hover {
+    color: var(--secondary-color);
+}
+</style>
 
 <script>
+let currentZoom = 1;
+const zoomStep = 0.2;
+const maxZoom = 3;
+const minZoom = 0.5;
+
+function zoomImage(img) {
+    img.style.transform = `scale(${currentZoom})`;
+}
+
 function zoomIn() {
-    const img = document.querySelector('.image-preview img');
-    const currentWidth = img.clientWidth;
-    img.style.width = (currentWidth * 1.2) + 'px';
+    if (currentZoom < maxZoom) {
+        currentZoom += zoomStep;
+        document.getElementById('previewImage').style.transform = `scale(${currentZoom})`;
+    }
 }
 
 function zoomOut() {
-    const img = document.querySelector('.image-preview img');
-    const currentWidth = img.clientWidth;
-    img.style.width = (currentWidth / 1.2) + 'px';
+    if (currentZoom > minZoom) {
+        currentZoom -= zoomStep;
+        document.getElementById('previewImage').style.transform = `scale(${currentZoom})`;
+    }
+}
+
+function resetZoom() {
+    currentZoom = 1;
+    document.getElementById('previewImage').style.transform = `scale(${currentZoom})`;
 }
 
 function sharePage() {
@@ -241,8 +304,10 @@ function sharePage() {
         navigator.share({
             title: document.title,
             url: window.location.href
-        });
+        })
+        .catch(console.error);
     } else {
+        // Fallback for browsers that don't support Web Share API
         const dummy = document.createElement('input');
         document.body.appendChild(dummy);
         dummy.value = window.location.href;
