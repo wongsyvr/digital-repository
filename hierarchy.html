@@ -1,0 +1,249 @@
+---
+layout: default
+title: Hierarchical Description
+---
+
+<div class="container hierarchy-container">
+    <!-- Fonds Level -->
+    <section id="fonds" class="hierarchy-section fonds-level">
+        <div class="level-indicator">Fonds Level</div>
+        <h1>{{ site.data.fonds.title }}</h1>
+        
+        <div class="rad-metadata">
+            <dl>
+                <div class="metadata-item">
+                    <dt>Reference Code</dt>
+                    <dd>{{ site.data.fonds.reference_code }}</dd>
+                </div>
+                <div class="metadata-item">
+                    <dt>Dates</dt>
+                    <dd>{{ site.data.fonds.dates }}</dd>
+                </div>
+                <div class="metadata-item">
+                    <dt>Extent</dt>
+                    <dd>{{ site.data.fonds.extent }}</dd>
+                </div>
+            </dl>
+        </div>
+
+        <div class="rad-section">
+            <h2>Administrative History</h2>
+            <p>{{ site.data.fonds.admin_history }}</p>
+        </div>
+
+        <div class="rad-section">
+            <h2>Scope and Content</h2>
+            <p>{{ site.data.fonds.scope_content }}</p>
+        </div>
+
+        <div class="rad-section">
+            <h2>Arrangement</h2>
+            <p>{{ site.data.fonds.arrangement }}</p>
+        </div>
+    </section>
+
+    <!-- Series Level -->
+    {% for series in site.data.series %}
+    <section id="{{ series.id }}" class="hierarchy-section series-level">
+        <div class="level-indicator">Series Level</div>
+        <h2>
+            <span class="reference-code">{{ series.reference_code }}</span>
+            {{ series.title }}
+        </h2>
+
+        <div class="rad-metadata">
+            <dl>
+                <div class="metadata-item">
+                    <dt>Dates</dt>
+                    <dd>{{ series.dates }}</dd>
+                </div>
+                <div class="metadata-item">
+                    <dt>Extent</dt>
+                    <dd>{{ series.extent }}</dd>
+                </div>
+            </dl>
+        </div>
+
+        <div class="rad-section">
+            <h3>Scope and Content</h3>
+            <p>{{ series.scope_content }}</p>
+        </div>
+
+        <div class="rad-section">
+            <h3>Arrangement</h3>
+            <p>{{ series.arrangement }}</p>
+        </div>
+
+        <!-- File Level -->
+        {% for file in series.files %}
+        <section id="{{ series.id }}-{{ file.id }}" class="hierarchy-section file-level">
+            <div class="level-indicator">File Level</div>
+            <h3>
+                <span class="reference-code">{{ file.reference_code }}</span>
+                {{ file.title }}
+            </h3>
+
+            <div class="rad-metadata">
+                <dl>
+                    <div class="metadata-item">
+                        <dt>Dates</dt>
+                        <dd>{{ file.dates }}</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="rad-section">
+                <h4>Scope and Content</h4>
+                <p>{{ file.scope_content }}</p>
+            </div>
+
+            <!-- Link to Items -->
+            <div class="items-link">
+                <a href="{{ site.baseurl }}/browse.html#{{ series.id }}-{{ file.id }}" class="button button-secondary">
+                    View Items in this File
+                </a>
+            </div>
+        </section>
+        {% endfor %}
+    </section>
+    {% endfor %}
+</div>
+
+<style>
+.hierarchy-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+.hierarchy-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.level-indicator {
+    position: absolute;
+    top: -12px;
+    left: 2rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.fonds-level {
+    border-left: 5px solid var(--primary-color);
+}
+
+.series-level {
+    border-left: 5px solid var(--secondary-color);
+    margin-left: 2rem;
+}
+
+.file-level {
+    border-left: 5px solid var(--accent-color);
+    margin-left: 4rem;
+    background: var(--background-alt);
+}
+
+.hierarchy-section h1 {
+    color: var(--primary-color);
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.25rem;
+}
+
+.hierarchy-section h2 {
+    color: var(--secondary-color);
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.hierarchy-section h3 {
+    color: var(--text-color);
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.hierarchy-section h4 {
+    color: var(--text-color);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.reference-code {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-right: 0.5rem;
+}
+
+.rad-metadata {
+    background: var(--background-alt);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.rad-metadata dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 0;
+}
+
+.metadata-item dt {
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
+
+.metadata-item dd {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.rad-section {
+    margin-bottom: 2rem;
+}
+
+.rad-section:last-child {
+    margin-bottom: 0;
+}
+
+.rad-section h2,
+.rad-section h3,
+.rad-section h4 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.items-link {
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .series-level {
+        margin-left: 1rem;
+    }
+
+    .file-level {
+        margin-left: 2rem;
+    }
+
+    .rad-metadata dl {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

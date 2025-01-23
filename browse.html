@@ -4,183 +4,343 @@ title: Browse Collection
 ---
 
 <div class="browse-container">
-    <h1>Browse Collection</h1>
+    <header class="browse-header">
+        <h1>Browse Collection</h1>
+        <p class="browse-description">Quick access to items across all series and files. For detailed archival descriptions, visit the <a href="{{ site.baseurl }}/hierarchy.html">Hierarchical Description</a> page.</p>
+    </header>
 
-    <div class="filters">
-        <div class="filter-group">
-            <label for="seriesFilter">Series:</label>
-            <select id="seriesFilter">
-                <option value="">All</option>
-                <option value="Academic">Academic</option>
-                <option value="Art & Design">Art & Design</option>
-            </select>
-        </div>
-
-        <div class="filter-group">
-            <label for="yearFilter">Year:</label>
-            <select id="yearFilter">
-                <option value="">All</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="items-grid" id="itemsGrid">
-        {% assign items = site.data.metadata %}
-        {% for item in items %}
-        <div class="item-card" 
-             data-series="{{ item.series }}"
-             data-year="{{ item.date | date: '%Y' }}">
-            <div class="item-thumb">
-                {% if item.format contains 'image' %}
-                    <img src="{{ site.baseurl }}/objects/{{ item.objectid }}_thumb.jpg" alt="{{ item.title }}">
-                {% else %}
-                    <div class="placeholder-thumb">
-                        <span class="material-icons">
-                            {% if item.format contains 'pdf' %}description
-                            {% elsif item.format contains 'text' %}article
-                            {% else %}insert_drive_file{% endif %}
-                        </span>
+    <!-- Academic Series -->
+    <section class="browse-section" id="academic">
+        <h2>Academic Series</h2>
+        
+        <!-- Elementary School -->
+        <div class="file-section" id="academic-elementary">
+            <h3>Elementary School</h3>
+            <div class="items-grid">
+                {% assign items = site.data.items.academic_elementary %}
+                {% for item in items %}
+                <div class="item-card">
+                    <div class="item-preview">
+                        {% case item.format %}
+                            {% when 'PDF' %}
+                                <i class="fas fa-file-pdf"></i>
+                            {% when 'JPEG' %}
+                                <i class="fas fa-image"></i>
+                            {% when 'STL' %}
+                                <i class="fas fa-cube"></i>
+                            {% when 'SVG' %}
+                                <i class="fas fa-bezier-curve"></i>
+                        {% endcase %}
                     </div>
-                {% endif %}
-            </div>
-            <div class="item-info">
-                <h3><a href="{{ site.baseurl }}/items/{{ item.objectid }}">{{ item.title }}</a></h3>
-                <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
-                <p class="item-series">{{ item.series }} - {{ item.file }}</p>
-                <p class="item-description">{{ item.description | truncate: 100 }}</p>
+                    <div class="item-info">
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
-    </div>
+
+        <!-- High School -->
+        <div class="file-section" id="academic-highschool">
+            <h3>High School</h3>
+            <div class="items-grid">
+                {% assign items = site.data.items.academic_highschool %}
+                {% for item in items %}
+                <div class="item-card">
+                    <div class="item-preview">
+                        {% case item.format %}
+                            {% when 'PDF' %}
+                                <i class="fas fa-file-pdf"></i>
+                            {% when 'JPEG' %}
+                                <i class="fas fa-image"></i>
+                            {% when 'STL' %}
+                                <i class="fas fa-cube"></i>
+                            {% when 'SVG' %}
+                                <i class="fas fa-bezier-curve"></i>
+                        {% endcase %}
+                    </div>
+                    <div class="item-info">
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Undergraduate -->
+        <div class="file-section" id="academic-undergraduate">
+            <h3>Undergraduate</h3>
+            <div class="items-grid">
+                {% assign items = site.data.items.academic_undergraduate %}
+                {% for item in items %}
+                <div class="item-card">
+                    <div class="item-preview">
+                        {% case item.format %}
+                            {% when 'PDF' %}
+                                <i class="fas fa-file-pdf"></i>
+                            {% when 'JPEG' %}
+                                <i class="fas fa-image"></i>
+                            {% when 'STL' %}
+                                <i class="fas fa-cube"></i>
+                            {% when 'SVG' %}
+                                <i class="fas fa-bezier-curve"></i>
+                        {% endcase %}
+                    </div>
+                    <div class="item-info">
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Postgraduate -->
+        <div class="file-section" id="academic-postgraduate">
+            <h3>Postgraduate</h3>
+            <div class="items-grid">
+                {% assign items = site.data.items.academic_postgraduate %}
+                {% for item in items %}
+                <div class="item-card">
+                    <div class="item-preview">
+                        {% case item.format %}
+                            {% when 'PDF' %}
+                                <i class="fas fa-file-pdf"></i>
+                            {% when 'JPEG' %}
+                                <i class="fas fa-image"></i>
+                            {% when 'STL' %}
+                                <i class="fas fa-cube"></i>
+                            {% when 'SVG' %}
+                                <i class="fas fa-bezier-curve"></i>
+                        {% endcase %}
+                    </div>
+                    <div class="item-info">
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Art & Design Series -->
+    <section class="browse-section" id="art">
+        <h2>Art & Design Series</h2>
+        
+        <!-- Papercut -->
+        <div class="file-section" id="art-papercut">
+            <h3>Papercut Works</h3>
+            <div class="items-grid">
+                {% assign items = site.data.items.art_papercut %}
+                {% for item in items %}
+                <div class="item-card">
+                    <div class="item-preview">
+                        {% case item.format %}
+                            {% when 'PDF' %}
+                                <i class="fas fa-file-pdf"></i>
+                            {% when 'JPEG' %}
+                                <i class="fas fa-image"></i>
+                            {% when 'STL' %}
+                                <i class="fas fa-cube"></i>
+                            {% when 'SVG' %}
+                                <i class="fas fa-bezier-curve"></i>
+                        {% endcase %}
+                    </div>
+                    <div class="item-info">
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 3D Prints -->
+        <div class="file-section" id="art-3dprints">
+            <h3>3D Prints</h3>
+            <div class="items-grid">
+                {% assign items = site.data.items.art_3dprints %}
+                {% for item in items %}
+                <div class="item-card">
+                    <div class="item-preview">
+                        {% case item.format %}
+                            {% when 'PDF' %}
+                                <i class="fas fa-file-pdf"></i>
+                            {% when 'JPEG' %}
+                                <i class="fas fa-image"></i>
+                            {% when 'STL' %}
+                                <i class="fas fa-cube"></i>
+                            {% when 'SVG' %}
+                                <i class="fas fa-bezier-curve"></i>
+                        {% endcase %}
+                    </div>
+                    <div class="item-info">
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Laser Cutting -->
+        <div class="file-section" id="art-laser">
+            <h3>Laser Cutting</h3>
+            <div class="items-grid">
+                {% assign items = site.data.items.art_laser %}
+                {% for item in items %}
+                <div class="item-card">
+                    <div class="item-preview">
+                        {% case item.format %}
+                            {% when 'PDF' %}
+                                <i class="fas fa-file-pdf"></i>
+                            {% when 'JPEG' %}
+                                <i class="fas fa-image"></i>
+                            {% when 'STL' %}
+                                <i class="fas fa-cube"></i>
+                            {% when 'SVG' %}
+                                <i class="fas fa-bezier-curve"></i>
+                        {% endcase %}
+                    </div>
+                    <div class="item-info">
+                        <h4><a href="{{ site.baseurl }}/items/{{ item.identifier }}.html">{{ item.title }}</a></h4>
+                        <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 </div>
 
 <style>
+/* Browse Container */
 .browse-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 2rem 20px;
 }
 
-.filters {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
+/* Browse Header */
+.browse-header {
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
-.filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.browse-header h1 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
-.filter-group select {
-    padding: 5px 10px;
-    border: 1px solid var(--accent-color);
-    border-radius: 5px;
+.browse-description {
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
+/* Browse Sections */
+.browse-section {
+    margin-bottom: 4rem;
+}
+
+.browse-section h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* File Sections */
+.file-section {
+    margin-bottom: 3rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+.file-section h3 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Items Grid */
 .items-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
+/* Item Cards */
 .item-card {
-    border: 1px solid #ddd;
+    background: var(--background-alt);
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.2s;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .item-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.item-thumb {
-    height: 200px;
-    background-color: var(--background-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.item-preview {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    text-align: center;
 }
 
-.item-thumb img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-}
-
-.placeholder-thumb {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    color: var(--primary-color);
+.item-preview i {
+    font-size: 2rem;
 }
 
 .item-info {
-    padding: 15px;
+    padding: 1rem;
 }
 
-.item-info h3 {
-    margin: 0 0 10px 0;
+.item-info h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.3;
 }
 
-.item-info h3 a {
-    color: var(--primary-color);
+.item-info a {
+    color: var(--text-color);
     text-decoration: none;
 }
 
-.item-date {
-    color: #666;
-    font-size: 0.9em;
-    margin: 5px 0;
-}
-
-.item-series {
+.item-info a:hover {
     color: var(--secondary-color);
-    font-size: 0.9em;
-    margin: 5px 0;
 }
 
-.item-description {
-    font-size: 0.9em;
-    margin: 10px 0 0 0;
-    line-height: 1.4;
+.item-date {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .browse-container {
+        padding: 1rem 15px;
+    }
+
+    .file-section {
+        padding: 1rem;
+    }
+
+    .items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Populate year filter
-    const yearFilter = document.getElementById('yearFilter');
-    const years = new Set();
-    document.querySelectorAll('.item-card').forEach(card => {
-        years.add(card.dataset.year);
-    });
-    Array.from(years).sort().forEach(year => {
-        const option = document.createElement('option');
-        option.value = year;
-        option.textContent = year;
-        yearFilter.appendChild(option);
-    });
-
-    // Filter functionality
-    function filterItems() {
-        const selectedSeries = document.getElementById('seriesFilter').value;
-        const selectedYear = document.getElementById('yearFilter').value;
-
-        document.querySelectorAll('.item-card').forEach(card => {
-            const matchesSeries = !selectedSeries || card.dataset.series === selectedSeries;
-            const matchesYear = !selectedYear || card.dataset.year === selectedYear;
-            card.style.display = matchesSeries && matchesYear ? 'block' : 'none';
-        });
-    }
-
-    document.getElementById('seriesFilter').addEventListener('change', filterItems);
-    document.getElementById('yearFilter').addEventListener('change', filterItems);
-});
-</script>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

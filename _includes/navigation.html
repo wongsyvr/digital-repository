@@ -1,7 +1,8 @@
-<nav class="main-nav">
+<nav class="site-nav">
     <div class="container">
-        <ul class="primary-nav">
+        <ul class="nav-links">
             <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+            <li><a href="{{ '/hierarchy.html' | relative_url }}" {% if page.url == '/hierarchy.html' %}class="active"{% endif %}>Hierarchical Description</a></li>
             <li class="has-dropdown">
                 <a href="{{ '/browse.html' | relative_url }}" {% if page.url == '/browse.html' %}class="active"{% endif %}>Browse</a>
                 <div class="dropdown-menu">
@@ -28,43 +29,35 @@
             <li><a href="{{ '/timeline.html' | relative_url }}" {% if page.url == '/timeline.html' %}class="active"{% endif %}>Timeline</a></li>
             <li><a href="{{ '/search.html' | relative_url }}" {% if page.url == '/search.html' %}class="active"{% endif %}>Search</a></li>
             <li><a href="{{ '/privacy.html' | relative_url }}" {% if page.url == '/privacy.html' %}class="active"{% endif %}>Privacy & Copyright</a></li>
+            <li><a href="{{ '/about.html' | relative_url }}" {% if page.url == '/about.html' %}class="active"{% endif %}>About</a></li>
         </ul>
     </div>
 </nav>
 
 <style>
-.main-nav {
-    background-color: var(--secondary-color);
-    padding: 0.5rem 0;
-    position: relative;
+.site-nav {
+    background-color: var(--background-alt);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
 }
 
-.primary-nav {
+.nav-links {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 2rem;
 }
 
-.primary-nav > li {
-    margin: 0 1rem;
-    position: relative;
-}
-
-.primary-nav > li > a {
-    color: white;
+.nav-links li a {
+    color: var(--text-color);
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    display: block;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
 }
 
-.primary-nav > li > a:hover,
-.primary-nav > li > a.active {
-    background-color: var(--primary-color);
+.nav-links li a:hover {
+    color: var(--secondary-color);
 }
 
 .has-dropdown:hover .dropdown-menu {
@@ -121,14 +114,9 @@
 }
 
 @media (max-width: 768px) {
-    .primary-nav {
+    .nav-links {
         flex-direction: column;
-        align-items: center;
-    }
-    
-    .primary-nav > li {
-        margin: 0.5rem 0;
-        width: 100%;
+        gap: 1rem;
         text-align: center;
     }
     
