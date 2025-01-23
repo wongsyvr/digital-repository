@@ -1,0 +1,186 @@
+---
+layout: default
+title: Browse Collection
+---
+
+<div class="browse-container">
+    <h1>Browse Collection</h1>
+
+    <div class="filters">
+        <div class="filter-group">
+            <label for="seriesFilter">Series:</label>
+            <select id="seriesFilter">
+                <option value="">All</option>
+                <option value="Academic">Academic</option>
+                <option value="Art & Design">Art & Design</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="yearFilter">Year:</label>
+            <select id="yearFilter">
+                <option value="">All</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="items-grid" id="itemsGrid">
+        {% assign items = site.data.metadata %}
+        {% for item in items %}
+        <div class="item-card" 
+             data-series="{{ item.series }}"
+             data-year="{{ item.date | date: '%Y' }}">
+            <div class="item-thumb">
+                {% if item.format contains 'image' %}
+                    <img src="{{ site.baseurl }}/objects/{{ item.objectid }}_thumb.jpg" alt="{{ item.title }}">
+                {% else %}
+                    <div class="placeholder-thumb">
+                        <span class="material-icons">
+                            {% if item.format contains 'pdf' %}description
+                            {% elsif item.format contains 'text' %}article
+                            {% else %}insert_drive_file{% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="item-info">
+                <h3><a href="{{ site.baseurl }}/items/{{ item.objectid }}">{{ item.title }}</a></h3>
+                <p class="item-date">{{ item.date | date: "%B %d, %Y" }}</p>
+                <p class="item-series">{{ item.series }} - {{ item.file }}</p>
+                <p class="item-description">{{ item.description | truncate: 100 }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.browse-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.filters {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-group select {
+    padding: 5px 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.item-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.item-thumb {
+    height: 200px;
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.placeholder-thumb {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: var(--primary-color);
+}
+
+.item-info {
+    padding: 15px;
+}
+
+.item-info h3 {
+    margin: 0 0 10px 0;
+}
+
+.item-info h3 a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.item-date {
+    color: #666;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.item-series {
+    color: var(--secondary-color);
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.item-description {
+    font-size: 0.9em;
+    margin: 10px 0 0 0;
+    line-height: 1.4;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Populate year filter
+    const yearFilter = document.getElementById('yearFilter');
+    const years = new Set();
+    document.querySelectorAll('.item-card').forEach(card => {
+        years.add(card.dataset.year);
+    });
+    Array.from(years).sort().forEach(year => {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        yearFilter.appendChild(option);
+    });
+
+    // Filter functionality
+    function filterItems() {
+        const selectedSeries = document.getElementById('seriesFilter').value;
+        const selectedYear = document.getElementById('yearFilter').value;
+
+        document.querySelectorAll('.item-card').forEach(card => {
+            const matchesSeries = !selectedSeries || card.dataset.series === selectedSeries;
+            const matchesYear = !selectedYear || card.dataset.year === selectedYear;
+            card.style.display = matchesSeries && matchesYear ? 'block' : 'none';
+        });
+    }
+
+    document.getElementById('seriesFilter').addEventListener('change', filterItems);
+    document.getElementById('yearFilter').addEventListener('change', filterItems);
+});
+</script>

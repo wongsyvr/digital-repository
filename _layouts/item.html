@@ -1,0 +1,129 @@
+---
+layout: default
+---
+
+<div class="item-container">
+    <div class="item-header">
+        <h1>{{ page.title }}</h1>
+        <div class="item-metadata">
+            <p><strong>Date:</strong> {{ page.date | date: "%B %d, %Y" }}</p>
+            <p><strong>Series:</strong> {{ page.series }}</p>
+            <p><strong>File:</strong> {{ page.file }}</p>
+            <p><strong>Location:</strong> {{ page.location }}</p>
+        </div>
+    </div>
+
+    <div class="item-content">
+        {% if page.format contains 'image' %}
+            <img src="{{ site.baseurl }}/objects/{{ page.objectid }}" alt="{{ page.title }}" class="item-image">
+        {% elsif page.format contains 'pdf' %}
+            <div class="pdf-viewer">
+                <embed src="{{ site.baseurl }}/objects/{{ page.objectid }}" type="application/pdf" width="100%" height="600px">
+            </div>
+        {% elsif page.format contains 'text' %}
+            <div class="text-content">
+                {% capture object_content %}
+                {% include_relative /objects/{{ page.objectid }} %}
+                {% endcapture %}
+                {{ object_content | markdownify }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="item-description">
+        <h2>Description</h2>
+        <p>{{ page.description }}</p>
+    </div>
+
+    <div class="item-subjects">
+        <h2>Subjects</h2>
+        <div class="tag-cloud">
+            {% assign subjects = page.subject | split: ';' %}
+            {% for subject in subjects %}
+                <span class="tag">{{ subject | strip }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if page.latitude and page.longitude %}
+    <div class="item-map">
+        <h2>Location</h2>
+        <div id="map" style="height: 400px;"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var map = L.map('map').setView([{{ page.latitude }}, {{ page.longitude }}], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+                L.marker([{{ page.latitude }}, {{ page.longitude }}])
+                    .addTo(map)
+                    .bindPopup('{{ page.title }}');
+            });
+        </script>
+    </div>
+    {% endif %}
+
+    <div class="item-rights">
+        <h2>Rights</h2>
+        <p>{{ page.rights }}</p>
+    </div>
+</div>
+
+<style>
+.item-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.item-header {
+    margin-bottom: 2rem;
+}
+
+.item-metadata {
+    background-color: var(--background-color);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.item-content {
+    margin: 2rem 0;
+}
+
+.item-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.item-map {
+    margin: 2rem 0;
+}
+
+.item-rights {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: 5px;
+}
+</style>
