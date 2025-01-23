@@ -2,139 +2,57 @@
     <div class="container">
         <ul class="nav-links">
             <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+            <li><a href="{{ '/browse.html' | relative_url }}" {% if page.url == '/browse.html' %}class="active"{% endif %}>Browse</a></li>
             <li><a href="{{ '/hierarchy.html' | relative_url }}" {% if page.url == '/hierarchy.html' %}class="active"{% endif %}>Hierarchical Description</a></li>
-            <li class="has-dropdown">
-                <a href="{{ '/browse.html' | relative_url }}" {% if page.url == '/browse.html' %}class="active"{% endif %}>Browse</a>
-                <div class="dropdown-menu">
-                    <div class="menu-section">
-                        <h3>Academic Series</h3>
-                        <ul>
-                            <li><a href="{{ '/browse.html#academic-elementary' | relative_url }}">Elementary School</a></li>
-                            <li><a href="{{ '/browse.html#academic-highschool' | relative_url }}">High School</a></li>
-                            <li><a href="{{ '/browse.html#academic-undergraduate' | relative_url }}">Undergraduate</a></li>
-                            <li><a href="{{ '/browse.html#academic-postgraduate' | relative_url }}">Postgraduate</a></li>
-                        </ul>
-                    </div>
-                    <div class="menu-section">
-                        <h3>Art & Design Series</h3>
-                        <ul>
-                            <li><a href="{{ '/browse.html#art-papercut' | relative_url }}">Papercut Works</a></li>
-                            <li><a href="{{ '/browse.html#art-3dprints' | relative_url }}">3D Prints</a></li>
-                            <li><a href="{{ '/browse.html#art-laser' | relative_url }}">Laser Cutting & Engraving</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <li><a href="{{ '/map.html' | relative_url }}" {% if page.url == '/map.html' %}class="active"{% endif %}>Map</a></li>
-            <li><a href="{{ '/timeline.html' | relative_url }}" {% if page.url == '/timeline.html' %}class="active"{% endif %}>Timeline</a></li>
-            <li><a href="{{ '/search.html' | relative_url }}" {% if page.url == '/search.html' %}class="active"{% endif %}>Search</a></li>
-            <li><a href="{{ '/privacy.html' | relative_url }}" {% if page.url == '/privacy.html' %}class="active"{% endif %}>Privacy & Copyright</a></li>
-            <li><a href="{{ '/about.html' | relative_url }}" {% if page.url == '/about.html' %}class="active"{% endif %}>About</a></li>
         </ul>
     </div>
 </nav>
 
 <style>
 .site-nav {
-    background-color: var(--background-alt);
-    border-bottom: 1px solid var(--border-color);
+    background: white;
     padding: 1rem 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .nav-links {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
     display: flex;
     gap: 2rem;
+    justify-content: center;
 }
 
-.nav-links li a {
+.nav-links a {
     color: var(--text-color);
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s ease-in-out;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
-.nav-links li a:hover {
-    color: var(--secondary-color);
-}
-
-.has-dropdown:hover .dropdown-menu {
-    display: flex;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 1rem;
-    z-index: 1000;
-    min-width: 500px;
-}
-
-.menu-section {
-    flex: 1;
-    padding: 0 1rem;
-}
-
-.menu-section:first-child {
-    border-right: 1px solid var(--background-color);
-}
-
-.menu-section h3 {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--primary-color);
-    margin: 0 0 0.5rem 0;
-    font-size: 1rem;
-}
-
-.menu-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu-section ul li {
-    margin: 0.5rem 0;
-}
-
-.menu-section ul li a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.menu-section ul li a:hover {
-    color: var(--primary-color);
+    background: var(--background-alt);
 }
 
 @media (max-width: 768px) {
     .nav-links {
         flex-direction: column;
+        align-items: center;
         gap: 1rem;
+    }
+    
+    .nav-links a {
+        display: block;
+        width: 100%;
         text-align: center;
-    }
-    
-    .dropdown-menu {
-        position: static;
-        transform: none;
-        min-width: auto;
-        flex-direction: column;
-        box-shadow: none;
-        border: 1px solid var(--background-color);
-        margin: 0.5rem 0;
-    }
-    
-    .menu-section:first-child {
-        border-right: none;
-        border-bottom: 1px solid var(--background-color);
-        padding-bottom: 1rem;
-        margin-bottom: 1rem;
     }
 }
 </style>
