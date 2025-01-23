@@ -1,0 +1,14 @@
+This is a sample elementary school report card
+Student: Cheuk Kit (Philip) Chung
+Year: 2005
+Grade: 6
+
+Subjects:
+- Mathematics: A
+- Science: A
+- English: A
+- Social Studies: A
+- Physical Education: A
+
+Comments:
+Philip demonstrates excellent academic performance and leadership qualities in class.

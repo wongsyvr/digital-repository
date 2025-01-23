@@ -1,0 +1,15 @@
+3D Printed Architectural Model
+Designer: Cheuk Kit (Philip) Chung
+Date: March 10, 2022
+
+Project: Modern Community Library
+Scale: 1:87 (HO scale)
+
+Technical Specifications:
+- Printer: Prusa i3 MK3S+
+- Material: PLA (White)
+- Print Time: 48 hours
+- Resolution: 0.1mm layer height
+
+Description:
+This architectural model represents a modern community library design that combines traditional reading spaces with digital media centers. The design features a central atrium with natural lighting and modular study spaces around the perimeter.

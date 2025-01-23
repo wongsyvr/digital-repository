@@ -1,0 +1,8 @@
+Renewable Energy Science Project
+By: Cheuk Kit (Philip) Chung
+Date: May 20, 2010
+
+Project Title: Solar Power in Urban Environments
+
+Abstract:
+This project explores the potential of solar power implementation in urban environments, specifically focusing on Vancouver's unique climate conditions. Through experimental data collection and analysis, we demonstrate that even in areas with frequent cloud cover, solar power can be a viable renewable energy source.
