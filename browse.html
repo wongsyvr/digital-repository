@@ -288,6 +288,7 @@ title: Browse Collection
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
+    margin: 1rem 0;
 }
 
 /* Item Cards */
@@ -297,6 +298,8 @@ title: Browse Collection
     overflow: hidden;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .item-card:hover {
@@ -305,15 +308,16 @@ title: Browse Collection
 }
 
 .item-preview {
-    background: var(--background-alt);
-    padding: 1rem;
-    text-align: center;
+    position: relative;
+    width: 100%;
     height: 200px;
+    background: var(--background-alt);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     border-radius: 8px 8px 0 0;
+    padding: 1rem;
 }
 
 .item-preview i {
@@ -322,15 +326,19 @@ title: Browse Collection
 }
 
 .thumbnail-image {
+    max-width: 100%;
+    max-height: 100%;
     width: auto;
     height: auto;
-    max-width: 100%;
-    max-height: 180px;
     object-fit: contain;
 }
 
 .item-info {
     padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .item-info h4 {
@@ -345,7 +353,7 @@ title: Browse Collection
 }
 
 .item-info a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .item-date {
@@ -355,18 +363,34 @@ title: Browse Collection
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+    .items-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .item-preview {
+        height: 220px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .items-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
     .browse-container {
         padding: 1rem 15px;
-    }
-
-    .file-section {
-        padding: 1rem;
     }
 
     .items-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1rem;
+    }
+
+    .item-preview {
+        height: 180px;
     }
 }
 </style>
