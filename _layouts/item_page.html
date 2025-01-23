@@ -4,204 +4,450 @@ layout: default
 
 <div class="item-container">
     <!-- Hierarchical Navigation -->
-    <nav class="hierarchy-nav">
+    <nav class="hierarchy-nav" aria-label="breadcrumb">
         <div class="container">
             {% assign series = site.data.series | where: "id", page.series_id | first %}
             {% assign file = series.files | where: "id", page.file_id | first %}
-            <ul>
-                <li><a href="{{ site.baseurl }}/browse.html">{{ site.data.fonds.title }}</a></li>
-                <li>›</li>
-                <li><a href="{{ site.baseurl }}/browse.html#{{ series.id }}">{{ series.title }}</a></li>
-                <li>›</li>
-                <li><a href="{{ site.baseurl }}/browse.html#{{ series.id }}-{{ file.id }}">{{ file.title }}</a></li>
-                <li>›</li>
-                <li class="current">{{ page.title }}</li>
-            </ul>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html">{{ site.data.fonds.title }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html#{{ series.id }}">{{ series.title }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ site.baseurl }}/browse.html#{{ series.id }}-{{ file.id }}">{{ file.title }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+            </ol>
         </div>
     </nav>
 
     <div class="container">
-        <article class="item-details">
-            <header>
-                <h1>{{ page.title }}</h1>
-                <div class="item-metadata">
-                    <dl>
-                        <dt>Creator</dt>
-                        <dd>{{ page.creator }}</dd>
-
-                        <dt>Date</dt>
-                        <dd>{{ page.date | date: "%B %d, %Y" }}</dd>
-
-                        <dt>Type</dt>
-                        <dd>{{ page.type }}</dd>
-
-                        <dt>Format</dt>
-                        <dd>{{ page.format }}</dd>
-
-                        <dt>Language</dt>
-                        <dd>{{ page.language }}</dd>
-
-                        <dt>Rights</dt>
-                        <dd>{{ page.rights }}</dd>
-                    </dl>
-                </div>
-            </header>
-
-            <section class="item-content">
-                <h2>Description</h2>
-                <p>{{ page.description }}</p>
-
-                <h2>Subjects</h2>
-                <div class="subject-tags">
-                    {% assign subjects = page.subject | split: ';' %}
-                    {% for subject in subjects %}
-                        <span class="tag">{{ subject | strip }}</span>
-                    {% endfor %}
-                </div>
-
-                <div class="item-preview">
+        <div class="item-layout">
+            <!-- Left Column: Item Preview -->
+            <div class="item-preview">
+                <div class="preview-container">
                     {% case page.format %}
                         {% when 'PDF' %}
-                            <div class="pdf-preview">
-                                <p>This is a PDF document. You can <a href="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.pdf" target="_blank">view or download the PDF here</a>.</p>
+                            <div class="pdf-preview card">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-file-pdf fa-4x text-primary mb-3"></i>
+                                    <h3 class="h5">PDF Document</h3>
+                                    <p class="text-muted">Click below to view or download</p>
+                                    <a href="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.pdf" 
+                                       class="button button-primary" 
+                                       target="_blank">
+                                        <i class="fas fa-download"></i> View PDF
+                                    </a>
+                                </div>
                             </div>
                         {% when 'JPEG' %}
                             <div class="image-preview">
-                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.jpg" alt="{{ page.title }}">
+                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.jpg" 
+                                     alt="{{ page.title }}"
+                                     class="img-fluid">
+                                <div class="image-tools">
+                                    <button class="button button-secondary" onclick="zoomIn()">
+                                        <i class="fas fa-search-plus"></i> Zoom In
+                                    </button>
+                                    <button class="button button-secondary" onclick="zoomOut()">
+                                        <i class="fas fa-search-minus"></i> Zoom Out
+                                    </button>
+                                </div>
                             </div>
                         {% when 'STL' %}
-                            <div class="model-preview">
-                                <p>This is a 3D model file. You can <a href="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.stl" target="_blank">download the STL file here</a>.</p>
-                                <!-- Add a placeholder image or thumbnail -->
-                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}_thumb.jpg" alt="Preview of {{ page.title }}">
+                            <div class="model-preview card">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-cube fa-4x text-primary mb-3"></i>
+                                    <h3 class="h5">3D Model</h3>
+                                    <p class="text-muted">Download the STL file to view in a 3D viewer</p>
+                                    <a href="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.stl" 
+                                       class="button button-primary" 
+                                       download>
+                                        <i class="fas fa-download"></i> Download STL
+                                    </a>
+                                </div>
                             </div>
                         {% when 'SVG' %}
                             <div class="vector-preview">
-                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.svg" alt="{{ page.title }}">
+                                <img src="{{ site.baseurl }}/objects/{{ page.series_id }}/{{ page.file_id }}/{{ page.identifier }}.svg" 
+                                     alt="{{ page.title }}"
+                                     class="img-fluid">
                             </div>
                     {% endcase %}
                 </div>
-            </section>
-        </article>
+            </div>
+
+            <!-- Right Column: Metadata -->
+            <div class="item-metadata">
+                <div class="metadata-header">
+                    <h1>{{ page.title }}</h1>
+                    <div class="metadata-tools">
+                        <button class="button button-secondary" onclick="window.print()">
+                            <i class="fas fa-print"></i> Print
+                        </button>
+                        <button class="button button-secondary" onclick="sharePage()">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                </div>
+
+                <div class="metadata-sections">
+                    <!-- Core Metadata -->
+                    <section class="metadata-section">
+                        <h2>About This Item</h2>
+                        <dl class="metadata-list">
+                            <div class="metadata-item">
+                                <dt>Creator</dt>
+                                <dd>{{ page.creator }}</dd>
+                            </div>
+                            <div class="metadata-item">
+                                <dt>Date</dt>
+                                <dd>{{ page.date | date: "%B %d, %Y" }}</dd>
+                            </div>
+                            <div class="metadata-item">
+                                <dt>Description</dt>
+                                <dd>{{ page.description }}</dd>
+                            </div>
+                        </dl>
+                    </section>
+
+                    <!-- Technical Metadata -->
+                    <section class="metadata-section">
+                        <h2>Technical Details</h2>
+                        <dl class="metadata-list">
+                            <div class="metadata-item">
+                                <dt>Type</dt>
+                                <dd>{{ page.type }}</dd>
+                            </div>
+                            <div class="metadata-item">
+                                <dt>Format</dt>
+                                <dd>{{ page.format }}</dd>
+                            </div>
+                            <div class="metadata-item">
+                                <dt>Language</dt>
+                                <dd>{{ page.language }}</dd>
+                            </div>
+                        </dl>
+                    </section>
+
+                    <!-- Subject Tags -->
+                    <section class="metadata-section">
+                        <h2>Subjects</h2>
+                        <div class="subject-tags">
+                            {% assign subjects = page.subject | split: ';' %}
+                            {% for subject in subjects %}
+                                <a href="{{ site.baseurl }}/browse.html?subject={{ subject | strip | url_encode }}" 
+                                   class="tag">
+                                    {{ subject | strip }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </section>
+
+                    <!-- Rights -->
+                    <section class="metadata-section">
+                        <h2>Rights</h2>
+                        <p class="rights-statement">{{ page.rights }}</p>
+                    </section>
+                </div>
+
+                <!-- Item Navigation -->
+                <nav class="item-navigation" aria-label="Item navigation">
+                    {% assign items = site.data.items[page.series_id | append: '_' | append: page.file_id] %}
+                    {% for item in items %}
+                        {% if item.identifier == page.identifier %}
+                            <div class="nav-links">
+                                {% unless forloop.first %}
+                                    {% assign prev = items[forloop.index0 | minus: 1] %}
+                                    <a href="{{ site.baseurl }}/items/{{ prev.identifier }}.html" class="nav-previous">
+                                        <i class="fas fa-chevron-left"></i>
+                                        <span>Previous<br>{{ prev.title | truncate: 30 }}</span>
+                                    </a>
+                                {% endunless %}
+                                {% unless forloop.last %}
+                                    {% assign next = items[forloop.index0 | plus: 1] %}
+                                    <a href="{{ site.baseurl }}/items/{{ next.identifier }}.html" class="nav-next">
+                                        <span>Next<br>{{ next.title | truncate: 30 }}</span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                {% endunless %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </nav>
+            </div>
+        </div>
     </div>
 </div>
 
 <style>
-.item-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+/* Item Layout */
+.item-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
+/* Breadcrumb Navigation */
 .hierarchy-nav {
-    background-color: var(--background-color);
+    background-color: var(--background-alt);
     padding: 1rem 0;
-    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.hierarchy-nav ul {
+.breadcrumb {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+    display: flex;
     align-items: center;
+    color: var(--text-light);
 }
 
-.hierarchy-nav ul li {
+.breadcrumb-item:not(:last-child)::after {
+    content: "›";
     margin: 0 0.5rem;
+    color: var(--text-light);
 }
 
-.hierarchy-nav ul li.current {
-    color: var(--primary-color);
-    font-weight: bold;
+.breadcrumb-item a {
+    color: var(--secondary-color);
+    text-decoration: none;
 }
 
-.item-details {
-    background-color: white;
-    padding: 2rem;
+.breadcrumb-item.active {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Item Preview */
+.item-preview {
+    position: sticky;
+    top: 2rem;
+}
+
+.preview-container {
+    background-color: var(--background-alt);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+    text-align: center;
 }
 
-.item-metadata {
-    background-color: var(--background-color);
-    padding: 1.5rem;
+.preview-container img {
+    max-width: 100%;
+    height: auto;
     border-radius: 4px;
-    margin: 1rem 0 2rem;
 }
 
-.item-metadata dl {
+.image-tools {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Metadata */
+.metadata-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.metadata-tools {
+    display: flex;
+    gap: 1rem;
+}
+
+.metadata-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.metadata-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.metadata-section h2 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.metadata-list {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+}
+
+.metadata-item {
     display: grid;
     grid-template-columns: 120px 1fr;
-    gap: 0.5rem 1rem;
+    gap: 1rem;
+    align-items: baseline;
+}
+
+.metadata-item dt {
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.metadata-item dd {
     margin: 0;
+    color: var(--text-color);
 }
 
-.item-metadata dt {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.item-metadata dd {
-    margin: 0;
-}
-
+/* Subject Tags */
 .subject-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin: 1rem 0;
 }
 
 .tag {
-    background-color: var(--accent-color);
-    color: white;
+    display: inline-block;
     padding: 0.25rem 0.75rem;
+    background-color: var(--background-alt);
+    border: 1px solid var(--border-color);
     border-radius: 15px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.tag:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+}
+
+/* Rights Statement */
+.rights-statement {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Item Navigation */
+.item-navigation {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.nav-previous,
+.nav-next {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    max-width: 45%;
+}
+
+.nav-previous:hover,
+.nav-next:hover {
+    color: var(--secondary-color);
+}
+
+.nav-previous span,
+.nav-next span {
     font-size: 0.9rem;
 }
 
-.item-preview {
-    margin: 2rem 0;
-    text-align: center;
-}
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .item-layout {
+        grid-template-columns: 1fr;
+    }
 
-.item-preview img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+    .item-preview {
+        position: static;
+    }
 
-.pdf-preview, .model-preview {
-    background-color: var(--background-color);
-    padding: 2rem;
-    border-radius: 4px;
-    text-align: center;
-}
+    .metadata-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-.pdf-preview a, .model-preview a {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    margin-top: 1rem;
+    .metadata-tools {
+        width: 100%;
+    }
+
+    .metadata-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .hierarchy-nav ul {
+    .breadcrumb {
         flex-direction: column;
-        align-items: flex-start;
+        gap: 0.5rem;
     }
-    
-    .hierarchy-nav ul li {
-        margin: 0.25rem 0;
+
+    .breadcrumb-item:not(:last-child)::after {
+        display: none;
     }
-    
-    .item-metadata dl {
-        grid-template-columns: 1fr;
+
+    .nav-links {
+        flex-direction: column;
     }
-}</style>
+
+    .nav-previous,
+    .nav-next {
+        max-width: 100%;
+    }
+}
+</style>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<script>
+function zoomIn() {
+    const img = document.querySelector('.image-preview img');
+    const currentWidth = img.clientWidth;
+    img.style.width = (currentWidth * 1.2) + 'px';
+}
+
+function zoomOut() {
+    const img = document.querySelector('.image-preview img');
+    const currentWidth = img.clientWidth;
+    img.style.width = (currentWidth / 1.2) + 'px';
+}
+
+function sharePage() {
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            url: window.location.href
+        });
+    } else {
+        // Fallback for browsers that don't support Web Share API
+        const dummy = document.createElement('input');
+        document.body.appendChild(dummy);
+        dummy.value = window.location.href;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        alert('URL copied to clipboard!');
+    }
+}
+</script>
