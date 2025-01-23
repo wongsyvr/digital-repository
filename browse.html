@@ -292,10 +292,11 @@ title: Browse Collection
 
 /* Item Cards */
 .item-card {
-    background: var(--background-alt);
+    background: white;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .item-card:hover {
@@ -312,9 +313,17 @@ title: Browse Collection
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.item-preview i {
+    font-size: 3rem;
+    color: var(--primary-color);
 }
 
 .thumbnail-image {
+    width: auto;
+    height: auto;
     max-width: 100%;
     max-height: 180px;
     object-fit: contain;
