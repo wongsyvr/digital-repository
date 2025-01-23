@@ -9,12 +9,14 @@ url: "https://wongsyvr.github.io"
 # GitHub Pages settings
 repository: wongsyvr/digital-repository
 remote_theme: pages-themes/minimal@v0.2.0
+plugins:
+  - jekyll-remote-theme
 
 # Collection Settings
 collections:
   items:
     output: true
-    permalink: /items/:identifier/
+    permalink: /items/:name
 
 # Metadata file paths
 metadata-csv: "_data/metadata.csv"
@@ -49,14 +51,13 @@ search:
     - description
     - subject
     - location
-    
+
 # Build settings
 markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-remote-theme
 
 # Exclude from processing
 exclude:
