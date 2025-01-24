@@ -1,9 +1,4 @@
 field,display_name,search
-title,Title,true
 date,Date,true
-creator,Creator,true
+subject,Subjects,true
 location,Location,true
-description,Description,true
-subject,Subject,true
-type,Type,true
-series,Series,true

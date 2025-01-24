@@ -210,27 +210,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Add thumbnail if available
                     const objectId = cols[headers.indexOf('objectid')];
+                    const title = cols[headers.indexOf('title')];
                     popupContent += `
                         <img src="{{ site.baseurl }}/objects/${objectId}/thumb.jpg" 
-                             alt="${cols[fieldIndices['title']]}"
+                             alt="${title}"
                              onerror="this.style.display='none'">
                     `;
                     
-                    // Add title
-                    popupContent += `<h3>${cols[fieldIndices['title']]}</h3>`;
+                    // Always add title
+                    popupContent += `<h3>${title}</h3>`;
                     
                     // Add configured fields
                     fields.forEach((field, index) => {
-                        if (field !== 'title' && fieldIndices[field] !== undefined) {
-                            const value = cols[fieldIndices[field]];
-                            if (value && value.trim()) {
-                                popupContent += `
-                                    <div class="metadata-field">
-                                        <span class="field-label">${displayNames[index]}:</span>
-                                        <span class="field-value">${value}</span>
-                                    </div>
-                                `;
-                            }
+                        const value = cols[headers.indexOf(field)];
+                        if (value && value.trim()) {
+                            popupContent += `
+                                <div class="metadata-field">
+                                    <span class="field-label">${displayNames[index]}:</span>
+                                    <span class="field-value">${value}</span>
+                                </div>
+                            `;
                         }
                     });
                     
