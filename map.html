@@ -3,6 +3,10 @@ layout: default
 title: Map View
 ---
 
+{% assign fields = site.data.config-map | map: "field" %}
+{% assign display_names = site.data.config-map | map: "display_name" %}
+{% assign searchable = site.data.config-map | map: "search" %}
+
 <style>
 .map-container {
     width: 100%;
@@ -17,21 +21,35 @@ title: Map View
     margin-bottom: 20px;
 }
 
+.map-marker-popup {
+    max-width: 300px;
+}
+
 .map-marker-popup img {
-    max-width: 150px;
+    width: 100%;
     height: auto;
     margin-bottom: 10px;
     border-radius: 4px;
 }
 
 .map-marker-popup h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.1rem;
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
 }
 
-.map-marker-popup p {
+.map-marker-popup .metadata-field {
     margin: 5px 0;
     font-size: 0.9rem;
+}
+
+.map-marker-popup .field-label {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.map-marker-popup .field-value {
+    color: var(--text-light);
 }
 
 .map-controls {
@@ -51,16 +69,34 @@ title: Map View
 
 .map-search input {
     width: 200px;
-    padding: 5px;
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 0.9rem;
 }
 
 .map-layers select {
     width: 200px;
-    padding: 5px;
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.button-primary {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+    background-color: var(--secondary-color);
 }
 </style>
 
@@ -89,6 +125,11 @@ title: Map View
 </div>
 
 <script>
+// Store field configuration
+var fields = {{ fields | jsonify }};
+var displayNames = {{ display_names | jsonify }};
+var searchableFields = {{ searchable | jsonify }};
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize the map with theme configuration
     var map = L.map('map').setView([
@@ -125,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {% endif %}
     
     // Load and process the metadata
-    fetch('{{ site.baseurl }}/_data/metadata.csv')
+    fetch('{{ site.baseurl }}/_data/config-map.csv')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -133,49 +174,60 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.text();
         })
         .then(csv => {
-            console.log('CSV loaded successfully');
             // Parse CSV
             const rows = csv.split('\n');
             const headers = rows[0].split(',');
             
-            // Find column indices
-            const latIndex = headers.indexOf('latitude');
-            const lonIndex = headers.indexOf('longitude');
-            const titleIndex = headers.indexOf('title');
-            const descIndex = headers.indexOf('description');
-            const idIndex = headers.indexOf('objectid');
-            const dateIndex = headers.indexOf('date');
-            const locationIndex = headers.indexOf('location');
+            // Create field index mapping
+            const fieldIndices = {};
+            fields.forEach(field => {
+                fieldIndices[field] = headers.indexOf(field);
+            });
             
             // Process each row (skip header)
             rows.slice(1).forEach(row => {
                 if (!row.trim()) return; // Skip empty rows
                 
                 const cols = row.split(',');
-                const lat = parseFloat(cols[latIndex]);
-                const lon = parseFloat(cols[lonIndex]);
-                const title = cols[titleIndex];
-                const desc = cols[descIndex];
-                const id = cols[idIndex];
-                const date = cols[dateIndex];
-                const location = cols[locationIndex];
+                const lat = parseFloat(cols[headers.indexOf('latitude')]);
+                const lon = parseFloat(cols[headers.indexOf('longitude')]);
                 
                 if (!isNaN(lat) && !isNaN(lon)) {
                     const marker = L.marker([lat, lon]);
                     
-                    // Create popup content
-                    const popupContent = `
-                        <div class="map-marker-popup">
-                            <img src="{{ site.baseurl }}/objects/${id}/thumb.jpg" 
-                                 alt="${title}"
-                                 onerror="this.style.display='none'">
-                            <h3>${title}</h3>
-                            <p><strong>Location:</strong> ${location}</p>
-                            <p><strong>Date:</strong> ${date}</p>
-                            <p>${desc}</p>
-                            <a href="{{ site.baseurl }}/items/${id}" class="button button-primary">View Details</a>
-                        </div>
+                    // Create popup content using field configuration
+                    let popupContent = '<div class="map-marker-popup">';
+                    
+                    // Add thumbnail if available
+                    const objectId = cols[headers.indexOf('objectid')];
+                    popupContent += `
+                        <img src="{{ site.baseurl }}/objects/${objectId}/thumb.jpg" 
+                             alt="${cols[fieldIndices['title']]}"
+                             onerror="this.style.display='none'">
                     `;
+                    
+                    // Add title
+                    popupContent += `<h3>${cols[fieldIndices['title']]}</h3>`;
+                    
+                    // Add configured fields
+                    fields.forEach((field, index) => {
+                        if (field !== 'title' && fieldIndices[field] !== undefined) {
+                            const value = cols[fieldIndices[field]];
+                            if (value && value.trim()) {
+                                popupContent += `
+                                    <div class="metadata-field">
+                                        <span class="field-label">${displayNames[index]}:</span>
+                                        <span class="field-value">${value}</span>
+                                    </div>
+                                `;
+                            }
+                        }
+                    });
+                    
+                    // Add view details button
+                    popupContent += `
+                        <a href="{{ site.baseurl }}/items/${objectId}" class="button-primary">View Details</a>
+                    </div>`;
                     
                     marker.bindPopup(popupContent);
                     markers.addLayer(marker);
@@ -188,38 +240,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Fit bounds if there are markers
             if (markers.getLayers().length > 0) {
                 map.fitBounds(markers.getBounds());
-                console.log('Markers added:', markers.getLayers().length);
-            } else {
-                console.log('No markers were added to the map');
             }
             
-            // Set up layer control if search is enabled
+            // Set up search functionality if enabled
             {% if site.data.theme.map-search %}
-            // Layer selection
-            document.getElementById('map-layer-select').addEventListener('change', function(e) {
-                // Remove current base layer
-                Object.values(baseLayers).forEach(layer => {
-                    if (map.hasLayer(layer)) {
-                        map.removeLayer(layer);
-                    }
-                });
-                // Add selected base layer
-                baseLayers[e.target.value].addTo(map);
-            });
-            
-            // Search functionality
-            var searchInput = document.getElementById('map-search-input');
-            searchInput.addEventListener('input', function(e) {
-                var searchTerm = e.target.value.toLowerCase();
-                var fuzziness = {{ site.data.theme.map-search-fuzziness | default: 0.35 }};
-                
-                markers.eachLayer(function(layer) {
-                    var title = layer.getPopup().getContent().toLowerCase();
-                    var match = title.includes(searchTerm) || 
-                               levenshteinDistance(title, searchTerm) <= (title.length * fuzziness);
-                    layer.setOpacity(match ? 1 : 0.3);
-                });
-            });
+            setupSearch(markers, fieldIndices);
+            setupLayerControl(map, baseLayers);
             {% endif %}
         })
         .catch(error => {
@@ -230,34 +256,69 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         });
-    
-    // Levenshtein distance function for fuzzy search
-    function levenshteinDistance(a, b) {
-        if (a.length === 0) return b.length;
-        if (b.length === 0) return a.length;
+});
+
+function setupSearch(markers, fieldIndices) {
+    const searchInput = document.getElementById('map-search-input');
+    searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const fuzziness = {{ site.data.theme.map-search-fuzziness | default: 0.35 }};
         
-        var matrix = [];
-        for (var i = 0; i <= b.length; i++) {
-            matrix[i] = [i];
-        }
-        for (var j = 0; j <= a.length; j++) {
-            matrix[0][j] = j;
-        }
-        
-        for (var i = 1; i <= b.length; i++) {
-            for (var j = 1; j <= a.length; j++) {
-                if (b.charAt(i-1) === a.charAt(j-1)) {
-                    matrix[i][j] = matrix[i-1][j-1];
-                } else {
-                    matrix[i][j] = Math.min(
-                        matrix[i-1][j-1] + 1,
-                        matrix[i][j-1] + 1,
-                        matrix[i-1][j] + 1
-                    );
+        markers.eachLayer(function(layer) {
+            let match = false;
+            
+            // Check each searchable field
+            fields.forEach((field, index) => {
+                if (searchableFields[index] && fieldIndices[field] !== undefined) {
+                    const content = layer.getPopup().getContent().toLowerCase();
+                    if (content.includes(searchTerm) || 
+                        levenshteinDistance(content, searchTerm) <= (content.length * fuzziness)) {
+                        match = true;
+                    }
                 }
+            });
+            
+            layer.setOpacity(match ? 1 : 0.3);
+        });
+    });
+}
+
+function setupLayerControl(map, baseLayers) {
+    document.getElementById('map-layer-select').addEventListener('change', function(e) {
+        Object.values(baseLayers).forEach(layer => {
+            if (map.hasLayer(layer)) {
+                map.removeLayer(layer);
+            }
+        });
+        baseLayers[e.target.value].addTo(map);
+    });
+}
+
+function levenshteinDistance(a, b) {
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
+    
+    var matrix = [];
+    for (var i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
+    for (var j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
+    
+    for (var i = 1; i <= b.length; i++) {
+        for (var j = 1; j <= a.length; j++) {
+            if (b.charAt(i-1) === a.charAt(j-1)) {
+                matrix[i][j] = matrix[i-1][j-1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i-1][j-1] + 1,
+                    matrix[i][j-1] + 1,
+                    matrix[i-1][j] + 1
+                );
             }
         }
-        return matrix[b.length][a.length];
     }
-});
+    return matrix[b.length][a.length];
+}
 </script>
