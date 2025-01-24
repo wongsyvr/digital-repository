@@ -33,6 +33,35 @@ title: Map View
     margin: 5px 0;
     font-size: 0.9rem;
 }
+
+.map-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.map-search {
+    margin-bottom: 10px;
+}
+
+.map-search input {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.map-layers select {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
 </style>
 
 <div class="container">
@@ -40,21 +69,60 @@ title: Map View
     <div class="map-info">
         <p>Explore the geographical distribution of items in the collection. Click on markers to view item details.</p>
     </div>
-    <div id="map" class="map-container"></div>
+    <div class="map-container-wrapper" style="position: relative;">
+        <div id="map" class="map-container"></div>
+        {% if site.data.theme.map-search %}
+        <div class="map-controls">
+            <div class="map-search">
+                <input type="text" id="map-search-input" placeholder="Search locations...">
+            </div>
+            <div class="map-layers">
+                <select id="map-layer-select">
+                    <option value="Esri_WorldStreetMap">Street Map</option>
+                    <option value="Esri_NatGeoWorldMap">Geographic Map</option>
+                    <option value="Esri_WorldImagery">Satellite Imagery</option>
+                </select>
+            </div>
+        </div>
+        {% endif %}
+    </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize the map centered on Vancouver
-    var map = L.map('map').setView([49.2827, -123.1207], 4);
+    // Initialize the map with theme configuration
+    var map = L.map('map').setView([
+        {{ site.data.theme.latitude | default: 49.2827 }},
+        {{ site.data.theme.longitude | default: -123.1207 }}
+    ], {{ site.data.theme.zoom-level | default: 4 }});
     
-    // Add OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: ' OpenStreetMap contributors'
-    }).addTo(map);
+    // Define base layers
+    var baseLayers = {
+        'Esri_WorldStreetMap': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri'
+        }),
+        'Esri_NatGeoWorldMap': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
+        }),
+        'Esri_WorldImagery': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        })
+    };
     
-    // Create a marker cluster group
-    var markers = L.markerClusterGroup();
+    // Add default base layer
+    baseLayers['{{ site.data.theme.map-base | default: "Esri_WorldStreetMap" }}'].addTo(map);
+    
+    // Create marker cluster if enabled
+    {% if site.data.theme.map-cluster %}
+    var markers = L.markerClusterGroup({
+        maxClusterRadius: {{ site.data.theme.map-cluster-radius | default: 25 }},
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true
+    });
+    {% else %}
+    var markers = L.layerGroup();
+    {% endif %}
     
     // Load and process the metadata
     fetch('{{ site.baseurl }}/_data/metadata.csv')
@@ -79,14 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const dateIndex = headers.indexOf('date');
             const locationIndex = headers.indexOf('location');
             
-            console.log('Column indices:', {
-                lat: latIndex,
-                lon: lonIndex,
-                title: titleIndex,
-                desc: descIndex,
-                id: idIndex
-            });
-            
             // Process each row (skip header)
             rows.slice(1).forEach(row => {
                 if (!row.trim()) return; // Skip empty rows
@@ -101,10 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const location = cols[locationIndex];
                 
                 if (!isNaN(lat) && !isNaN(lon)) {
-                    console.log('Adding marker:', { lat, lon, title });
                     const marker = L.marker([lat, lon]);
                     
-                    // Create popup content with thumbnail and metadata
+                    // Create popup content
                     const popupContent = `
                         <div class="map-marker-popup">
                             <img src="{{ site.baseurl }}/objects/${id}/thumb.jpg" 
@@ -133,6 +192,35 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 console.log('No markers were added to the map');
             }
+            
+            // Set up layer control if search is enabled
+            {% if site.data.theme.map-search %}
+            // Layer selection
+            document.getElementById('map-layer-select').addEventListener('change', function(e) {
+                // Remove current base layer
+                Object.values(baseLayers).forEach(layer => {
+                    if (map.hasLayer(layer)) {
+                        map.removeLayer(layer);
+                    }
+                });
+                // Add selected base layer
+                baseLayers[e.target.value].addTo(map);
+            });
+            
+            // Search functionality
+            var searchInput = document.getElementById('map-search-input');
+            searchInput.addEventListener('input', function(e) {
+                var searchTerm = e.target.value.toLowerCase();
+                var fuzziness = {{ site.data.theme.map-search-fuzziness | default: 0.35 }};
+                
+                markers.eachLayer(function(layer) {
+                    var title = layer.getPopup().getContent().toLowerCase();
+                    var match = title.includes(searchTerm) || 
+                               levenshteinDistance(title, searchTerm) <= (title.length * fuzziness);
+                    layer.setOpacity(match ? 1 : 0.3);
+                });
+            });
+            {% endif %}
         })
         .catch(error => {
             console.error('Error loading or processing metadata:', error);
@@ -142,5 +230,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         });
+    
+    // Levenshtein distance function for fuzzy search
+    function levenshteinDistance(a, b) {
+        if (a.length === 0) return b.length;
+        if (b.length === 0) return a.length;
+        
+        var matrix = [];
+        for (var i = 0; i <= b.length; i++) {
+            matrix[i] = [i];
+        }
+        for (var j = 0; j <= a.length; j++) {
+            matrix[0][j] = j;
+        }
+        
+        for (var i = 1; i <= b.length; i++) {
+            for (var j = 1; j <= a.length; j++) {
+                if (b.charAt(i-1) === a.charAt(j-1)) {
+                    matrix[i][j] = matrix[i-1][j-1];
+                } else {
+                    matrix[i][j] = Math.min(
+                        matrix[i-1][j-1] + 1,
+                        matrix[i][j-1] + 1,
+                        matrix[i-1][j] + 1
+                    );
+                }
+            }
+        }
+        return matrix[b.length][a.length];
+    }
 });
 </script>
