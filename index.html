@@ -3,235 +3,256 @@ layout: default
 title: Home
 ---
 
-<div class="home-container">
-    <div class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Welcome to My Digital Repository</h1>
-            <p class="hero-subtitle">Exploring the archival journey of Cheuk Kit (Philip) Chung</p>
-            <div class="cta-buttons">
-                <a href="{{ site.baseurl }}/browse.html" class="cta-button primary">Browse Collection</a>
-                <a href="{{ site.baseurl }}/hierarchy.html" class="cta-button secondary">View Hierarchy</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="{{ site.baseurl }}/assets/images/profile.jpg" alt="Cheuk Kit (Philip) Chung" class="profile-image">
-        </div>
-    </div>
-
-    <div class="featured-sections">
-        <div class="section-card">
-            <i class="fas fa-book-open"></i>
-            <h2>Academic Series</h2>
-            <p>Explore academic achievements and educational milestones.</p>
-            <a href="{{ site.baseurl }}/browse.html#academic" class="section-link">View Series →</a>
-        </div>
-        <div class="section-card">
-            <i class="fas fa-palette"></i>
-            <h2>Art & Design</h2>
-            <p>Discover creative works and artistic expressions.</p>
-            <a href="{{ site.baseurl }}/browse.html#art" class="section-link">View Series →</a>
-        </div>
-    </div>
-</div>
-
 <style>
-/* Home Container */
-.home-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 20px;
+.landing-container {
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
-/* Hero Section */
 .hero-section {
+    height: 100vh;
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 4rem;
-    margin: 2rem 0 4rem;
-    min-height: 60vh;
+    justify-content: center;
+    background-color: var(--background-color);
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('{{ site.baseurl }}/assets/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.3);
+    z-index: 1;
 }
 
 .hero-content {
-    flex: 1;
-    max-width: 600px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-title {
     font-size: 3.5rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
     font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    color: var(--text-light);
+    font-size: 1.5rem;
     margin-bottom: 2rem;
+    opacity: 0.9;
 }
 
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.profile-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    transform: perspective(1000px) rotateY(-5deg);
-    transition: transform 0.3s ease;
-}
-
-.profile-image:hover {
-    transform: perspective(1000px) rotateY(0deg);
-}
-
-/* CTA Buttons */
-.cta-buttons {
+.cta-container {
     display: flex;
     gap: 1rem;
+    justify-content: center;
     margin-top: 2rem;
 }
 
 .cta-button {
-    display: inline-block;
     padding: 1rem 2rem;
-    border-radius: 8px;
+    font-size: 1.1rem;
     font-weight: 600;
+    border-radius: 50px;
     text-decoration: none;
     transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.cta-button.primary {
-    background: var(--primary-color);
+.cta-primary {
+    background-color: var(--primary-color);
     color: white;
-}
-
-.cta-button.primary:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
-}
-
-.cta-button.secondary {
-    background: transparent;
-    color: var(--text-color);
     border: 2px solid var(--primary-color);
 }
 
-.cta-button.secondary:hover {
-    background: var(--primary-color);
+.cta-primary:hover {
+    background-color: transparent;
     color: white;
-    transform: translateY(-2px);
 }
 
-/* Featured Sections */
-.featured-sections {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin: 4rem 0;
+.cta-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
 }
 
-.section-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 16px;
+.cta-secondary:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: white;
     text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0.8;
+    cursor: pointer;
+    animation: bounce 2s infinite;
 }
 
-.section-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
-.section-card i {
+.features-section {
+    padding: 4rem 2rem;
+    background-color: white;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
-.section-card h2 {
+.feature-title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--text-color);
 }
 
-.section-card p {
+.feature-description {
     color: var(--text-light);
-    margin-bottom: 1.5rem;
     line-height: 1.6;
-}
-
-.section-link {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.section-link:hover {
-    color: var(--secondary-color);
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .hero-section {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-    }
-
-    .hero-content {
-        max-width: 100%;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .cta-buttons {
-        justify-content: center;
-    }
-
-    .profile-image {
-        max-width: 80%;
-        transform: none;
-    }
-
-    .profile-image:hover {
-        transform: none;
-    }
 }
 
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
-
+    
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
-
-    .cta-buttons {
+    
+    .cta-container {
         flex-direction: column;
     }
-
-    .cta-button {
-        width: 100%;
-        text-align: center;
-    }
-
-    .section-card {
-        padding: 1.5rem;
+    
+    .features-grid {
+        grid-template-columns: 1fr;
     }
 }
 </style>
+
+<div class="landing-container">
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Digital Repository</h1>
+            <p class="hero-subtitle">Explore the archival journey through a curated collection of academic and creative works</p>
+            <div class="cta-container">
+                <a href="{{ site.baseurl }}/browse.html" class="cta-button cta-primary">Browse Collection</a>
+                <a href="{{ site.baseurl }}/hierarchy.html" class="cta-button cta-secondary">View Hierarchy</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+            <p>Scroll to explore</p>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-book-open feature-icon"></i>
+                <h2 class="feature-title">Academic Series</h2>
+                <p class="feature-description">Discover a comprehensive collection of academic achievements, research papers, and educational milestones.</p>
+                <a href="{{ site.baseurl }}/browse.html#academic" class="cta-button cta-primary">Explore</a>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-palette feature-icon"></i>
+                <h2 class="feature-title">Art & Design</h2>
+                <p class="feature-description">Experience a diverse portfolio of creative works, artistic expressions, and design projects.</p>
+                <a href="{{ site.baseurl }}/browse.html#art" class="cta-button cta-primary">Discover</a>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-map-marked-alt feature-icon"></i>
+                <h2 class="feature-title">Interactive Map</h2>
+                <p class="feature-description">Navigate through the collection geographically and explore items by their location.</p>
+                <a href="{{ site.baseurl }}/map.html" class="cta-button cta-primary">View Map</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+document.querySelector('.scroll-indicator').addEventListener('click', function() {
+    document.querySelector('.features-section').scrollIntoView({ behavior: 'smooth' });
+});
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.feature-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    observer.observe(card);
+});
+</script>
