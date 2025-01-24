@@ -1,3 +1,11 @@
+# Home Page Configuration
+# ------------------
+
+# Home Page Banner
+featured-image: /images/banner.jpg  # Using a local image for the banner
+home-title-y-padding: 12em  # Balanced padding for banner visibility
+home-banner-image-position: center  # Center positioning for optimal display
+
 # Map Page Configuration
 # ------------------
 
