@@ -166,14 +166,15 @@ document.addEventListener('DOMContentLoaded', function() {
     {% endif %}
     
     // Load and process the metadata
-    fetch('{{ site.baseurl }}/_data/config-map.csv')
+    fetch('{{ site.baseurl }}/_data/metadata.csv')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok: ' + response.statusText);
             }
             return response.text();
         })
         .then(csv => {
+            console.log('Loaded metadata CSV');
             // Parse CSV
             const rows = csv.split('\n');
             const headers = rows[0].split(',');
@@ -184,15 +185,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 fieldIndices[field] = headers.indexOf(field);
             });
             
+            // Add debug logging
+            console.log('Field indices:', fieldIndices);
+            console.log('Total rows:', rows.length);
+            
             // Process each row (skip header)
-            rows.slice(1).forEach(row => {
+            let markerCount = 0;
+            rows.slice(1).forEach((row, index) => {
                 if (!row.trim()) return; // Skip empty rows
                 
                 const cols = row.split(',');
                 const lat = parseFloat(cols[headers.indexOf('latitude')]);
                 const lon = parseFloat(cols[headers.indexOf('longitude')]);
                 
+                // Add debug logging
+                console.log(`Row ${index + 1}:`, { lat, lon });
+                
                 if (!isNaN(lat) && !isNaN(lon)) {
+                    markerCount++;
                     const marker = L.marker([lat, lon]);
                     
                     // Create popup content using field configuration
@@ -234,12 +244,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
+            // Add debug logging
+            console.log('Total markers added:', markerCount);
+            
             // Add markers to map
             map.addLayer(markers);
             
             // Fit bounds if there are markers
             if (markers.getLayers().length > 0) {
                 map.fitBounds(markers.getBounds());
+                console.log('Map bounds updated with', markers.getLayers().length, 'markers');
+            } else {
+                console.warn('No markers were added to the map');
             }
             
             // Set up search functionality if enabled
@@ -252,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error loading or processing metadata:', error);
             document.getElementById('map').innerHTML = `
                 <div class="alert alert-danger">
-                    Error loading map data. Please try again later.
+                    Error loading map data: ${error.message}
                 </div>
             `;
         });
