@@ -1,48 +1,33 @@
 ---
-layout: Home
+layout: home
 title: Home
 ---
 
-# Welcome to the Digital Repository of Cheuk Kit (Philip) Chung
+# Welcome to the Digital Repository
+
+This digital repository showcases a diverse collection of academic materials, creative works, and personal documents. Through this platform, we aim to preserve and share valuable resources while making them accessible to researchers, students, and the general public.
+
+## Collection Highlights
+
+### Academic Series
+Explore our comprehensive collection of academic materials, including research papers, presentations, and educational resources. These materials represent years of scholarly work and intellectual pursuit.
+
+### Art & Design
+Discover our curated collection of visual works, including digital art, design projects, and creative portfolios. Each piece tells a unique story and showcases artistic excellence.
+
+### Geographic Coverage
+Our collection spans multiple locations, each item carefully documented with geographical context. Use our interactive map to explore items by their location and discover the spatial relationships within our collection.
 
 ## About the Creator
 
 Cheuk Kit (Philip) Chung is a final year Master of Archival Studies student at the University of British Columbia. As a dedicated archival professional, he has demonstrated expertise in digitization, archival description, and project management. His primary interest lies in personal and community archives, with a focus on making archival practices accessible to all.
 
-## Mission
+## Get Started
 
-To provide an open-source, user-friendly digital repository template that adheres to Rules for Archival Description (RAD) standards, enabling individuals and communities to preserve and share their historical materials without technical barriers or financial burden.
+- **[Browse the Collection]({{ '/browse.html' | relative_url }})**: Explore all items in our digital repository
+- **[View the Map]({{ '/map.html' | relative_url }})**: Discover items through their geographic locations
+- **[Learn More]({{ '/about.html' | relative_url }})**: Read about our mission and collection development
 
-## Vision
+## Recent Updates
 
-We envision a future where every individual and community has the tools and capability to preserve their historical legacy through professional-grade digital repositories, ensuring their stories are preserved for future generations.
-
-## Values
-
-- **Accessibility**: Making archival practices accessible to everyone, regardless of technical expertise
-- **Preservation**: Ensuring long-term digital preservation through standardized practices
-- **Community-Focused**: Prioritizing the needs of personal and community archives
-- **Open Source**: Maintaining transparency and collaborative development
-- **Standards-Compliant**: Adhering to professional archival standards (RAD and Dublin Core)
-
-## Browse the Collection
-
-- [View All Items](/browse.html)
-- [Timeline View](/timeline.html)
-- [Map View](/map.html)
-- [Search Collection](/search.html)
-
-## Series Overview
-
-1. **Academic Series**
-   - Elementary School
-   - High School
-   - Undergraduate
-   - Postgraduate
-
-2. **Art & Design Series**
-   - Papercut Works
-   - 3D Prints
-   - Laser Cutting and Engraving Projects
-
----
+Stay tuned for regular updates as we continue to add new items and improve the repository's functionality. We welcome feedback and suggestions from our users to enhance the browsing experience.

@@ -1,0 +1,84 @@
+---
+layout: default
+---
+<div class="home-page-banner">
+    {% if site.data.theme.featured-image %}
+    <div class="container py-5" style="min-height: {{ site.data.theme.home-title-y-padding | default: '12em' }}; background: url('{% if site.data.theme.featured-image contains 'http' %}{{ site.data.theme.featured-image }}{% else %}{{ site.data.theme.featured-image | relative_url }}{% endif %}') center/cover no-repeat;">
+    {% else %}
+    <div class="container py-5" style="min-height: {{ site.data.theme.home-title-y-padding | default: '12em' }};">
+    {% endif %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center py-5 text-white">
+                    <h1 class="display-4">{{ site.title }}</h1>
+                    {% if site.tagline %}<p class="lead">{{ site.tagline }}</p>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            {{ content }}
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h3>Collection Stats</h3>
+                    <p>Items: {{ site.data.metadata | size }}</p>
+                    {% assign subjects = site.data.metadata | map: "subject" | join: ";" | split: ";" | uniq | size %}
+                    <p>Subjects: {{ subjects }}</p>
+                    {% assign dates = site.data.metadata | map: "date" | uniq | size %}
+                    <p>Years: {{ dates }}</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3>Browse</h3>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-primary" href="{{ '/browse.html' | relative_url }}">Browse All Items</a>
+                        <a class="btn btn-outline-primary" href="{{ '/subjects.html' | relative_url }}">Browse by Subject</a>
+                        <a class="btn btn-outline-primary" href="{{ '/map.html' | relative_url }}">Browse by Location</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h2>Featured Items</h2>
+        </div>
+        {% assign featured = site.data.metadata | where_exp: 'item', 'item.subject contains "featured"' | sample: 3 %}
+        {% for item in featured %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ '/objects/' | append: item.objectid | append: '/thumb.jpg' | relative_url }}" class="card-img-top" alt="{{ item.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">{{ item.description | truncatewords: 20 }}</p>
+                    <a href="{{ '/items/' | append: item.objectid | append: '.html' | relative_url }}" class="btn btn-primary">View Item</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.home-page-banner {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+}
+.home-page-banner .container {
+    background-position: {{ site.data.theme.home-banner-image-position | default: 'center' }} !important;
+}
+.home-page-banner h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.home-page-banner p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+</style>
