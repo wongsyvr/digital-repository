@@ -8,10 +8,12 @@ url: "https://wongsyvr.github.io"
 
 # GitHub Pages settings
 repository: wongsyvr/digital-repository
-remote_theme: pages-themes/minimal@v0.2.0
-plugins:
-  - jekyll-remote-theme
-  - jekyll-seo-tag
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 # Collection Settings
 collections:
@@ -20,29 +22,23 @@ collections:
     permalink: /:collection/:name
     source: _items
 
+# Defaults
 defaults:
   - scope:
       path: ""
-      type: items
     values:
-      layout: item_page
-
-# Metadata file paths
-metadata-csv: "_data/metadata.csv"
-
-# Build settings
-markdown: kramdown
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
+      layout: default
+  - scope:
+      path: ""
+      type: "items"
+    values:
+      layout: item
 
 # Exclude from processing
 exclude:
+  - README.md
+  - LICENSE
+  - CNAME
   - Gemfile
   - Gemfile.lock
-  - node_modules
   - vendor
-  - README.md
-  - .sass-cache/
-  - .jekyll-cache/
-  - gemfiles/
